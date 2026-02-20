@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* 인쇄 스타일 */
+@media print {
+  header, nav, .print\:hidden { display: none !important; }
+  body { background: white; }
+  .bg-\[#F8F9FA\] { background: white !important; }
+  main { padding: 0 !important; }
+  .shadow-sm { box-shadow: none !important; }
+  .rounded-xl, .rounded-2xl { border-radius: 0.5rem !important; }
+}

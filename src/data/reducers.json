@@ -1,0 +1,7798 @@
+[
+  {
+    "id": "reducer-001",
+    "series": "GPB",
+    "size": 42,
+    "modelName": "GPB042",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 20,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 19,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 22,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 19,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 14,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 20,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 20,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 22,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 20,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 17,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 22,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "60": {
+        "torque": 20,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "80": {
+        "torque": 17,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 14,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 22,
+    "allowedRadialLoad": 780,
+    "allowedAxialLoad": 390,
+    "efficiency": 0.97,
+    "weight": 0.6,
+    "noise": 56,
+    "rigidity": 3,
+    "inertia": 0.03,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GPB042_2D.pdf",
+      "cad_step": "GPB042_3D.step",
+      "cad_igs": "GPB042_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-002",
+    "series": "GPB",
+    "size": 60,
+    "modelName": "GPB060",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 55,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 50,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 55,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 55,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 55,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 45,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "60": {
+        "torque": 55,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "80": {
+        "torque": 45,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 1530,
+    "allowedAxialLoad": 765,
+    "efficiency": 0.97,
+    "weight": 1.3,
+    "noise": 58,
+    "rigidity": 7,
+    "inertia": 0.16,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPB060_2D.pdf",
+      "cad_step": "GPB060_3D.step",
+      "cad_igs": "GPB060_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-003",
+    "series": "GPB",
+    "size": 90,
+    "modelName": "GPB090",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 130,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 160,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 130,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 130,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 150,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 120,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "60": {
+        "torque": 150,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "80": {
+        "torque": 120,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 160,
+    "allowedRadialLoad": 3250,
+    "allowedAxialLoad": 1625,
+    "efficiency": 0.97,
+    "weight": 3.7,
+    "noise": 60,
+    "rigidity": 14,
+    "inertia": 0.61,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPB090_2D.pdf",
+      "cad_step": "GPB090_3D.step",
+      "cad_igs": "GPB090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-004",
+    "series": "GPB",
+    "size": 115,
+    "modelName": "GPB115",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 208,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 290,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 330,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 208,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 208,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 310,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 260,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "60": {
+        "torque": 310,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "80": {
+        "torque": 260,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 330,
+    "allowedRadialLoad": 6700,
+    "allowedAxialLoad": 3350,
+    "efficiency": 0.97,
+    "weight": 7.8,
+    "noise": 63,
+    "rigidity": 25,
+    "inertia": 3.25,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPB115_2D.pdf",
+      "cad_step": "GPB115_3D.step",
+      "cad_igs": "GPB115_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-005",
+    "series": "GPB",
+    "size": 142,
+    "modelName": "GPB142",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 342,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 543,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 342,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 342,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 543,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 542,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 543,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 600,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 500,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "60": {
+        "torque": 600,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "80": {
+        "torque": 500,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 9400,
+    "allowedAxialLoad": 4700,
+    "efficiency": 0.97,
+    "weight": 14.5,
+    "noise": 65,
+    "rigidity": 50,
+    "inertia": 9.21,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPB142_2D.pdf",
+      "cad_step": "GPB142_3D.step",
+      "cad_igs": "GPB142_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-006",
+    "series": "GPB",
+    "size": 180,
+    "modelName": "GPB180",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 588,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 1050,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 1200,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 1100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 900,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 588,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 588,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 1000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "60": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "80": {
+        "torque": 1000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 900,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 1200,
+    "allowedRadialLoad": 14500,
+    "allowedAxialLoad": 7250,
+    "efficiency": 0.97,
+    "weight": 29,
+    "noise": 67,
+    "rigidity": 145,
+    "inertia": 28.98,
+    "shaftHoleDiameter": 42,
+    "drawings": {
+      "pdf": "GPB180_2D.pdf",
+      "cad_step": "GPB180_3D.step",
+      "cad_igs": "GPB180_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-007",
+    "series": "GPB",
+    "size": 220,
+    "modelName": "GPB220",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 1140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 1700,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 2000,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 1800,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 1500,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 1140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 1140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 2000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 1900,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 1800,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 1600,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 2000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "60": {
+        "torque": 1900,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 1800,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "80": {
+        "torque": 1600,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 1500,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 2000,
+    "allowedRadialLoad": 50000,
+    "allowedAxialLoad": 25000,
+    "efficiency": 0.97,
+    "weight": 48,
+    "noise": 70,
+    "rigidity": 225,
+    "inertia": 69.61,
+    "shaftHoleDiameter": 55,
+    "drawings": {
+      "pdf": "GPB220_2D.pdf",
+      "cad_step": "GPB220_3D.step",
+      "cad_igs": "GPB220_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-008",
+    "series": "GPD",
+    "size": 47,
+    "modelName": "GPD047",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 19,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 22,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 19,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 14,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "20": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 22,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 22,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 19,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 14,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 22,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 990,
+    "efficiency": 0.97,
+    "weight": 0.7,
+    "noise": 56,
+    "rigidity": 7,
+    "inertia": 0.03,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GPD047_2D.pdf",
+      "cad_step": "GPD047_3D.step",
+      "cad_igs": "GPD047_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-009",
+    "series": "GPD",
+    "size": 64,
+    "modelName": "GPD064",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 48,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "20": {
+        "torque": 48,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 48,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1050,
+    "efficiency": 0.97,
+    "weight": 1.2,
+    "noise": 58,
+    "rigidity": 13,
+    "inertia": 0.14,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPD064_2D.pdf",
+      "cad_step": "GPD064_3D.step",
+      "cad_igs": "GPD064_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-010",
+    "series": "GPD",
+    "size": 90,
+    "modelName": "GPD090",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 130,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 160,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "20": {
+        "torque": 130,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 130,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 160,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2850,
+    "efficiency": 0.97,
+    "weight": 3,
+    "noise": 60,
+    "rigidity": 31,
+    "inertia": 0.51,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPD090_2D.pdf",
+      "cad_step": "GPD090_3D.step",
+      "cad_igs": "GPD090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-011",
+    "series": "GPD",
+    "size": 110,
+    "modelName": "GPD110",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 270,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 330,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "20": {
+        "torque": 270,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 270,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 330,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2990,
+    "efficiency": 0.97,
+    "weight": 5.6,
+    "noise": 63,
+    "rigidity": 82,
+    "inertia": 2.84,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPD110_2D.pdf",
+      "cad_step": "GPD110_3D.step",
+      "cad_igs": "GPD110_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-012",
+    "series": "GPD",
+    "size": 140,
+    "modelName": "GPD140",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 560,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "20": {
+        "torque": 560,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 560,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 10590,
+    "efficiency": 0.97,
+    "weight": 11.9,
+    "noise": 65,
+    "rigidity": 151,
+    "inertia": 7.54,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPD140_2D.pdf",
+      "cad_step": "GPD140_3D.step",
+      "cad_igs": "GPD140_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-013",
+    "series": "GPD",
+    "size": 200,
+    "modelName": "GPD200",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 1100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 1200,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 1100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 900,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "20": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 1000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 900,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 1200,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 16660,
+    "efficiency": 0.97,
+    "weight": 31.6,
+    "noise": 67,
+    "rigidity": 440,
+    "inertia": 25.03,
+    "shaftHoleDiameter": 42,
+    "drawings": {
+      "pdf": "GPD200_2D.pdf",
+      "cad_step": "GPD200_3D.step",
+      "cad_igs": "GPD200_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-014",
+    "series": "GPD",
+    "size": 255,
+    "modelName": "GPD255",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 1700,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 2000,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 1800,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 1500,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "20": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 2000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 1800,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 2000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 1800,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 1500,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 2000,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 29430,
+    "efficiency": 0.97,
+    "weight": 56.1,
+    "noise": 70,
+    "rigidity": 1006,
+    "inertia": 58.31,
+    "shaftHoleDiameter": 55,
+    "drawings": {
+      "pdf": "GPD255_2D.pdf",
+      "cad_step": "GPD255_3D.step",
+      "cad_igs": "GPD255_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-015",
+    "series": "GPV",
+    "size": 60,
+    "modelName": "GPV060",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 55,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 50,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 55,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 55,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 55,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 45,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 1530,
+    "allowedAxialLoad": 765,
+    "efficiency": 0.97,
+    "weight": 1.4,
+    "noise": 58,
+    "rigidity": 7,
+    "inertia": 0.22,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPV060_2D.pdf",
+      "cad_step": "GPV060_3D.step",
+      "cad_igs": "GPV060_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-016",
+    "series": "GPV",
+    "size": 90,
+    "modelName": "GPV090",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 130,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 160,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 130,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 130,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 150,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 120,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 160,
+    "allowedRadialLoad": 3250,
+    "allowedAxialLoad": 1625,
+    "efficiency": 0.97,
+    "weight": 3.7,
+    "noise": 60,
+    "rigidity": 14,
+    "inertia": 1.2,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPV090_2D.pdf",
+      "cad_step": "GPV090_3D.step",
+      "cad_igs": "GPV090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-017",
+    "series": "GPV",
+    "size": 115,
+    "modelName": "GPV115",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 208,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 290,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 330,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 208,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 208,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 310,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 260,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 330,
+    "allowedRadialLoad": 6700,
+    "allowedAxialLoad": 3350,
+    "efficiency": 0.97,
+    "weight": 8,
+    "noise": 63,
+    "rigidity": 25,
+    "inertia": 5.3,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPV115_2D.pdf",
+      "cad_step": "GPV115_3D.step",
+      "cad_igs": "GPV115_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-018",
+    "series": "GPV",
+    "size": 140,
+    "modelName": "GPV140",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 342,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 543,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 342,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 342,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 543,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 542,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 543,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 600,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 500,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 9400,
+    "allowedAxialLoad": 4700,
+    "efficiency": 0.97,
+    "weight": 16,
+    "noise": 65,
+    "rigidity": 50,
+    "inertia": 20,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPV140_2D.pdf",
+      "cad_step": "GPV140_3D.step",
+      "cad_igs": "GPV140_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-019",
+    "series": "GPV",
+    "size": 180,
+    "modelName": "GPV180",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 588,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 1050,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 1200,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 1100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 900,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 588,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 588,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 1000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 900,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 1200,
+    "allowedRadialLoad": 14500,
+    "allowedAxialLoad": 7250,
+    "efficiency": 0.97,
+    "weight": 36,
+    "noise": 67,
+    "rigidity": 145,
+    "inertia": 44,
+    "shaftHoleDiameter": 42,
+    "drawings": {
+      "pdf": "GPV180_2D.pdf",
+      "cad_step": "GPV180_3D.step",
+      "cad_igs": "GPV180_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-020",
+    "series": "GPV",
+    "size": 220,
+    "modelName": "GPV220",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 1140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 1700,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 2000,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 1800,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 1500,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 1140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 1140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 2000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 1700,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 1900,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 1800,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 1600,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 2000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 1800,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 1500,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 2000,
+    "allowedRadialLoad": 50000,
+    "allowedAxialLoad": 25000,
+    "efficiency": 0.97,
+    "weight": 53,
+    "noise": 70,
+    "rigidity": 225,
+    "inertia": 90,
+    "shaftHoleDiameter": 55,
+    "drawings": {
+      "pdf": "GPV220_2D.pdf",
+      "cad_step": "GPV220_3D.step",
+      "cad_igs": "GPV220_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-021",
+    "series": "GPE",
+    "size": 70,
+    "modelName": "GPE070",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 55,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 50,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 55,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 55,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 55,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 45,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 1530,
+    "allowedAxialLoad": 765,
+    "efficiency": 0.97,
+    "weight": 1.4,
+    "noise": 58,
+    "rigidity": 7,
+    "inertia": 0.16,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPE070_2D.pdf",
+      "cad_step": "GPE070_3D.step",
+      "cad_igs": "GPE070_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-022",
+    "series": "GPE",
+    "size": 90,
+    "modelName": "GPE090",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 130,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 160,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 130,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 130,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 150,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 120,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 160,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 160,
+    "allowedRadialLoad": 3250,
+    "allowedAxialLoad": 1625,
+    "efficiency": 0.97,
+    "weight": 3.7,
+    "noise": 60,
+    "rigidity": 14,
+    "inertia": 0.61,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPE090_2D.pdf",
+      "cad_step": "GPE090_3D.step",
+      "cad_igs": "GPE090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-023",
+    "series": "GPE",
+    "size": 120,
+    "modelName": "GPE120",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 208,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 290,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 330,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 208,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 208,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 290,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 310,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 260,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 330,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 330,
+    "allowedRadialLoad": 6700,
+    "allowedAxialLoad": 3350,
+    "efficiency": 0.97,
+    "weight": 8,
+    "noise": 63,
+    "rigidity": 25,
+    "inertia": 3.25,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPE120_2D.pdf",
+      "cad_step": "GPE120_3D.step",
+      "cad_igs": "GPE120_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-024",
+    "series": "GPE",
+    "size": 155,
+    "modelName": "GPE155",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 342,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 543,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 342,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 342,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 543,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 542,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 543,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 600,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 500,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 9400,
+    "allowedAxialLoad": 4700,
+    "efficiency": 0.97,
+    "weight": 16,
+    "noise": 65,
+    "rigidity": 50,
+    "inertia": 9.21,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPE155_2D.pdf",
+      "cad_step": "GPE155_3D.step",
+      "cad_igs": "GPE155_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-025",
+    "series": "GPE",
+    "size": 205,
+    "modelName": "GPE205",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      15,
+      16,
+      20,
+      25,
+      28,
+      30,
+      35,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 588,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "4": {
+        "torque": 1050,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "5": {
+        "torque": 1200,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "7": {
+        "torque": 1100,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "10": {
+        "torque": 900,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "12": {
+        "torque": 588,
+        "efficiency": 0.97,
+        "stage": "L1"
+      },
+      "15": {
+        "torque": 588,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "16": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "28": {
+        "torque": 1050,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "35": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "40": {
+        "torque": 1000,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "50": {
+        "torque": 1200,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "70": {
+        "torque": 1100,
+        "efficiency": 0.94,
+        "stage": "L2"
+      },
+      "100": {
+        "torque": 900,
+        "efficiency": 0.94,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 1200,
+    "allowedRadialLoad": 14500,
+    "allowedAxialLoad": 7250,
+    "efficiency": 0.97,
+    "weight": 36,
+    "noise": 67,
+    "rigidity": 145,
+    "inertia": 28.98,
+    "shaftHoleDiameter": 42,
+    "drawings": {
+      "pdf": "GPE205_2D.pdf",
+      "cad_step": "GPE205_3D.step",
+      "cad_igs": "GPE205_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-026",
+    "series": "GPBR",
+    "size": 60,
+    "modelName": "GPBR060",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 36,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 48,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 55,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 50,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 55,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 55,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 1530,
+    "allowedAxialLoad": 765,
+    "efficiency": 0.95,
+    "weight": 2.1,
+    "noise": 63,
+    "rigidity": 7,
+    "inertia": 0.35,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPBR060_2D.pdf",
+      "cad_step": "GPBR060_3D.step",
+      "cad_igs": "GPBR060_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-027",
+    "series": "GPBR",
+    "size": 90,
+    "modelName": "GPBR090",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 90,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 120,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 150,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 150,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 150,
+    "allowedRadialLoad": 3250,
+    "allowedAxialLoad": 1625,
+    "efficiency": 0.95,
+    "weight": 6.4,
+    "noise": 65,
+    "rigidity": 14,
+    "inertia": 2.25,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPBR090_2D.pdf",
+      "cad_step": "GPBR090_3D.step",
+      "cad_igs": "GPBR090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-028",
+    "series": "GPBR",
+    "size": 115,
+    "modelName": "GPBR115",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 195,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 260,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 325,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 310,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 325,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 230,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 325,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 310,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 260,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 310,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 260,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 325,
+    "allowedRadialLoad": 6700,
+    "allowedAxialLoad": 3350,
+    "efficiency": 0.95,
+    "weight": 13,
+    "noise": 68,
+    "rigidity": 25,
+    "inertia": 6.84,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPBR115_2D.pdf",
+      "cad_step": "GPBR115_3D.step",
+      "cad_igs": "GPBR115_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-029",
+    "series": "GPBR",
+    "size": 142,
+    "modelName": "GPBR142",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 342,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 520,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 600,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 600,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 500,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 600,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 500,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 9400,
+    "allowedAxialLoad": 4700,
+    "efficiency": 0.95,
+    "weight": 24.5,
+    "noise": 70,
+    "rigidity": 50,
+    "inertia": 23.4,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPBR142_2D.pdf",
+      "cad_step": "GPBR142_3D.step",
+      "cad_igs": "GPBR142_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-030",
+    "series": "GPBR",
+    "size": 180,
+    "modelName": "GPBR180",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 588,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 1040,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 1200,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 1100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 900,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 1100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 1100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 1200,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 900,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 1200,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 1100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 1100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 1000,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 1200,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 1100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 1100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 1000,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 900,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 1100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 900,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 1200,
+    "allowedRadialLoad": 14500,
+    "allowedAxialLoad": 7250,
+    "efficiency": 0.95,
+    "weight": 51,
+    "noise": 72,
+    "rigidity": 145,
+    "inertia": 68.9,
+    "shaftHoleDiameter": 42,
+    "drawings": {
+      "pdf": "GPBR180_2D.pdf",
+      "cad_step": "GPBR180_3D.step",
+      "cad_igs": "GPBR180_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-031",
+    "series": "GPDR",
+    "size": 64,
+    "modelName": "GPDR064",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      14,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 48,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 42,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 48,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1050,
+    "efficiency": 0.95,
+    "weight": 1.9,
+    "noise": 63,
+    "rigidity": 13,
+    "inertia": 0.35,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPDR064_2D.pdf",
+      "cad_step": "GPDR064_3D.step",
+      "cad_igs": "GPDR064_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-032",
+    "series": "GPDR",
+    "size": 90,
+    "modelName": "GPDR090",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      14,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 130,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 160,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "25": {
+        "torque": 160,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 130,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 160,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 160,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2850,
+    "efficiency": 0.95,
+    "weight": 4.5,
+    "noise": 65,
+    "rigidity": 31,
+    "inertia": 2.25,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPDR090_2D.pdf",
+      "cad_step": "GPDR090_3D.step",
+      "cad_igs": "GPDR090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-033",
+    "series": "GPDR",
+    "size": 110,
+    "modelName": "GPDR110",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      14,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 270,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 330,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "25": {
+        "torque": 330,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 270,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 330,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 330,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2990,
+    "efficiency": 0.95,
+    "weight": 9.8,
+    "noise": 68,
+    "rigidity": 82,
+    "inertia": 6.84,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPDR110_2D.pdf",
+      "cad_step": "GPDR110_3D.step",
+      "cad_igs": "GPDR110_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-034",
+    "series": "GPDR",
+    "size": 140,
+    "modelName": "GPDR140",
+    "supportedRatios": [
+      4,
+      5,
+      7,
+      10,
+      14,
+      20,
+      25,
+      35,
+      40,
+      50,
+      70,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "4": {
+        "torque": 560,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "20": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 560,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 10590,
+    "efficiency": 0.95,
+    "weight": 20.1,
+    "noise": 70,
+    "rigidity": 151,
+    "inertia": 23.4,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPDR140_2D.pdf",
+      "cad_step": "GPDR140_3D.step",
+      "cad_igs": "GPDR140_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-035",
+    "series": "GPVR",
+    "size": 60,
+    "modelName": "GPVR060",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 36,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 48,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 55,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 50,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 55,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 55,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 1530,
+    "allowedAxialLoad": 765,
+    "efficiency": 0.95,
+    "weight": 2.1,
+    "noise": 63,
+    "rigidity": 7,
+    "inertia": 0.35,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPVR060_2D.pdf",
+      "cad_step": "GPVR060_3D.step",
+      "cad_igs": "GPVR060_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-036",
+    "series": "GPVR",
+    "size": 90,
+    "modelName": "GPVR090",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 90,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 120,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 150,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 150,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 150,
+    "allowedRadialLoad": 3250,
+    "allowedAxialLoad": 1625,
+    "efficiency": 0.95,
+    "weight": 6.4,
+    "noise": 65,
+    "rigidity": 14,
+    "inertia": 2.25,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPVR090_2D.pdf",
+      "cad_step": "GPVR090_3D.step",
+      "cad_igs": "GPVR090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-037",
+    "series": "GPVR",
+    "size": 115,
+    "modelName": "GPVR115",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 195,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 260,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 325,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 310,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 325,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 230,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 325,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 310,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 260,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 310,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 260,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 325,
+    "allowedRadialLoad": 6700,
+    "allowedAxialLoad": 3350,
+    "efficiency": 0.95,
+    "weight": 13,
+    "noise": 68,
+    "rigidity": 25,
+    "inertia": 6.84,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPVR115_2D.pdf",
+      "cad_step": "GPVR115_3D.step",
+      "cad_igs": "GPVR115_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-038",
+    "series": "GPVR",
+    "size": 142,
+    "modelName": "GPVR142",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 342,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 520,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 600,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 600,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 500,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 600,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 500,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 9400,
+    "allowedAxialLoad": 4700,
+    "efficiency": 0.95,
+    "weight": 24.5,
+    "noise": 70,
+    "rigidity": 50,
+    "inertia": 23.4,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPVR142_2D.pdf",
+      "cad_step": "GPVR142_3D.step",
+      "cad_igs": "GPVR142_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-039",
+    "series": "GPER",
+    "size": 70,
+    "modelName": "GPER070",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 36,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 48,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 60,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 50,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 55,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 50,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 55,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 60,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 55,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 50,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 5000,
+    "maxOutputTorque": 60,
+    "allowedRadialLoad": 1530,
+    "allowedAxialLoad": 765,
+    "efficiency": 0.95,
+    "weight": 2.1,
+    "noise": 63,
+    "rigidity": 7,
+    "inertia": 0.35,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GPER070_2D.pdf",
+      "cad_step": "GPER070_3D.step",
+      "cad_igs": "GPER070_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-040",
+    "series": "GPER",
+    "size": 90,
+    "modelName": "GPER090",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 90,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 120,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 150,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 150,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 140,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 100,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 150,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 100,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 150,
+    "allowedRadialLoad": 3250,
+    "allowedAxialLoad": 1625,
+    "efficiency": 0.95,
+    "weight": 6.4,
+    "noise": 65,
+    "rigidity": 14,
+    "inertia": 2.25,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GPER090_2D.pdf",
+      "cad_step": "GPER090_3D.step",
+      "cad_igs": "GPER090_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-041",
+    "series": "GPER",
+    "size": 120,
+    "modelName": "GPER120",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 195,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 260,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 325,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 230,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 310,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 300,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 325,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 230,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 325,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 310,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 260,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 310,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 260,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 300,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 230,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 4000,
+    "maxOutputTorque": 325,
+    "allowedRadialLoad": 6700,
+    "allowedAxialLoad": 3350,
+    "efficiency": 0.95,
+    "weight": 13,
+    "noise": 68,
+    "rigidity": 25,
+    "inertia": 6.84,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GPER120_2D.pdf",
+      "cad_step": "GPER120_3D.step",
+      "cad_igs": "GPER120_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-042",
+    "series": "GPER",
+    "size": 155,
+    "modelName": "GPER155",
+    "supportedRatios": [
+      3,
+      4,
+      5,
+      7,
+      10,
+      12,
+      14,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      60,
+      70,
+      80,
+      100,
+      140,
+      200
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 342,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "4": {
+        "torque": 520,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "5": {
+        "torque": 650,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "7": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "12": {
+        "torque": 600,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "14": {
+        "torque": 550,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "15": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "25": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 600,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 500,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 650,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 600,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 500,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "140": {
+        "torque": 550,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 450,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 650,
+    "allowedRadialLoad": 9400,
+    "allowedAxialLoad": 4700,
+    "efficiency": 0.95,
+    "weight": 24.5,
+    "noise": 70,
+    "rigidity": 50,
+    "inertia": 23.4,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GPER155_2D.pdf",
+      "cad_step": "GPER155_3D.step",
+      "cad_igs": "GPER155_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-043",
+    "series": "GSN",
+    "size": 60,
+    "modelName": "GSN60",
+    "supportedRatios": [
+      5,
+      10,
+      18
+    ],
+    "ratioData": {
+      "5": {
+        "torque": 5.2,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 4,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "18": {
+        "torque": 1.2,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 5.2,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 250,
+    "efficiency": 0.95,
+    "weight": 0.6,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSN60_2D.pdf",
+      "cad_step": "GSN60_3D.step",
+      "cad_igs": "GSN60_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-044",
+    "series": "GSN",
+    "size": 60,
+    "modelName": "GSN60Z",
+    "supportedRatios": [
+      15
+    ],
+    "ratioData": {
+      "15": {
+        "torque": 5.2,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 5.2,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 250,
+    "efficiency": 0.92,
+    "weight": 1,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSN60Z_2D.pdf",
+      "cad_step": "GSN60Z_3D.step",
+      "cad_igs": "GSN60Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-045",
+    "series": "GSN",
+    "size": 60,
+    "modelName": "GSN60M",
+    "supportedRatios": [
+      20
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 5.2,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 5.2,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 250,
+    "efficiency": 0.92,
+    "weight": 1.1,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSN60M_2D.pdf",
+      "cad_step": "GSN60M_3D.step",
+      "cad_igs": "GSN60M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-046",
+    "series": "GSN",
+    "size": 85,
+    "modelName": "GSN85",
+    "supportedRatios": [
+      5,
+      10,
+      18
+    ],
+    "ratioData": {
+      "5": {
+        "torque": 20,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "10": {
+        "torque": 16,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "18": {
+        "torque": 3.2,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 20,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 500,
+    "efficiency": 0.95,
+    "weight": 1.4,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSN85_2D.pdf",
+      "cad_step": "GSN85_3D.step",
+      "cad_igs": "GSN85_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-047",
+    "series": "GSN",
+    "size": 85,
+    "modelName": "GSN85Z",
+    "supportedRatios": [
+      10,
+      15,
+      20,
+      30
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 20,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "15": {
+        "torque": 20,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 16,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 16,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 20,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 500,
+    "efficiency": 0.92,
+    "weight": 2.6,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSN85Z_2D.pdf",
+      "cad_step": "GSN85Z_3D.step",
+      "cad_igs": "GSN85Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-048",
+    "series": "GSN",
+    "size": 85,
+    "modelName": "GSN85M",
+    "supportedRatios": [
+      15,
+      20,
+      25,
+      35,
+      50
+    ],
+    "ratioData": {
+      "15": {
+        "torque": 20,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "20": {
+        "torque": 20,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "25": {
+        "torque": 20,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "35": {
+        "torque": 20,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 20,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 20,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 500,
+    "efficiency": 0.92,
+    "weight": 2.6,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSN85M_2D.pdf",
+      "cad_step": "GSN85M_3D.step",
+      "cad_igs": "GSN85M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-049",
+    "series": "GSN",
+    "size": 130,
+    "modelName": "GSN130",
+    "supportedRatios": [
+      10,
+      18
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 40,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "18": {
+        "torque": 28,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 40,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2000,
+    "efficiency": 0.95,
+    "weight": 2.5,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSN130_2D.pdf",
+      "cad_step": "GSN130_3D.step",
+      "cad_igs": "GSN130_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-050",
+    "series": "GSN",
+    "size": 130,
+    "modelName": "GSN130Z",
+    "supportedRatios": [
+      20,
+      30
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 40,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2000,
+    "efficiency": 0.92,
+    "weight": 3.8,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSN130Z_2D.pdf",
+      "cad_step": "GSN130Z_3D.step",
+      "cad_igs": "GSN130Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-051",
+    "series": "GSN",
+    "size": 130,
+    "modelName": "GSN130M",
+    "supportedRatios": [
+      30,
+      40,
+      50
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 40,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 40,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2000,
+    "efficiency": 0.92,
+    "weight": 3.8,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSN130M_2D.pdf",
+      "cad_step": "GSN130M_3D.step",
+      "cad_igs": "GSN130M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-052",
+    "series": "GSN",
+    "size": 200,
+    "modelName": "GSN200",
+    "supportedRatios": [
+      10,
+      18
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 90,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "18": {
+        "torque": 65,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 90,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0.95,
+    "weight": 7.8,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSN200_2D.pdf",
+      "cad_step": "GSN200_3D.step",
+      "cad_igs": "GSN200_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-053",
+    "series": "GSN",
+    "size": 200,
+    "modelName": "GSN200Z",
+    "supportedRatios": [
+      20,
+      30
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 90,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 90,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 90,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0.92,
+    "weight": 12,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSN200Z_2D.pdf",
+      "cad_step": "GSN200Z_3D.step",
+      "cad_igs": "GSN200Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-054",
+    "series": "GSN",
+    "size": 200,
+    "modelName": "GSN200M",
+    "supportedRatios": [
+      30,
+      40,
+      50
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 90,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 90,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 90,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 90,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0.92,
+    "weight": 11.5,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSN200M_2D.pdf",
+      "cad_step": "GSN200M_3D.step",
+      "cad_igs": "GSN200M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-055",
+    "series": "GSN",
+    "size": 280,
+    "modelName": "GSN280",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 120,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 120,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 8000,
+    "efficiency": 0.95,
+    "weight": 20,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GSN280_2D.pdf",
+      "cad_step": "GSN280_3D.step",
+      "cad_igs": "GSN280_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-056",
+    "series": "GSN",
+    "size": 280,
+    "modelName": "GSN280M",
+    "supportedRatios": [
+      30,
+      40,
+      50
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 120,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 120,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 8000,
+    "efficiency": 0.92,
+    "weight": 28,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GSN280M_2D.pdf",
+      "cad_step": "GSN280M_3D.step",
+      "cad_igs": "GSN280M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-057",
+    "series": "GSB",
+    "size": 60,
+    "modelName": "GSB60",
+    "supportedRatios": [
+      5
+    ],
+    "ratioData": {
+      "5": {
+        "torque": 5.3,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 5.3,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 100,
+    "efficiency": 0.95,
+    "weight": 0.7,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSB60_2D.pdf",
+      "cad_step": "GSB60_3D.step",
+      "cad_igs": "GSB60_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-058",
+    "series": "GSB",
+    "size": 60,
+    "modelName": "GSB60Z",
+    "supportedRatios": [
+      15,
+      15
+    ],
+    "ratioData": {
+      "15": {
+        "torque": 5.3,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 5.3,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 100,
+    "efficiency": 0.95,
+    "weight": 0.7,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSB60Z_2D.pdf",
+      "cad_step": "GSB60Z_3D.step",
+      "cad_igs": "GSB60Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-059",
+    "series": "GSB",
+    "size": 60,
+    "modelName": "GSB60M",
+    "supportedRatios": [
+      20,
+      20
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 5.3,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 5.3,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 100,
+    "efficiency": 0.92,
+    "weight": 1,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSB60M_2D.pdf",
+      "cad_step": "GSB60M_3D.step",
+      "cad_igs": "GSB60M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-060",
+    "series": "GSB",
+    "size": 100,
+    "modelName": "GSB100",
+    "supportedRatios": [
+      8
+    ],
+    "ratioData": {
+      "8": {
+        "torque": 26,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 26,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 700,
+    "efficiency": 0.95,
+    "weight": 2.7,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSB100_2D.pdf",
+      "cad_step": "GSB100_3D.step",
+      "cad_igs": "GSB100_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-061",
+    "series": "GSB",
+    "size": 100,
+    "modelName": "GSB100Z",
+    "supportedRatios": [
+      16,
+      24
+    ],
+    "ratioData": {
+      "16": {
+        "torque": 26,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "24": {
+        "torque": 26,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 26,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 700,
+    "efficiency": 0.92,
+    "weight": 4,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSB100Z_2D.pdf",
+      "cad_step": "GSB100Z_3D.step",
+      "cad_igs": "GSB100Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-062",
+    "series": "GSB",
+    "size": 100,
+    "modelName": "GSB100M",
+    "supportedRatios": [
+      24,
+      32,
+      40
+    ],
+    "ratioData": {
+      "24": {
+        "torque": 26,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "32": {
+        "torque": 26,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 26,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 26,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 700,
+    "efficiency": 0.92,
+    "weight": 4,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSB100M_2D.pdf",
+      "cad_step": "GSB100M_3D.step",
+      "cad_igs": "GSB100M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-063",
+    "series": "GSB",
+    "size": 130,
+    "modelName": "GSB130",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 48,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 48,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1000,
+    "efficiency": 0.95,
+    "weight": 5,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSB130_2D.pdf",
+      "cad_step": "GSB130_3D.step",
+      "cad_igs": "GSB130_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-064",
+    "series": "GSB",
+    "size": 130,
+    "modelName": "GSB130Z",
+    "supportedRatios": [
+      20,
+      30
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 48,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 48,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 48,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1000,
+    "efficiency": 0.92,
+    "weight": 6.3,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSB130Z_2D.pdf",
+      "cad_step": "GSB130Z_3D.step",
+      "cad_igs": "GSB130Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-065",
+    "series": "GSB",
+    "size": 130,
+    "modelName": "GSB130M",
+    "supportedRatios": [
+      30,
+      40,
+      50
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 48,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 48,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 48,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 48,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1000,
+    "efficiency": 0.92,
+    "weight": 6.3,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSB130M_2D.pdf",
+      "cad_step": "GSB130M_3D.step",
+      "cad_igs": "GSB130M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-066",
+    "series": "GSB",
+    "size": 200,
+    "modelName": "GSB200",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 80,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 80,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1300,
+    "efficiency": 0.95,
+    "weight": 13,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSB200_2D.pdf",
+      "cad_step": "GSB200_3D.step",
+      "cad_igs": "GSB200_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-067",
+    "series": "GSB",
+    "size": 200,
+    "modelName": "GSB200Z",
+    "supportedRatios": [
+      20,
+      30
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 80,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1300,
+    "efficiency": 0.92,
+    "weight": 17,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSB200Z_2D.pdf",
+      "cad_step": "GSB200Z_3D.step",
+      "cad_igs": "GSB200Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-068",
+    "series": "GSB",
+    "size": 200,
+    "modelName": "GSB200M",
+    "supportedRatios": [
+      30,
+      40,
+      50
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 80,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1300,
+    "efficiency": 0.92,
+    "weight": 17,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSB200M_2D.pdf",
+      "cad_step": "GSB200M_3D.step",
+      "cad_igs": "GSB200M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-069",
+    "series": "GSG",
+    "size": 60,
+    "modelName": "GSG60Z",
+    "supportedRatios": [
+      15
+    ],
+    "ratioData": {
+      "15": {
+        "torque": 8,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 8,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1300,
+    "efficiency": 0.92,
+    "weight": 17,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSG60Z_2D.pdf",
+      "cad_step": "GSG60Z_3D.step",
+      "cad_igs": "GSG60Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-070",
+    "series": "GSG",
+    "size": 60,
+    "modelName": "GSG60M",
+    "supportedRatios": [
+      20
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 8,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 8,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 250,
+    "efficiency": 0.92,
+    "weight": 1,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSG60M_2D.pdf",
+      "cad_step": "GSG60M_3D.step",
+      "cad_igs": "GSG60M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-071",
+    "series": "GSG",
+    "size": 85,
+    "modelName": "GSG85Z",
+    "supportedRatios": [
+      18
+    ],
+    "ratioData": {
+      "18": {
+        "torque": 15,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 15,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 250,
+    "efficiency": 0.92,
+    "weight": 1,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSG85Z_2D.pdf",
+      "cad_step": "GSG85Z_3D.step",
+      "cad_igs": "GSG85Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-072",
+    "series": "GSG",
+    "size": 85,
+    "modelName": "GSG85M",
+    "supportedRatios": [
+      18,
+      30
+    ],
+    "ratioData": {
+      "18": {
+        "torque": 15,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 15,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 15,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 500,
+    "efficiency": 0.92,
+    "weight": 2.2,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSG85M_2D.pdf",
+      "cad_step": "GSG85M_3D.step",
+      "cad_igs": "GSG85M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-073",
+    "series": "GSG",
+    "size": 130,
+    "modelName": "GSG130Z",
+    "supportedRatios": [
+      18
+    ],
+    "ratioData": {
+      "18": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 140,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2000,
+    "efficiency": 0.92,
+    "weight": 3.5,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSG130Z_2D.pdf",
+      "cad_step": "GSG130Z_3D.step",
+      "cad_igs": "GSG130Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-074",
+    "series": "GSG",
+    "size": 130,
+    "modelName": "GSG130M",
+    "supportedRatios": [
+      18,
+      30
+    ],
+    "ratioData": {
+      "18": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 140,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 140,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2000,
+    "efficiency": 0.92,
+    "weight": 3.5,
+    "noise": 68,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSG130M_2D.pdf",
+      "cad_step": "GSG130M_3D.step",
+      "cad_igs": "GSG130M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-075",
+    "series": "GSG",
+    "size": 200,
+    "modelName": "GSG200Z",
+    "supportedRatios": [
+      20,
+      30
+    ],
+    "ratioData": {
+      "20": {
+        "torque": 250,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 250,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 250,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0.92,
+    "weight": 11,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSG200Z_2D.pdf",
+      "cad_step": "GSG200Z_3D.step",
+      "cad_igs": "GSG200Z_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-076",
+    "series": "GSG",
+    "size": 200,
+    "modelName": "GSG200M",
+    "supportedRatios": [
+      30,
+      50
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 250,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 250,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 250,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0.92,
+    "weight": 11,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSG200M_2D.pdf",
+      "cad_step": "GSG200M_3D.step",
+      "cad_igs": "GSG200M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-077",
+    "series": "GSH",
+    "size": 60,
+    "modelName": "GSH060",
+    "supportedRatios": [
+      30
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 30,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 30,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 300,
+    "efficiency": 0.95,
+    "weight": 0.9,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSH060_2D.pdf",
+      "cad_step": "GSH060_3D.step",
+      "cad_igs": "GSH060_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-078",
+    "series": "GSH",
+    "size": 100,
+    "modelName": "GSH100",
+    "supportedRatios": [
+      30
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 115,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 115,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 2500,
+    "efficiency": 0.95,
+    "weight": 8.5,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSH100_2D.pdf",
+      "cad_step": "GSH100_3D.step",
+      "cad_igs": "GSH100_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-079",
+    "series": "GSH",
+    "size": 150,
+    "modelName": "GSH150",
+    "supportedRatios": [
+      30
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 220,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 220,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 6000,
+    "efficiency": 0.95,
+    "weight": 18,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSH150_2D.pdf",
+      "cad_step": "GSH150_3D.step",
+      "cad_igs": "GSH150_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-080",
+    "series": "GSH",
+    "size": 200,
+    "modelName": "GSH200",
+    "supportedRatios": [
+      30
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 450,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 450,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 10000,
+    "efficiency": 0.95,
+    "weight": 57,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GSH200_2D.pdf",
+      "cad_step": "GSH200_3D.step",
+      "cad_igs": "GSH200_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-081",
+    "series": "GSR",
+    "size": 100,
+    "modelName": "GSR100",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 45,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 45,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1500,
+    "efficiency": 0.95,
+    "weight": 3,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSR100_2D.pdf",
+      "cad_step": "GSR100_3D.step",
+      "cad_igs": "GSR100_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-082",
+    "series": "GSR",
+    "size": 150,
+    "modelName": "GSR150",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 80,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 80,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 3500,
+    "efficiency": 0.95,
+    "weight": 7.5,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSR150_2D.pdf",
+      "cad_step": "GSR150_3D.step",
+      "cad_igs": "GSR150_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-083",
+    "series": "GSHR",
+    "size": 100,
+    "modelName": "GSHR100",
+    "supportedRatios": [
+      30
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 80,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 80,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1500,
+    "efficiency": 0.95,
+    "weight": 3.6,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSHR100_2D.pdf",
+      "cad_step": "GSHR100_3D.step",
+      "cad_igs": "GSHR100_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-084",
+    "series": "GSHR",
+    "size": 150,
+    "modelName": "GSHR150",
+    "supportedRatios": [
+      30
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 175,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 175,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0.95,
+    "weight": 9.1,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSHR150_2D.pdf",
+      "cad_step": "GSHR150_3D.step",
+      "cad_igs": "GSHR150_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-085",
+    "series": "GSA",
+    "size": 42,
+    "modelName": "GSA42",
+    "supportedRatios": [
+      3
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 12,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 12,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 100,
+    "efficiency": 0.95,
+    "weight": 0.5,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSA42_2D.pdf",
+      "cad_step": "GSA42_3D.step",
+      "cad_igs": "GSA42_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-086",
+    "series": "GSA",
+    "size": 42,
+    "modelName": "GSA42M",
+    "supportedRatios": [
+      9,
+      12,
+      15,
+      30
+    ],
+    "ratioData": {
+      "9": {
+        "torque": 12,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "12": {
+        "torque": 12,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "15": {
+        "torque": 12,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "30": {
+        "torque": 12,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 12,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 100,
+    "efficiency": 0.92,
+    "weight": 1,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSA42M_2D.pdf",
+      "cad_step": "GSA42M_3D.step",
+      "cad_igs": "GSA42M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-087",
+    "series": "GSA",
+    "size": 45,
+    "modelName": "GSA45",
+    "supportedRatios": [
+      8
+    ],
+    "ratioData": {
+      "8": {
+        "torque": 8,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 8,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 20,
+    "efficiency": 0.95,
+    "weight": 0.5,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSA45_2D.pdf",
+      "cad_step": "GSA45_3D.step",
+      "cad_igs": "GSA45_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-088",
+    "series": "GSN",
+    "size": 450,
+    "modelName": "GSN450",
+    "supportedRatios": [
+      10,
+      30,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 380,
+        "efficiency": 0.95,
+        "stage": "L2"
+      },
+      "30": {
+        "torque": 380,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 380,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 380,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 380,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 380,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2000,
+    "maxOutputTorque": 380,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 12000,
+    "efficiency": 0.95,
+    "weight": 86.5,
+    "noise": 70,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GSN450_2D.pdf",
+      "cad_step": "GSN450_3D.step",
+      "cad_igs": "GSN450_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-089",
+    "series": "GSR",
+    "size": 60,
+    "modelName": "GSR60",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 12,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 12,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 300,
+    "efficiency": 0.95,
+    "weight": 0.9,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSR60_2D.pdf",
+      "cad_step": "GSR60_3D.step",
+      "cad_igs": "GSR60_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-090",
+    "series": "GSR",
+    "size": 60,
+    "modelName": "GSR60M",
+    "supportedRatios": [
+      30,
+      40,
+      50
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 12,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 12,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 12,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 12,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 300,
+    "efficiency": 0.92,
+    "weight": 1.5,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 8,
+    "drawings": {
+      "pdf": "GSR60M_2D.pdf",
+      "cad_step": "GSR60M_3D.step",
+      "cad_igs": "GSR60M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-091",
+    "series": "GSR",
+    "size": 110,
+    "modelName": "GSR110",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 45,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 45,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1500,
+    "efficiency": 0.95,
+    "weight": 3,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSR110_2D.pdf",
+      "cad_step": "GSR110_3D.step",
+      "cad_igs": "GSR110_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-092",
+    "series": "GSR",
+    "size": 110,
+    "modelName": "GSR110M",
+    "supportedRatios": [
+      30,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 45,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 45,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1500,
+    "efficiency": 0.92,
+    "weight": 4.3,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GSR110M_2D.pdf",
+      "cad_step": "GSR110M_3D.step",
+      "cad_igs": "GSR110M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-093",
+    "series": "GSR",
+    "size": 150,
+    "modelName": "GSR150M",
+    "supportedRatios": [
+      30,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 80,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 80,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 3500,
+    "efficiency": 0.92,
+    "weight": 12.1,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GSR150M_2D.pdf",
+      "cad_step": "GSR150M_3D.step",
+      "cad_igs": "GSR150M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-094",
+    "series": "GSR",
+    "size": 200,
+    "modelName": "GSR200",
+    "supportedRatios": [
+      10
+    ],
+    "ratioData": {
+      "10": {
+        "torque": 170,
+        "efficiency": 0.95,
+        "stage": "L2"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 170,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 7000,
+    "efficiency": 0.95,
+    "weight": 26,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GSR200_2D.pdf",
+      "cad_step": "GSR200_3D.step",
+      "cad_igs": "GSR200_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-095",
+    "series": "GSR",
+    "size": 200,
+    "modelName": "GSR200M",
+    "supportedRatios": [
+      30,
+      40,
+      50,
+      70,
+      100
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 170,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "40": {
+        "torque": 170,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "50": {
+        "torque": 170,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "70": {
+        "torque": 170,
+        "efficiency": 0.92,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 170,
+        "efficiency": 0.92,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 170,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 7000,
+    "efficiency": 0.92,
+    "weight": 34,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GSR200M_2D.pdf",
+      "cad_step": "GSR200M_3D.step",
+      "cad_igs": "GSR200M_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-096",
+    "series": "GSHR",
+    "size": 200,
+    "modelName": "GSHR200",
+    "supportedRatios": [
+      30
+    ],
+    "ratioData": {
+      "30": {
+        "torque": 350,
+        "efficiency": 0.05,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 300,
+    "maxOutputTorque": 350,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 7000,
+    "efficiency": 0.05,
+    "weight": 32,
+    "noise": 65,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GSHR200_2D.pdf",
+      "cad_step": "GSHR200_3D.step",
+      "cad_igs": "GSHR200_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-097",
+    "series": "GYH",
+    "size": 48,
+    "modelName": "GYH48",
+    "supportedRatios": [
+      45,
+      60,
+      75
+    ],
+    "ratioData": {
+      "45": {
+        "torque": 28,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "60": {
+        "torque": 0,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "75": {
+        "torque": 0,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 28,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 250,
+    "efficiency": 0,
+    "weight": 9.5,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GYH48_2D.pdf",
+      "cad_step": "GYH48_3D.step",
+      "cad_igs": "GYH48_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-098",
+    "series": "GYH",
+    "size": 68,
+    "modelName": "GYH68",
+    "supportedRatios": [
+      60,
+      80,
+      100
+    ],
+    "ratioData": {
+      "60": {
+        "torque": 65,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 65,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 65,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 65,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1000,
+    "efficiency": 0,
+    "weight": 17.5,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 14,
+    "drawings": {
+      "pdf": "GYH68_2D.pdf",
+      "cad_step": "GYH68_3D.step",
+      "cad_igs": "GYH68_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-099",
+    "series": "GYH",
+    "size": 82,
+    "modelName": "GYH82",
+    "supportedRatios": [
+      72,
+      96,
+      120
+    ],
+    "ratioData": {
+      "72": {
+        "torque": 90,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "96": {
+        "torque": 90,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "120": {
+        "torque": 90,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 90,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 3000,
+    "efficiency": 0,
+    "weight": 28,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GYH82_2D.pdf",
+      "cad_step": "GYH82_3D.step",
+      "cad_igs": "GYH82_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-100",
+    "series": "GYH",
+    "size": 90,
+    "modelName": "GYH90",
+    "supportedRatios": [
+      60,
+      80,
+      100
+    ],
+    "ratioData": {
+      "60": {
+        "torque": 120,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "80": {
+        "torque": 120,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "100": {
+        "torque": 120,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 120,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0,
+    "weight": 32,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 19,
+    "drawings": {
+      "pdf": "GYH90_2D.pdf",
+      "cad_step": "GYH90_3D.step",
+      "cad_igs": "GYH90_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-101",
+    "series": "GYH",
+    "size": 115,
+    "modelName": "GYH115",
+    "supportedRatios": [
+      72,
+      96,
+      120
+    ],
+    "ratioData": {
+      "72": {
+        "torque": 210,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "96": {
+        "torque": 210,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "120": {
+        "torque": 210,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 210,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 8000,
+    "efficiency": 0,
+    "weight": 53,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 24,
+    "drawings": {
+      "pdf": "GYH115_2D.pdf",
+      "cad_step": "GYH115_3D.step",
+      "cad_igs": "GYH115_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-102",
+    "series": "GYH",
+    "size": 215,
+    "modelName": "GYH215",
+    "supportedRatios": [
+      120,
+      160,
+      200
+    ],
+    "ratioData": {
+      "120": {
+        "torque": 420,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "160": {
+        "torque": 420,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "200": {
+        "torque": 420,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 420,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 15000,
+    "efficiency": 0,
+    "weight": 137,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 35,
+    "drawings": {
+      "pdf": "GYH215_2D.pdf",
+      "cad_step": "GYH215_3D.step",
+      "cad_igs": "GYH215_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-103",
+    "series": "GSZ",
+    "size": 42,
+    "modelName": "GSZ42",
+    "supportedRatios": [
+      3
+    ],
+    "ratioData": {
+      "3": {
+        "torque": 12,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2500,
+    "maxOutputTorque": 12,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 0,
+    "efficiency": 0,
+    "weight": 0.5,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 0,
+    "drawings": {
+      "pdf": "GSZ42_2D.pdf",
+      "cad_step": "GSZ42_3D.step",
+      "cad_igs": "GSZ42_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-104",
+    "series": "GSZ",
+    "size": 60,
+    "modelName": "GSZ60",
+    "supportedRatios": [
+      2,
+      3
+    ],
+    "ratioData": {
+      "2": {
+        "torque": 48,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "3": {
+        "torque": 48,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2500,
+    "maxOutputTorque": 48,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 0,
+    "efficiency": 0,
+    "weight": 1.3,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 0,
+    "drawings": {
+      "pdf": "GSZ60_2D.pdf",
+      "cad_step": "GSZ60_3D.step",
+      "cad_igs": "GSZ60_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-105",
+    "series": "GSZ",
+    "size": 90,
+    "modelName": "GSZ90",
+    "supportedRatios": [
+      2,
+      3
+    ],
+    "ratioData": {
+      "2": {
+        "torque": 95,
+        "efficiency": 0,
+        "stage": "L3"
+      },
+      "3": {
+        "torque": 95,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 2500,
+    "maxOutputTorque": 95,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 0,
+    "efficiency": 0,
+    "weight": 4.1,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 0,
+    "drawings": {
+      "pdf": "GSZ90_2D.pdf",
+      "cad_step": "GSZ90_3D.step",
+      "cad_igs": "GSZ90_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-106",
+    "series": "GR",
+    "size": 60,
+    "modelName": "GR60",
+    "supportedRatios": [
+      90
+    ],
+    "ratioData": {
+      "90": {
+        "torque": 30,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 1000,
+    "maxOutputTorque": 30,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 300,
+    "efficiency": 0,
+    "weight": 0.9,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 0,
+    "drawings": {
+      "pdf": "GR60_2D.pdf",
+      "cad_step": "GR60_3D.step",
+      "cad_igs": "GR60_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-107",
+    "series": "GR",
+    "size": 120,
+    "modelName": "GR120",
+    "supportedRatios": [
+      90
+    ],
+    "ratioData": {
+      "90": {
+        "torque": 45,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 45,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 1500,
+    "efficiency": 0,
+    "weight": 3,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 0,
+    "drawings": {
+      "pdf": "GR120_2D.pdf",
+      "cad_step": "GR120_3D.step",
+      "cad_igs": "GR120_3D.igs"
+    }
+  },
+  {
+    "id": "reducer-108",
+    "series": "GR",
+    "size": 200,
+    "modelName": "GR200",
+    "supportedRatios": [
+      90
+    ],
+    "ratioData": {
+      "90": {
+        "torque": 75,
+        "efficiency": 0,
+        "stage": "L3"
+      }
+    },
+    "maxInputRPM": 3000,
+    "maxOutputTorque": 75,
+    "allowedRadialLoad": 0,
+    "allowedAxialLoad": 4000,
+    "efficiency": 0,
+    "weight": 12,
+    "noise": 0,
+    "rigidity": 0,
+    "inertia": 0,
+    "shaftHoleDiameter": 0,
+    "drawings": {
+      "pdf": "GR200_2D.pdf",
+      "cad_step": "GR200_3D.step",
+      "cad_igs": "GR200_3D.igs"
+    }
+  }
+]

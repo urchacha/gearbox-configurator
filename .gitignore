@@ -1,0 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Secrets
+.env
+.env.*
+
+# Claude Code project files
+.claude/
+
+# Raw data / working files (not part of app source)
+*.csv
+*.xls
+*.xlsx
+ls_electric_motor_data.json
+ls_electric_helical_gearbox_data.json
+
+# Screenshots (root level only)
+화면\ 캡처*.png
+화면\ 캡처*.jpg
+/*.png
+/*.jpg
+/*.jpeg
+
+# Playwright MCP temp files
+.playwright-mcp/

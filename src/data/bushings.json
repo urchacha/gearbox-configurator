@@ -1,0 +1,170 @@
+[
+  {
+    "id": "108005",
+    "code": "M08S05",
+    "shaftMm": 5,
+    "holeMm": 8,
+    "lenMm": 5
+  },
+  {
+    "id": "108605",
+    "code": "M08S65",
+    "shaftMm": 6.5,
+    "holeMm": 8,
+    "lenMm": 5
+  },
+  {
+    "id": "108006",
+    "code": "M08S06",
+    "shaftMm": 6,
+    "holeMm": 8,
+    "lenMm": 5
+  },
+  {
+    "id": "114008",
+    "code": "M14S08",
+    "shaftMm": 8,
+    "holeMm": 14,
+    "lenMm": 8
+  },
+  {
+    "id": "114009",
+    "code": "M14S09",
+    "shaftMm": 9,
+    "holeMm": 14,
+    "lenMm": 8
+  },
+  {
+    "id": "114010",
+    "code": "M14S10",
+    "shaftMm": 10,
+    "holeMm": 14,
+    "lenMm": 8
+  },
+  {
+    "id": "114012",
+    "code": "M14S11",
+    "shaftMm": 11,
+    "holeMm": 19,
+    "lenMm": 8
+  },
+  {
+    "id": "119014",
+    "code": "M19S14",
+    "shaftMm": 14,
+    "holeMm": 19,
+    "lenMm": 8
+  },
+  {
+    "id": "119016",
+    "code": "M19S16",
+    "shaftMm": 16,
+    "holeMm": 19,
+    "lenMm": 8
+  },
+  {
+    "id": "124014",
+    "code": "M24S14",
+    "shaftMm": 14,
+    "holeMm": 24,
+    "lenMm": 10
+  },
+  {
+    "id": "124016",
+    "code": "M24S16",
+    "shaftMm": 16,
+    "holeMm": 24,
+    "lenMm": 10
+  },
+  {
+    "id": "124019",
+    "code": "M24S19",
+    "shaftMm": 19,
+    "holeMm": 24,
+    "lenMm": 10
+  },
+  {
+    "id": "135019",
+    "code": "M35S19",
+    "shaftMm": 19,
+    "holeMm": 35,
+    "lenMm": 10
+  },
+  {
+    "id": "135022",
+    "code": "M35S22",
+    "shaftMm": 22,
+    "holeMm": 35,
+    "lenMm": 10
+  },
+  {
+    "id": "135024",
+    "code": "M35S24",
+    "shaftMm": 24,
+    "holeMm": 35,
+    "lenMm": 10
+  },
+  {
+    "id": "135028",
+    "code": "M35S28",
+    "shaftMm": 28,
+    "holeMm": 35,
+    "lenMm": 10
+  },
+  {
+    "id": "135032",
+    "code": "M35S32",
+    "shaftMm": 32,
+    "holeMm": 35,
+    "lenMm": 10
+  },
+  {
+    "id": "142032",
+    "code": "M42S32",
+    "shaftMm": 32,
+    "holeMm": 42,
+    "lenMm": 14
+  },
+  {
+    "id": "142035",
+    "code": "M42S35",
+    "shaftMm": 35,
+    "holeMm": 42,
+    "lenMm": 14
+  },
+  {
+    "id": "142038",
+    "code": "M42S38",
+    "shaftMm": 38,
+    "holeMm": 42,
+    "lenMm": 14
+  },
+  {
+    "id": "155035",
+    "code": "M55S35",
+    "shaftMm": 35,
+    "holeMm": 55,
+    "lenMm": 14
+  },
+  {
+    "id": "155038",
+    "code": "M55S38",
+    "shaftMm": 38,
+    "holeMm": 55,
+    "lenMm": 14
+  },
+  {
+    "id": "155042",
+    "code": "M55S42",
+    "shaftMm": 42,
+    "holeMm": 55,
+    "lenMm": 14
+  },
+  {
+    "id": "155045",
+    "code": "M55S45",
+    "shaftMm": 45,
+    "holeMm": 55,
+    "lenMm": 14
+  }
+]

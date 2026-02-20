@@ -1,0 +1,1647 @@
+{
+  "GPB|042|L1|8|M3": {
+    "pdf": [
+      "pdf/GPB/GPB042-L1-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB042-L1-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPB|042|L1|8|M4": {
+    "pdf": [
+      "pdf/GPB/GPB042-L1-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB042-L1-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPB|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPB/GPB060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPB|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPB/GPB060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPB|060|L1|8|M4": {
+    "pdf": [
+      "pdf/GPB/GPB060-L1-(8-38.1-47.14-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB060-L1-(8-38.1-47.14-M4).STEP"
+    ]
+  },
+  "GPB|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPB/GPB060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPB|060|L2|14|M5": {
+    "pdf": [
+      "pdf/GPB/GPB060-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB060-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPB|060|L2|8|M4": {
+    "pdf": [
+      "pdf/GPB/GPB060-L2-(8-38.1-47.14-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB060-L2-(8-38.1-47.14-M4).STEP"
+    ]
+  },
+  "GPB|090|L1|14|M5": {
+    "pdf": [
+      "pdf/GPB/GPB090-L1-(14-73-□69.6-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB090-L1-(14-73-□69.6-M5).STEP"
+    ]
+  },
+  "GPB|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPB/GPB090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPB|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPB/GPB090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPB|090|L2|14|M5": {
+    "pdf": [
+      "pdf/GPB/GPB090-L2-(14-73-□69.6-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB090-L2-(14-73-□69.6-M5).STEP"
+    ]
+  },
+  "GPB|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPB/GPB090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPB|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPB/GPB090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPB|115|L1|19|M8": {
+    "pdf": [
+      "pdf/GPB/GPB115-L1-(19-95-115-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L1-(19-95-115-M8).STEP"
+    ]
+  },
+  "GPB|115|L1|22|M8": {
+    "pdf": [
+      "pdf/GPB/GPB115-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPB|115|L1|24|M8": {
+    "pdf": [
+      "pdf/GPB/GPB115-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPB|115|L1|24|M6": {
+    "pdf": [
+      "pdf/GPB/GPB115-L1-(24-95-115-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L1-(24-95-115-M6).STEP"
+    ]
+  },
+  "GPB|115|L2|19|M8": {
+    "pdf": [
+      "pdf/GPB/GPB115-L2-(19-95-115-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L2-(19-95-115-M8).STEP"
+    ]
+  },
+  "GPB|115|L2|22|M8": {
+    "pdf": [
+      "pdf/GPB/GPB115-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPB|115|L2|24|M8": {
+    "pdf": [
+      "pdf/GPB/GPB115-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPB|115|L2|24|M6": {
+    "pdf": [
+      "pdf/GPB/GPB115-L2-(24-95-115-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB115-L2-(24-95-115-M6).STEP"
+    ]
+  },
+  "GPB|142|L1|35|M12": {
+    "pdf": [
+      "pdf/GPB/GPB142-L1-(35-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB142-L1-(35-114.3-200-M12).STEP"
+    ]
+  },
+  "GPB|142|L2|35|M12": {
+    "pdf": [
+      "pdf/GPB/GPB142-L2-(35-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB142-L2-(35-114.3-200-M12).STEP"
+    ]
+  },
+  "GPB|180|L1|42|M12": {
+    "pdf": [
+      "pdf/GPB/GPB180-L1-(42-114.3-200-M12).PDF"
+    ],
+    "step": []
+  },
+  "GPB|180|L2|42|M12": {
+    "pdf": [
+      "pdf/GPB/GPB180-L2-(42-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB180-L2-(42-114.3-200-M12).STEP"
+    ]
+  },
+  "GPB|220|L1|42|M12": {
+    "pdf": [
+      "pdf/GPB/GPB220-L1-(42-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB220-L1-(42-114.3-200-M12).STEP"
+    ]
+  },
+  "GPB|220|L2|42|M12": {
+    "pdf": [
+      "pdf/GPB/GPB220-L2-(42-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPB/GPB220-L2-(42-114.3-200-M12).STEP"
+    ]
+  },
+  "GPBR|042|L1|8|M3": {
+    "pdf": [
+      "pdf/GPBR/GPBR042-L1-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR042-L1-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPBR|042|L1|8|M4": {
+    "pdf": [
+      "pdf/GPBR/GPBR042-L1-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR042-L1-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPBR|042|L2|8|M3": {
+    "pdf": [
+      "pdf/GPBR/GPBR042-L2-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR042-L2-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPBR|042|L2|8|M4": {
+    "pdf": [
+      "pdf/GPBR/GPBR042-L2-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR042-L2-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPBR|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPBR/GPBR060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPBR|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPBR/GPBR060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPBR|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPBR/GPBR060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPBR|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPBR/GPBR090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPBR|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPBR/GPBR090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPBR|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPBR/GPBR090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPBR|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPBR/GPBR090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPBR|115|L1|22|M8": {
+    "pdf": [
+      "pdf/GPBR/GPBR115-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR115-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPBR|115|L1|24|M8": {
+    "pdf": [
+      "pdf/GPBR/GPBR115-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR115-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPBR|115|L2|22|M8": {
+    "pdf": [
+      "pdf/GPBR/GPBR115-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR115-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPBR|115|L2|24|M8": {
+    "pdf": [
+      "pdf/GPBR/GPBR115-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPBR/GPBR115-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPD|047|L1|8|M3": {
+    "pdf": [
+      "pdf/GPD/GPD047-L1-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD047-L1-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPD|047|L1|8|M4": {
+    "pdf": [
+      "pdf/GPD/GPD047-L1-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD047-L1-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPD|064|L1|14|M4": {
+    "pdf": [
+      "pdf/GPD/GPD064-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD064-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPD|064|L1|14|M5": {
+    "pdf": [
+      "pdf/GPD/GPD064-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD064-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPD|064|L1|8|M4": {
+    "pdf": [
+      "pdf/GPD/GPD064-L1-(8-38.1-□47.14-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD064-L1-(8-38.1-□47.14-M4).STEP"
+    ]
+  },
+  "GPD|064|L2|14|M4": {
+    "pdf": [
+      "pdf/GPD/GPD064-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD064-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPD|064|L2|14|M5": {
+    "pdf": [
+      "pdf/GPD/GPD064-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD064-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPD|064|L2|8|M4": {
+    "pdf": [
+      "pdf/GPD/GPD064-L2-(8-38.1-□47.14-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD064-L2-(8-38.1-□47.14-M4).STEP"
+    ]
+  },
+  "GPD|090|L1|14|M5": {
+    "pdf": [
+      "pdf/GPD/GPD090-L1-(14-73-□69.6-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD090-L1-(14-73-□69.6-M5).STEP"
+    ]
+  },
+  "GPD|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPD/GPD090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPD|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPD/GPD090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPD|090|L2|14|M5": {
+    "pdf": [
+      "pdf/GPD/GPD090-L2-(14-73-□69.6-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD090-L2-(14-73-□69.6-M5).STEP"
+    ]
+  },
+  "GPD|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPD/GPD090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPD|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPD/GPD090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPD|110|L1|22|M8": {
+    "pdf": [
+      "pdf/GPD/GPD110-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD110-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPD|110|L1|24|M8": {
+    "pdf": [
+      "pdf/GPD/GPD110-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD110-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPD|110|L2|22|M8": {
+    "pdf": [
+      "pdf/GPD/GPD110-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD110-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPD|110|L2|24|M8": {
+    "pdf": [
+      "pdf/GPD/GPD110-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD110-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPD|140|L1|35|M12": {
+    "pdf": [
+      "pdf/GPD/GPD140-L1-(35-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD140-L1-(35-114.3-200-M12).STEP"
+    ]
+  },
+  "GPD|140|L2|35|M12": {
+    "pdf": [
+      "pdf/GPD/GPD140-L2-(35-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD140-L2-(35-114.3-200-M12).STEP"
+    ]
+  },
+  "GPD|200|L1|42|M12": {
+    "pdf": [
+      "pdf/GPD/GPD200-L1-(42-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD200-L1-(42-114.3-200-M12).STEP"
+    ]
+  },
+  "GPD|200|L2|42|M12": {
+    "pdf": [
+      "pdf/GPD/GPD200-L2-(42-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD200-L2-(42-114.3-200-M12).STEP"
+    ]
+  },
+  "GPD|255|L1|42|M12": {
+    "pdf": [
+      "pdf/GPD/GPD255-L1-(42-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD255-L1-(42-114.3-200-M12).STEP"
+    ]
+  },
+  "GPD|255|L2|42|M12": {
+    "pdf": [
+      "pdf/GPD/GPD255-L2-(42-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPD/GPD255-L2-(42-114.3-200-M12).STEP"
+    ]
+  },
+  "GPDR|047|L1|8|M3": {
+    "pdf": [
+      "pdf/GPDR/GPDR047-L1-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR047-L1-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPDR|047|L1|8|M4": {
+    "pdf": [
+      "pdf/GPDR/GPDR047-L1-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR047-L1-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPDR|047|L2|8|M3": {
+    "pdf": [
+      "pdf/GPDR/GPDR047-L2-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR047-L2-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPDR|047|L2|8|M4": {
+    "pdf": [
+      "pdf/GPDR/GPDR047-L2-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR047-L2-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPDR|064|L1|14|M4": {
+    "pdf": [
+      "pdf/GPDR/GPDR064-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR064-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPDR|064|L1|14|M5": {
+    "pdf": [
+      "pdf/GPDR/GPDR064-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR064-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPDR|064|L2|14|M4": {
+    "pdf": [
+      "pdf/GPDR/GPDR064-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR064-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPDR|064|L2|14|M5": {
+    "pdf": [
+      "pdf/GPDR/GPDR064-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR064-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPDR|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPDR/GPDR090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPDR|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPDR/GPDR090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPDR|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPDR/GPDR090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPDR|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPDR/GPDR090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPDR|110|L1|22|M8": {
+    "pdf": [
+      "pdf/GPDR/GPDR110-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR110-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPDR|110|L1|24|M8": {
+    "pdf": [
+      "pdf/GPDR/GPDR110-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR110-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPDR|110|L2|22|M8": {
+    "pdf": [
+      "pdf/GPDR/GPDR110-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR110-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPDR|110|L2|24|M8": {
+    "pdf": [
+      "pdf/GPDR/GPDR110-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR110-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPDR|140|L1|35|M12": {
+    "pdf": [
+      "pdf/GPDR/GPDR140-L1-(35-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR140-L1-(35-114.3-200-M12).STEP"
+    ]
+  },
+  "GPDR|140|L2|35|M12": {
+    "pdf": [
+      "pdf/GPDR/GPDR140-L2-(35-114.3-200-M12).PDF"
+    ],
+    "step": [
+      "dwg/GPDR/GPDR140-L2-(35-114.3-200-M12).STEP"
+    ]
+  },
+  "GPE|070|L1|14|M4": {
+    "pdf": [
+      "pdf/GPE/GPE070-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE070-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPE|070|L1|14|M5": {
+    "pdf": [
+      "pdf/GPE/GPE070-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE070-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPE|070|L2|14|M4": {
+    "pdf": [
+      "pdf/GPE/GPE070-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE070-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPE|070|L2|14|M5": {
+    "pdf": [
+      "pdf/GPE/GPE070-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE070-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPE|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPE/GPE090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPE|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPE/GPE090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPE|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPE/GPE090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPE|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPE/GPE090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPE|120|L1|22|M8": {
+    "pdf": [
+      "pdf/GPE/GPE120-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE120-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPE|120|L1|24|M8": {
+    "pdf": [
+      "pdf/GPE/GPE120-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE120-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPE|120|L2|22|M8": {
+    "pdf": [
+      "pdf/GPE/GPE120-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE120-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPE|120|L2|24|M8": {
+    "pdf": [
+      "pdf/GPE/GPE120-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPE/GPE120-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPER|070|L1|14|M4": {
+    "pdf": [
+      "pdf/GPER/GPER070-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER070-L1-(14-50-70-M4).PDF",
+      "dwg/GPER/GPER070-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPER|070|L1|14|M5": {
+    "pdf": [
+      "pdf/GPER/GPER070-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER070-L1-(14-50-70-M5).PDF",
+      "dwg/GPER/GPER070-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPER|070|L2|14|M4": {
+    "pdf": [
+      "pdf/GPER/GPER070-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER070-L2-(14-50-70-M4).PDF",
+      "dwg/GPER/GPER070-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPER|070|L2|14|M5": {
+    "pdf": [
+      "pdf/GPER/GPER070-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER070-L2-(14-50-70-M5).PDF",
+      "dwg/GPER/GPER070-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPER|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPER/GPER090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER090-L1-(19-70-90-M5).PDF",
+      "dwg/GPER/GPER090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPER|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPER/GPER090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER090-L1-(19-70-90-M6).PDF",
+      "dwg/GPER/GPER090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPER|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPER/GPER090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER090-L2-(19-70-90-M5).PDF",
+      "dwg/GPER/GPER090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPER|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPER/GPER090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER090-L2-(19-70-90-M6).PDF",
+      "dwg/GPER/GPER090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPER|120|L1|22|M8": {
+    "pdf": [
+      "pdf/GPER/GPER120-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER120-L1-(22-110-145-M8).PDF",
+      "dwg/GPER/GPER120-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPER|120|L1|24|M8": {
+    "pdf": [
+      "pdf/GPER/GPER120-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER120-L1-(24-110-145-M8).PDF",
+      "dwg/GPER/GPER120-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPER|120|L2|22|M8": {
+    "pdf": [
+      "pdf/GPER/GPER120-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER120-L2-(22-110-145-M8).PDF",
+      "dwg/GPER/GPER120-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPER|120|L2|24|M8": {
+    "pdf": [
+      "pdf/GPER/GPER120-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPER/GPER120-L2-(24-110-145-M8).PDF",
+      "dwg/GPER/GPER120-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPF|042|L1|8|M3": {
+    "pdf": [
+      "pdf/GPF/GPF042-L1-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF042-L1-(8-30-45-M3).PDF",
+      "dwg/GPF/GPF042-L1-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPF|042|L1|8|M4": {
+    "pdf": [
+      "pdf/GPF/GPF042-L1-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF042-L1-(8-30-46-M4).PDF",
+      "dwg/GPF/GPF042-L1-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPF|042|L2|8|M3": {
+    "pdf": [
+      "pdf/GPF/GPF042-L2-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF042-L2-(8-30-45-M3).PDF",
+      "dwg/GPF/GPF042-L2-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPF|042|L2|8|M4": {
+    "pdf": [
+      "pdf/GPF/GPF042-L2-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF042-L2-(8-30-46-M4).PDF",
+      "dwg/GPF/GPF042-L2-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPF|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPF/GPF060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF060-L1-(14-50-70-M4).PDF",
+      "dwg/GPF/GPF060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPF|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPF/GPF060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF060-L1-(14-50-70-M5).PDF",
+      "dwg/GPF/GPF060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPF|060|L1|8|M4": {
+    "pdf": [
+      "pdf/GPF/GPF060-L1-(8-38.1-□47.17-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF060-L1-(8-38.1-□47.17-M4).PDF",
+      "dwg/GPF/GPF060-L1-(8-38.1-□47.17-M4).STEP"
+    ]
+  },
+  "GPF|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPF/GPF060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF060-L2-(14-50-70-M4).PDF",
+      "dwg/GPF/GPF060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPF|060|L2|14|M5": {
+    "pdf": [
+      "pdf/GPF/GPF060-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF060-L2-(14-50-70-M5).PDF",
+      "dwg/GPF/GPF060-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPF|060|L2|8|M4": {
+    "pdf": [
+      "pdf/GPF/GPF060-L2-(8-38.1-□47.17-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF060-L2-(8-38.1-□47.17-M4).PDF",
+      "dwg/GPF/GPF060-L2-(8-38.1-□47.17-M4).STEP"
+    ]
+  },
+  "GPF|080|L1|19|M5": {
+    "pdf": [
+      "pdf/GPF/GPF080-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF080-L1-(19-70-90-M5).PDF",
+      "dwg/GPF/GPF080-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPF|080|L1|19|M6": {
+    "pdf": [
+      "pdf/GPF/GPF080-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF080-L1-(19-70-90-M6).PDF",
+      "dwg/GPF/GPF080-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPF|080|L2|19|M5": {
+    "pdf": [
+      "pdf/GPF/GPF080-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF080-L2-(19-70-90-M5).PDF",
+      "dwg/GPF/GPF080-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPF|080|L2|19|M6": {
+    "pdf": [
+      "pdf/GPF/GPF080-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF080-L2-(19-70-90-M6).PDF",
+      "dwg/GPF/GPF080-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPF|090|L1|14|M5": {
+    "pdf": [
+      "pdf/GPF/GPF090-L1-(14-73-□69.6-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF090-L1-(14-73-□69.6-M5).PDF",
+      "dwg/GPF/GPF090-L1-(14-73-□69.6-M5).STEP"
+    ]
+  },
+  "GPF|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPF/GPF090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF090-L1-(19-70-90-M5).PDF",
+      "dwg/GPF/GPF090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPF|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPF/GPF090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF090-L1-(19-70-90-M6).PDF",
+      "dwg/GPF/GPF090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPF|090|L2|14|M5": {
+    "pdf": [
+      "pdf/GPF/GPF090-L2-(14-73-□69.6-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF090-L2-(14-73-□69.6-M5).PDF",
+      "dwg/GPF/GPF090-L2-(14-73-□69.6-M5).STEP"
+    ]
+  },
+  "GPF|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPF/GPF090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF090-L2-(19-70-90-M5).PDF",
+      "dwg/GPF/GPF090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPF|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPF/GPF090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF090-L2-(19-70-90-M6).PDF",
+      "dwg/GPF/GPF090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPF|115|20K|19|M8": {
+    "pdf": [
+      "pdf/GPF/GPF115-20K-(19-55.52-□88.9-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF115-20K-(19-55.52-□88.9-M8).PDF",
+      "dwg/GPF/GPF115-20K-(19-55.52-□88.9-M8).STEP"
+    ]
+  },
+  "GPF|115|L1|22|M8": {
+    "pdf": [
+      "pdf/GPF/GPF115-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF115-L1-(22-110-145-M8).PDF",
+      "dwg/GPF/GPF115-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPF|115|L1|24|M8": {
+    "pdf": [
+      "pdf/GPF/GPF115-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF115-L1-(24-110-145-M8).PDF",
+      "dwg/GPF/GPF115-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPF|115|L2|22|M8": {
+    "pdf": [
+      "pdf/GPF/GPF115-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF115-L2-(22-110-145-M8).PDF",
+      "dwg/GPF/GPF115-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPF|115|L2|24|M8": {
+    "pdf": [
+      "pdf/GPF/GPF115-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPF/GPF115-L2-(24-110-145-M8).PDF",
+      "dwg/GPF/GPF115-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPFR|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPFR/GPFR060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR060-L1-(14-50-70-M4).PDF",
+      "dwg/GPFR/GPFR060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPFR|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPFR/GPFR060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR060-L1-(14-50-70-M5).PDF",
+      "dwg/GPFR/GPFR060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPFR|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPFR/GPFR060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR060-L2-(14-50-70-M4).PDF",
+      "dwg/GPFR/GPFR060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPFR|060|L2|14|M5": {
+    "pdf": [
+      "pdf/GPFR/GPFR060-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR060-L2-(14-50-70-M5).PDF",
+      "dwg/GPFR/GPFR060-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPFR|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPFR/GPFR090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR090-L1-(19-70-90-M5).PDF",
+      "dwg/GPFR/GPFR090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPFR|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPFR/GPFR090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR090-L1-(19-70-90-M6).PDF",
+      "dwg/GPFR/GPFR090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPFR|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPFR/GPFR090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR090-L2-(19-70-90-M5).PDF"
+    ]
+  },
+  "GPFR|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPFR/GPFR090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPFR/GPFR090-L2-(19-70-90-M6).PDF",
+      "dwg/GPFR/GPFR090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPL|042|L1|8|M3": {
+    "pdf": [
+      "pdf/GPL/GPL042-L1-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL042-L1-(8-30-45-M3).PDF",
+      "dwg/GPL/GPL042-L1-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPL|042|L1|8|M4": {
+    "pdf": [
+      "pdf/GPL/GPL042-L1-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL042-L1-(8-30-46-M4).PDF",
+      "dwg/GPL/GPL042-L1-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPL|042|L2|8|M3": {
+    "pdf": [
+      "pdf/GPL/GPL042-L2-(8-30-45-M3).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL042-L2-(8-30-45-M3).PDF",
+      "dwg/GPL/GPL042-L2-(8-30-45-M3).STEP"
+    ]
+  },
+  "GPL|042|L2|8|M4": {
+    "pdf": [
+      "pdf/GPL/GPL042-L2-(8-30-46-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL042-L2-(8-30-46-M4).PDF",
+      "dwg/GPL/GPL042-L2-(8-30-46-M4).STEP"
+    ]
+  },
+  "GPL|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPL/GPL060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL060-L1-(14-50-70-M4).PDF",
+      "dwg/GPL/GPL060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPL|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPL/GPL060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL060-L1-(14-50-70-M5).PDF",
+      "dwg/GPL/GPL060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPL|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPL/GPL060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL060-L2-(14-50-70-M4).PDF",
+      "dwg/GPL/GPL060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPL|060|L2|14|M5": {
+    "pdf": [
+      "pdf/GPL/GPL060-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL060-L2-(14-50-70-M5).PDF",
+      "dwg/GPL/GPL060-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPL|080|L1|19|M5": {
+    "pdf": [
+      "pdf/GPL/GPL080-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL080-L1-(19-70-90-M5).PDF",
+      "dwg/GPL/GPL080-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPL|080|L1|19|M6": {
+    "pdf": [
+      "pdf/GPL/GPL080-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL080-L1-(19-70-90-M6).PDF",
+      "dwg/GPL/GPL080-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPL|080|L2|19|M5": {
+    "pdf": [
+      "pdf/GPL/GPL080-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL080-L2-(19-70-90-M5).PDF",
+      "dwg/GPL/GPL080-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPL|080|L2|19|M6": {
+    "pdf": [
+      "pdf/GPL/GPL080-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL080-L2-(19-70-90-M6).PDF",
+      "dwg/GPL/GPL080-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPL|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPL/GPL090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL090-L1-(19-70-90-M5).PDF",
+      "dwg/GPL/GPL090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPL|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPL/GPL090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL090-L1-(19-70-90-M6).PDF",
+      "dwg/GPL/GPL090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPL|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPL/GPL090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL090-L2-(19-70-90-M5).PDF",
+      "dwg/GPL/GPL090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPL|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPL/GPL090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL090-L2-(19-70-90-M6).PDF",
+      "dwg/GPL/GPL090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPL|120|L1|22|M8": {
+    "pdf": [
+      "pdf/GPL/GPL120-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL120-L1-(22-110-145-M8).PDF",
+      "dwg/GPL/GPL120-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPL|120|L1|24|M8": {
+    "pdf": [
+      "pdf/GPL/GPL120-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL120-L1-(24-110-145-M8).PDF",
+      "dwg/GPL/GPL120-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPL|120|L2|22|M8": {
+    "pdf": [
+      "pdf/GPL/GPL120-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL120-L2-(22-110-145-M8).PDF",
+      "dwg/GPL/GPL120-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPL|120|L2|24|M8": {
+    "pdf": [
+      "pdf/GPL/GPL120-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPL/GPL120-L2-(24-110-145-M8).PDF",
+      "dwg/GPL/GPL120-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPLR|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPLR/GPLR060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR060-L1-(14-50-70-M4).PDF",
+      "dwg/GPLR/GPLR060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPLR|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPLR/GPLR060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR060-L1-(14-50-70-M5).PDF",
+      "dwg/GPLR/GPLR060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPLR|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPLR/GPLR060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR060-L2-(14-50-70-M4).PDF",
+      "dwg/GPLR/GPLR060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPLR|060|L2|14|M5": {
+    "pdf": [
+      "pdf/GPLR/GPLR060-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR060-L2-(14-50-70-M5).PDF",
+      "dwg/GPLR/GPLR060-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPLR|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPLR/GPLR090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR090-L1-(19-70-90-M5).PDF",
+      "dwg/GPLR/GPLR090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPLR|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPLR/GPLR090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR090-L1-(19-70-90-M6).PDF",
+      "dwg/GPLR/GPLR090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPLR|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPLR/GPLR090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR090-L2-(19-70-90-M5).PDF",
+      "dwg/GPLR/GPLR090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPLR|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPLR/GPLR090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPLR/GPLR090-L2-(19-70-90-M6).PDF",
+      "dwg/GPLR/GPLR090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPV|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPV/GPV060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV060-L1-(14-50-70-M4).PDF",
+      "dwg/GPV/GPV060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPV|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPV/GPV060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV060-L1-(14-50-70-M5).PDF",
+      "dwg/GPV/GPV060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPV|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPV/GPV060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV060-L2-(14-50-70-M4).PDF",
+      "dwg/GPV/GPV060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPV|060|L2|14|M5": {
+    "pdf": [
+      "pdf/GPV/GPV060-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV060-L2-(14-50-70-M5).PDF",
+      "dwg/GPV/GPV060-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPV|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPV/GPV090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV090-L1-(19-70-90-M5).PDF",
+      "dwg/GPV/GPV090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPV|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPV/GPV090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV090-L1-(19-70-90-M6).PDF",
+      "dwg/GPV/GPV090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPV|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPV/GPV090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV090-L2-(19-70-90-M5).PDF",
+      "dwg/GPV/GPV090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPV|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPV/GPV090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV090-L2-(19-70-90-M6).PDF",
+      "dwg/GPV/GPV090-L2-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPV|115|L1|22|M8": {
+    "pdf": [
+      "pdf/GPV/GPV115-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV115-L1-(22-110-145-M8).PDF",
+      "dwg/GPV/GPV115-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPV|115|L1|24|M8": {
+    "pdf": [
+      "pdf/GPV/GPV115-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV115-L1-(24-110-145-M8).PDF",
+      "dwg/GPV/GPV115-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPV|115|L2|22|M8": {
+    "pdf": [
+      "pdf/GPV/GPV115-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV115-L2-(22-110-145-M8).PDF",
+      "dwg/GPV/GPV115-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPV|115|L2|24|M8": {
+    "pdf": [
+      "pdf/GPV/GPV115-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPV/GPV115-L2-(24-110-145-M8).PDF",
+      "dwg/GPV/GPV115-L2-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPVR|060|L1|14|M4": {
+    "pdf": [
+      "pdf/GPVR/GPVR060-L1-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR060-L1-(14-50-70-M4).PDF",
+      "dwg/GPVR/GPVR060-L1-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPVR|060|L1|14|M5": {
+    "pdf": [
+      "pdf/GPVR/GPVR060-L1-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR060-L1-(14-50-70-M5).PDF",
+      "dwg/GPVR/GPVR060-L1-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPVR|060|L2|14|M4": {
+    "pdf": [
+      "pdf/GPVR/GPVR060-L2-(14-50-70-M4).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR060-L2-(14-50-70-M4).PDF",
+      "dwg/GPVR/GPVR060-L2-(14-50-70-M4).STEP"
+    ]
+  },
+  "GPVR|060|L2|14|M5": {
+    "pdf": [
+      "pdf/GPVR/GPVR060-L2-(14-50-70-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR060-L2-(14-50-70-M5).PDF",
+      "dwg/GPVR/GPVR060-L2-(14-50-70-M5).STEP"
+    ]
+  },
+  "GPVR|090|L1|19|M5": {
+    "pdf": [
+      "pdf/GPVR/GPVR090-L1-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR090-L1-(19-70-90-M5).PDF",
+      "dwg/GPVR/GPVR090-L1-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPVR|090|L1|19|M6": {
+    "pdf": [
+      "pdf/GPVR/GPVR090-L1-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR090-L1-(19-70-90-M6).PDF",
+      "dwg/GPVR/GPVR090-L1-(19-70-90-M6).STEP"
+    ]
+  },
+  "GPVR|090|L2|19|M5": {
+    "pdf": [
+      "pdf/GPVR/GPVR090-L2-(19-70-90-M5).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR090-L2-(19-70-90-M5).PDF",
+      "dwg/GPVR/GPVR090-L2-(19-70-90-M5).STEP"
+    ]
+  },
+  "GPVR|090|L2|19|M6": {
+    "pdf": [
+      "pdf/GPVR/GPVR090-L2-(19-70-90-M6).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR090-L2-(19-70-90-M6).PDF"
+    ]
+  },
+  "GPVR|115|L1|22|M8": {
+    "pdf": [
+      "pdf/GPVR/GPVR115-L1-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR115-L1-(22-110-145-M8).PDF",
+      "dwg/GPVR/GPVR115-L1-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPVR|115|L1|24|M8": {
+    "pdf": [
+      "pdf/GPVR/GPVR115-L1-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR115-L1-(24-110-145-M8).PDF",
+      "dwg/GPVR/GPVR115-L1-(24-110-145-M8).STEP"
+    ]
+  },
+  "GPVR|115|L2|22|M8": {
+    "pdf": [
+      "pdf/GPVR/GPVR115-L2-(22-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR115-L2-(22-110-145-M8).PDF",
+      "dwg/GPVR/GPVR115-L2-(22-110-145-M8).STEP"
+    ]
+  },
+  "GPVR|115|L2|24|M8": {
+    "pdf": [
+      "pdf/GPVR/GPVR115-L2-(24-110-145-M8).PDF"
+    ],
+    "step": [
+      "dwg/GPVR/GPVR115-L2-(24-110-145-M8).PDF",
+      "dwg/GPVR/GPVR115-L2-(24-110-145-M8).STEP"
+    ]
+  }
+}
