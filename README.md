@@ -213,8 +213,8 @@ export const seriesPhotos: Record<string, string[]> = {
 
 | 항목 | 버전 |
 |------|------|
-| React | 18 |
-| TypeScript | 5 |
-| Vite | 6 |
+| React | 19 |
+| TypeScript | 5.9 |
+| Vite | 7 |
 | Tailwind CSS | v4 (`@tailwindcss/vite`) |
 | Zustand | 5 |
