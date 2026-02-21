@@ -1,7 +1,7 @@
 [
   {
     "id": "reducer-GPB-42",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPB",
     "size": 42,
     "modelName": "GPB042",
@@ -136,7 +136,7 @@
   },
   {
     "id": "reducer-GPB-60",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPB",
     "size": 60,
     "modelName": "GPB060",
@@ -271,7 +271,7 @@
   },
   {
     "id": "reducer-GPB-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPB",
     "size": 90,
     "modelName": "GPB090",
@@ -406,7 +406,7 @@
   },
   {
     "id": "reducer-GPB-115",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPB",
     "size": 115,
     "modelName": "GPB115",
@@ -541,7 +541,7 @@
   },
   {
     "id": "reducer-GPB-142",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPB",
     "size": 142,
     "modelName": "GPB142",
@@ -676,7 +676,7 @@
   },
   {
     "id": "reducer-GPB-180",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPB",
     "size": 180,
     "modelName": "GPB180",
@@ -811,7 +811,7 @@
   },
   {
     "id": "reducer-GPB-220",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPB",
     "size": 220,
     "modelName": "GPB220",
@@ -946,7 +946,7 @@
   },
   {
     "id": "reducer-GPD-47",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPD",
     "size": 47,
     "modelName": "GPD047",
@@ -1034,7 +1034,7 @@
   },
   {
     "id": "reducer-GPD-64",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPD",
     "size": 64,
     "modelName": "GPD064",
@@ -1122,7 +1122,7 @@
   },
   {
     "id": "reducer-GPD-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPD",
     "size": 90,
     "modelName": "GPD090",
@@ -1210,7 +1210,7 @@
   },
   {
     "id": "reducer-GPD-110",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPD",
     "size": 110,
     "modelName": "GPD110",
@@ -1298,7 +1298,7 @@
   },
   {
     "id": "reducer-GPD-140",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPD",
     "size": 140,
     "modelName": "GPD140",
@@ -1386,7 +1386,7 @@
   },
   {
     "id": "reducer-GPD-200",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPD",
     "size": 200,
     "modelName": "GPD200",
@@ -1474,7 +1474,7 @@
   },
   {
     "id": "reducer-GPD-255",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPD",
     "size": 255,
     "modelName": "GPD255",
@@ -1562,7 +1562,7 @@
   },
   {
     "id": "reducer-GPV-60",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPV",
     "size": 60,
     "modelName": "GPV060",
@@ -1685,7 +1685,7 @@
   },
   {
     "id": "reducer-GPV-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPV",
     "size": 90,
     "modelName": "GPV090",
@@ -1808,7 +1808,7 @@
   },
   {
     "id": "reducer-GPV-115",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPV",
     "size": 115,
     "modelName": "GPV115",
@@ -1931,7 +1931,7 @@
   },
   {
     "id": "reducer-GPV-140",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPV",
     "size": 140,
     "modelName": "GPV140",
@@ -2054,7 +2054,7 @@
   },
   {
     "id": "reducer-GPV-180",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPV",
     "size": 180,
     "modelName": "GPV180",
@@ -2177,7 +2177,7 @@
   },
   {
     "id": "reducer-GPV-220",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPV",
     "size": 220,
     "modelName": "GPV220",
@@ -2300,7 +2300,7 @@
   },
   {
     "id": "reducer-GPE-70",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPE",
     "size": 70,
     "modelName": "GPE070",
@@ -2423,7 +2423,7 @@
   },
   {
     "id": "reducer-GPE-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPE",
     "size": 90,
     "modelName": "GPE090",
@@ -2546,7 +2546,7 @@
   },
   {
     "id": "reducer-GPE-120",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPE",
     "size": 120,
     "modelName": "GPE120",
@@ -2669,7 +2669,7 @@
   },
   {
     "id": "reducer-GPE-155",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPE",
     "size": 155,
     "modelName": "GPE155",
@@ -2792,7 +2792,7 @@
   },
   {
     "id": "reducer-GPE-205",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPE",
     "size": 205,
     "modelName": "GPE205",
@@ -2915,7 +2915,7 @@
   },
   {
     "id": "reducer-GPBR-60",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPBR",
     "size": 60,
     "modelName": "GPBR060",
@@ -3056,7 +3056,7 @@
   },
   {
     "id": "reducer-GPBR-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPBR",
     "size": 90,
     "modelName": "GPBR090",
@@ -3197,7 +3197,7 @@
   },
   {
     "id": "reducer-GPBR-115",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPBR",
     "size": 115,
     "modelName": "GPBR115",
@@ -3338,7 +3338,7 @@
   },
   {
     "id": "reducer-GPBR-142",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPBR",
     "size": 142,
     "modelName": "GPBR142",
@@ -3479,7 +3479,7 @@
   },
   {
     "id": "reducer-GPBR-180",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPBR",
     "size": 180,
     "modelName": "GPBR180",
@@ -3620,7 +3620,7 @@
   },
   {
     "id": "reducer-GPDR-64",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPDR",
     "size": 64,
     "modelName": "GPDR064",
@@ -3726,7 +3726,7 @@
   },
   {
     "id": "reducer-GPDR-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPDR",
     "size": 90,
     "modelName": "GPDR090",
@@ -3832,7 +3832,7 @@
   },
   {
     "id": "reducer-GPDR-110",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPDR",
     "size": 110,
     "modelName": "GPDR110",
@@ -3938,7 +3938,7 @@
   },
   {
     "id": "reducer-GPDR-140",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPDR",
     "size": 140,
     "modelName": "GPDR140",
@@ -4044,7 +4044,7 @@
   },
   {
     "id": "reducer-GPVR-60",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPVR",
     "size": 60,
     "modelName": "GPVR060",
@@ -4185,7 +4185,7 @@
   },
   {
     "id": "reducer-GPVR-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPVR",
     "size": 90,
     "modelName": "GPVR090",
@@ -4326,7 +4326,7 @@
   },
   {
     "id": "reducer-GPVR-115",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPVR",
     "size": 115,
     "modelName": "GPVR115",
@@ -4467,7 +4467,7 @@
   },
   {
     "id": "reducer-GPVR-142",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPVR",
     "size": 142,
     "modelName": "GPVR142",
@@ -4608,7 +4608,7 @@
   },
   {
     "id": "reducer-GPER-70",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPER",
     "size": 70,
     "modelName": "GPER070",
@@ -4749,7 +4749,7 @@
   },
   {
     "id": "reducer-GPER-90",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPER",
     "size": 90,
     "modelName": "GPER090",
@@ -4890,7 +4890,7 @@
   },
   {
     "id": "reducer-GPER-120",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPER",
     "size": 120,
     "modelName": "GPER120",
@@ -5031,7 +5031,7 @@
   },
   {
     "id": "reducer-GPER-155",
-    "type": "Planetary Gearbox",
+    "type": "Planetary",
     "series": "GPER",
     "size": 155,
     "modelName": "GPER155",
@@ -5172,7 +5172,7 @@
   },
   {
     "id": "reducer-GSN-60",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSN",
     "size": 60,
     "modelName": "GSN060",
@@ -5223,7 +5223,7 @@
   },
   {
     "id": "reducer-GSN-85",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSN",
     "size": 85,
     "modelName": "GSN085",
@@ -5298,7 +5298,7 @@
   },
   {
     "id": "reducer-GSN-130",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSN",
     "size": 130,
     "modelName": "GSN130",
@@ -5355,7 +5355,7 @@
   },
   {
     "id": "reducer-GSN-200",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSN",
     "size": 200,
     "modelName": "GSN200",
@@ -5412,7 +5412,7 @@
   },
   {
     "id": "reducer-GSN-280",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSN",
     "size": 280,
     "modelName": "GSN280",
@@ -5457,7 +5457,7 @@
   },
   {
     "id": "reducer-GSN-450",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSN",
     "size": 450,
     "modelName": "GSN450",
@@ -5514,7 +5514,7 @@
   },
   {
     "id": "reducer-GSB-60",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSB",
     "size": 60,
     "modelName": "GSB060",
@@ -5553,7 +5553,7 @@
   },
   {
     "id": "reducer-GSB-100",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSB",
     "size": 100,
     "modelName": "GSB100",
@@ -5604,7 +5604,7 @@
   },
   {
     "id": "reducer-GSB-130",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSB",
     "size": 130,
     "modelName": "GSB130",
@@ -5655,7 +5655,7 @@
   },
   {
     "id": "reducer-GSB-200",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSB",
     "size": 200,
     "modelName": "GSB200",
@@ -5706,7 +5706,7 @@
   },
   {
     "id": "reducer-GSG-60",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSG",
     "size": 60,
     "modelName": "GSG060",
@@ -5739,7 +5739,7 @@
   },
   {
     "id": "reducer-GSG-85",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSG",
     "size": 85,
     "modelName": "GSG085",
@@ -5772,7 +5772,7 @@
   },
   {
     "id": "reducer-GSG-130",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSG",
     "size": 130,
     "modelName": "GSG130",
@@ -5799,7 +5799,7 @@
   },
   {
     "id": "reducer-GSG-200",
-    "type": "Helical Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSG",
     "size": 200,
     "modelName": "GSG200",
@@ -5838,7 +5838,7 @@
   },
   {
     "id": "reducer-GSH-60",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSH",
     "size": 60,
     "modelName": "GSH060",
@@ -5865,7 +5865,7 @@
   },
   {
     "id": "reducer-GSH-100",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSH",
     "size": 100,
     "modelName": "GSH100",
@@ -5892,7 +5892,7 @@
   },
   {
     "id": "reducer-GSH-150",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSH",
     "size": 150,
     "modelName": "GSH150",
@@ -5919,7 +5919,7 @@
   },
   {
     "id": "reducer-GSH-200",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSH",
     "size": 200,
     "modelName": "GSH200",
@@ -5946,7 +5946,7 @@
   },
   {
     "id": "reducer-GSR-60",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSR",
     "size": 60,
     "modelName": "GSR060",
@@ -5991,7 +5991,7 @@
   },
   {
     "id": "reducer-GSR-110",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSR",
     "size": 110,
     "modelName": "GSR110",
@@ -6048,7 +6048,7 @@
   },
   {
     "id": "reducer-GSR-150",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSR",
     "size": 150,
     "modelName": "GSR150",
@@ -6105,7 +6105,7 @@
   },
   {
     "id": "reducer-GSR-200",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSR",
     "size": 200,
     "modelName": "GSR200",
@@ -6156,7 +6156,7 @@
   },
   {
     "id": "reducer-GSHR-100",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSHR",
     "size": 100,
     "modelName": "GSHR100",
@@ -6183,7 +6183,7 @@
   },
   {
     "id": "reducer-GSHR-150",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSHR",
     "size": 150,
     "modelName": "GSHR150",
@@ -6210,7 +6210,7 @@
   },
   {
     "id": "reducer-GSHR-200",
-    "type": "Hypoid Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSHR",
     "size": 200,
     "modelName": "GSHR200",
@@ -6237,7 +6237,7 @@
   },
   {
     "id": "reducer-GSA-42",
-    "type": "Bevel Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSA",
     "size": 42,
     "modelName": "GSA042",
@@ -6288,7 +6288,7 @@
   },
   {
     "id": "reducer-GSA-45",
-    "type": "Bevel Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSA",
     "size": 45,
     "modelName": "GSA045",
@@ -6315,7 +6315,7 @@
   },
   {
     "id": "reducer-GYH-48",
-    "type": "Roller cam Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GYH",
     "size": 48,
     "modelName": "GYH048",
@@ -6353,7 +6353,7 @@
   },
   {
     "id": "reducer-GYH-68",
-    "type": "Roller cam Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GYH",
     "size": 68,
     "modelName": "GYH068",
@@ -6391,7 +6391,7 @@
   },
   {
     "id": "reducer-GYH-82",
-    "type": "Roller cam Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GYH",
     "size": 82,
     "modelName": "GYH082",
@@ -6429,7 +6429,7 @@
   },
   {
     "id": "reducer-GYH-90",
-    "type": "Roller cam Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GYH",
     "size": 90,
     "modelName": "GYH090",
@@ -6467,7 +6467,7 @@
   },
   {
     "id": "reducer-GYH-115",
-    "type": "Roller cam Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GYH",
     "size": 115,
     "modelName": "GYH115",
@@ -6505,7 +6505,7 @@
   },
   {
     "id": "reducer-GYH-215",
-    "type": "Roller cam Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GYH",
     "size": 215,
     "modelName": "GYH215",
@@ -6543,7 +6543,7 @@
   },
   {
     "id": "reducer-GSZ-42",
-    "type": "Bevel Gearbox",
+    "type": "Hollow Rotary",
     "series": "GSZ",
     "size": 42,
     "modelName": "GSZ042",
@@ -6568,7 +6568,7 @@
   },
   {
     "id": "reducer-GSZ-60",
-    "type": "Bevel Gearbox",
+    "type": "Hollow Rotary",
     "series": "GSZ",
     "size": 60,
     "modelName": "GSZ060",
@@ -6599,7 +6599,7 @@
   },
   {
     "id": "reducer-GSZ-90",
-    "type": "Bevel Gearbox",
+    "type": "Hollow Rotary",
     "series": "GSZ",
     "size": 90,
     "modelName": "GSZ090",
@@ -6630,7 +6630,7 @@
   },
   {
     "id": "reducer-GR-60",
-    "type": "Worm Rotary table",
+    "type": "Hollow Rotary",
     "series": "GR",
     "size": 60,
     "modelName": "GR060",
@@ -6656,7 +6656,7 @@
   },
   {
     "id": "reducer-GR-120",
-    "type": "Worm Rotary table",
+    "type": "Hollow Rotary",
     "series": "GR",
     "size": 120,
     "modelName": "GR120",
@@ -6682,7 +6682,7 @@
   },
   {
     "id": "reducer-GR-200",
-    "type": "Worm Rotary table",
+    "type": "Hollow Rotary",
     "series": "GR",
     "size": 200,
     "modelName": "GR200",
@@ -6708,7 +6708,7 @@
   },
   {
     "id": "reducer-GSA-90",
-    "type": "Bevel Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSA",
     "size": 90,
     "modelName": "GSA090",
@@ -6764,7 +6764,7 @@
   },
   {
     "id": "reducer-GSA-130",
-    "type": "Bevel Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSA",
     "size": 130,
     "modelName": "GSA130",
@@ -6820,7 +6820,7 @@
   },
   {
     "id": "reducer-GSA-200",
-    "type": "Bevel Hollow Rotary table",
+    "type": "Hollow Rotary",
     "series": "GSA",
     "size": 200,
     "modelName": "GSA200",
