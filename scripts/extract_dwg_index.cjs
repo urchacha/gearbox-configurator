@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE = path.resolve(__dirname, '../public/drawings/dwg');
+const BASE = path.resolve(__dirname, '../public/drawings/step');
 const OUT  = 'E:/DB_data/drawings_index.csv';
 
 const rows = [['series', 'filename', 'extension', 'relative_path']];

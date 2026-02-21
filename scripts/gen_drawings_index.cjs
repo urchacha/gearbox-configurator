@@ -41,7 +41,7 @@ function scanDir(dir, type, folder) {
 }
 
 scanDir(path.join(BASE, 'pdf'), 'pdf', 'pdf');
-scanDir(path.join(BASE, 'dwg'), 'step', 'dwg');
+scanDir(path.join(BASE, 'step'), 'step', 'step');
 
 fs.writeFileSync(OUT, JSON.stringify(index, null, 2), 'utf8');
 console.log(`Generated ${Object.keys(index).length} entries → ${OUT}`);
