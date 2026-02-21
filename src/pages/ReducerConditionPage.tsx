@@ -213,10 +213,9 @@ export default function ReducerConditionPage() {
               {allSeries.length === 0 && <span className="text-red-500 ml-2">매칭되는 감속기가 없습니다.</span>}
             </p>
 
-          {/* 드롭다운 행 */}
-          <div className="flex flex-wrap items-end gap-3 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
               {/* Type */}
-              <div className="w-36 shrink-0">
+              <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">타입</label>
                 <select
                   value={selectedType}
@@ -229,7 +228,7 @@ export default function ReducerConditionPage() {
               </div>
 
               {/* Series */}
-              <div className="w-32 shrink-0">
+              <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">시리즈</label>
                 <select
                   value={selectedSeries}
@@ -242,7 +241,7 @@ export default function ReducerConditionPage() {
               </div>
 
               {/* Ratio */}
-              <div className="w-28 shrink-0 ml-2">
+              <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">감속비</label>
                 <select
                   value={selectedRatio ?? ''}
@@ -256,7 +255,7 @@ export default function ReducerConditionPage() {
               </div>
 
               {/* Model */}
-              <div className="flex-1 min-w-[120px]">
+              <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">모델</label>
                 <select
                   value={selectedReducer?.id ?? ''}
