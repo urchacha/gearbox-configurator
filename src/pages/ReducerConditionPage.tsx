@@ -213,9 +213,10 @@ export default function ReducerConditionPage() {
               {allSeries.length === 0 && <span className="text-red-500 ml-2">매칭되는 감속기가 없습니다.</span>}
             </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
-              {/* Type (카테고리) */}
-              <div>
+          {/* 드롭다운 행 */}
+          <div className="flex flex-wrap items-end gap-3 mt-2">
+              {/* Type */}
+              <div className="w-36 shrink-0">
                 <label className="block text-xs font-medium text-gray-500 mb-1">타입</label>
                 <select
                   value={selectedType}
@@ -228,7 +229,7 @@ export default function ReducerConditionPage() {
               </div>
 
               {/* Series */}
-              <div>
+              <div className="w-32 shrink-0">
                 <label className="block text-xs font-medium text-gray-500 mb-1">시리즈</label>
                 <div className="flex gap-2">
                   <select
@@ -239,7 +240,6 @@ export default function ReducerConditionPage() {
                     <option value="">선택하세요</option>
                     {allSeries.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
-                  {/* 이미지 보기 버튼 */}
                   {selectedSeries && seriesPhotos.length > 0 && (
                     <button
                       onClick={() => setPhotoModalSeries(selectedSeries)}
@@ -252,23 +252,10 @@ export default function ReducerConditionPage() {
                     </button>
                   )}
                 </div>
-                {/* 시리즈 선택 시 썸네일 미리보기 */}
-                {selectedSeries && seriesPhotos.length > 0 && (
-                  <button
-                    onClick={() => setPhotoModalSeries(selectedSeries)}
-                    className="mt-2 w-full rounded-lg border border-gray-200 overflow-hidden hover:border-blue-400 transition-colors cursor-pointer bg-gray-50"
-                  >
-                    <img
-                      src={seriesPhotos[0]}
-                      alt={selectedSeries}
-                      className="w-full h-36 object-contain p-2"
-                    />
-                  </button>
-                )}
               </div>
 
               {/* Ratio */}
-              <div>
+              <div className="w-28 shrink-0 ml-2">
                 <label className="block text-xs font-medium text-gray-500 mb-1">감속비</label>
                 <select
                   value={selectedRatio ?? ''}
@@ -282,7 +269,7 @@ export default function ReducerConditionPage() {
               </div>
 
               {/* Model */}
-              <div>
+              <div className="flex-1 min-w-[120px]">
                 <label className="block text-xs font-medium text-gray-500 mb-1">모델</label>
                 <select
                   value={selectedReducer?.id ?? ''}
@@ -295,6 +282,20 @@ export default function ReducerConditionPage() {
                 </select>
               </div>
             </div>
+
+          {/* 시리즈 썸네일 — 드롭다운 행 아래 별도 표시 */}
+          {selectedSeries && seriesPhotos.length > 0 && (
+            <button
+              onClick={() => setPhotoModalSeries(selectedSeries)}
+              className="mt-3 w-40 rounded-lg border border-gray-200 overflow-hidden hover:border-blue-400 transition-colors cursor-pointer bg-gray-50"
+            >
+              <img
+                src={seriesPhotos[0]}
+                alt={selectedSeries}
+                className="w-full h-36 object-contain p-2"
+              />
+            </button>
+          )}
           </fieldset>
 
           {/* Operating Conditions */}
