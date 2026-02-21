@@ -205,7 +205,7 @@ export default function MotorSelectPage() {
 
           {/* Category (basicType) */}
           <div className="w-40 shrink-0">
-            <label className="block text-xs font-medium text-gray-500 mb-1.5">카테고리</label>
+            <label className="block text-xs font-medium text-gray-500 mb-1.5">타입</label>
             <select
               value={category}
               onChange={(e) => handleCategoryChange(e.target.value)}

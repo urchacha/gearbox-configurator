@@ -216,7 +216,7 @@ export default function ReducerConditionPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
               {/* Type (카테고리) */}
               <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1">타입(Type)</label>
+                <label className="block text-xs font-medium text-gray-500 mb-1">타입</label>
                 <select
                   value={selectedType}
                   onChange={(e) => handleTypeChange(e.target.value)}
