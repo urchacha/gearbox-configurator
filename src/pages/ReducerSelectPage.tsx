@@ -49,7 +49,7 @@ const DrawingLinks = memo(function DrawingLinks({ series, size, stage, shaftHole
       {links.map(l => (
         <a
           key={l.key}
-          href={`/drawings/${l.path}`}
+          href={`https://raw.githubusercontent.com/urchacha/gearbox-configurator/master/public/drawings/${l.path}`}
           download
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 text-xs text-gray-600 hover:text-blue-700 transition-colors"
         >

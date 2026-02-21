@@ -27,6 +27,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+      - run: rm -rf dist/drawings
 
       - uses: actions/upload-pages-artifact@v3
         with:
