@@ -231,27 +231,14 @@ export default function ReducerConditionPage() {
               {/* Series */}
               <div className="w-32 shrink-0">
                 <label className="block text-xs font-medium text-gray-500 mb-1">시리즈</label>
-                <div className="flex gap-2">
-                  <select
-                    value={selectedSeries}
-                    onChange={(e) => handleSeriesChange(e.target.value)}
-                    className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="">선택하세요</option>
-                    {allSeries.map((s) => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                  {selectedSeries && seriesPhotos.length > 0 && (
-                    <button
-                      onClick={() => setPhotoModalSeries(selectedSeries)}
-                      title="시리즈 이미지 보기"
-                      className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-gray-300 hover:border-blue-400 hover:bg-blue-50 text-gray-500 hover:text-blue-600 transition-colors cursor-pointer"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                      </svg>
-                    </button>
-                  )}
-                </div>
+                <select
+                  value={selectedSeries}
+                  onChange={(e) => handleSeriesChange(e.target.value)}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">선택하세요</option>
+                  {allSeries.map((s) => <option key={s} value={s}>{s}</option>)}
+                </select>
               </div>
 
               {/* Ratio */}
@@ -283,18 +270,24 @@ export default function ReducerConditionPage() {
               </div>
             </div>
 
-          {/* 시리즈 썸네일 — 드롭다운 행 아래 별도 표시 */}
+          {/* 시리즈 썸네일 — 이미지 보기 버튼을 오버레이로 표시 */}
           {selectedSeries && seriesPhotos.length > 0 && (
-            <button
-              onClick={() => setPhotoModalSeries(selectedSeries)}
-              className="mt-3 w-40 rounded-lg border border-gray-200 overflow-hidden hover:border-blue-400 transition-colors cursor-pointer bg-gray-50"
-            >
+            <div className="relative mt-3 w-40">
               <img
                 src={seriesPhotos[0]}
                 alt={selectedSeries}
-                className="w-full h-36 object-contain p-2"
+                className="w-full h-36 object-contain p-2 rounded-lg border border-gray-200 bg-gray-50"
               />
-            </button>
+              <button
+                onClick={() => setPhotoModalSeries(selectedSeries)}
+                title="시리즈 이미지 보기"
+                className="absolute top-1.5 right-1.5 w-7 h-7 flex items-center justify-center rounded-md bg-white/80 hover:bg-white border border-gray-200 hover:border-blue-400 text-gray-500 hover:text-blue-600 shadow-sm transition-colors cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+              </button>
+            </div>
           )}
           </fieldset>
 
