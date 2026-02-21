@@ -6,6 +6,7 @@ interface SelectionState {
   selectedMotor: Motor | null;
   selectedReducer: Reducer | null;
   selectedRatio: number | null;
+  selectedType: string;
   selectedSeries: string;
   operatingConditions: OperatingConditions;
   selectionResult: SelectionResult | null;
@@ -16,6 +17,7 @@ interface SelectionState {
   setSelectedMotor: (motor: Motor | null) => void;
   setSelectedReducer: (reducer: Reducer | null) => void;
   setSelectedRatio: (ratio: number | null) => void;
+  setSelectedType: (type: string) => void;
   setSelectedSeries: (series: string) => void;
   setOperatingConditions: (conditions: Partial<OperatingConditions>) => void;
   setSelectionResult: (result: SelectionResult | null) => void;
@@ -27,6 +29,7 @@ export const useSelectionStore = create<SelectionState>((set) => ({
   selectedMotor: null,
   selectedReducer: null,
   selectedRatio: null,
+  selectedType: '',
   selectedSeries: '',
   operatingConditions: {
     hoursPerDay: 8,
@@ -41,6 +44,7 @@ export const useSelectionStore = create<SelectionState>((set) => ({
   setSelectedMotor: (motor) => set({ selectedMotor: motor }),
   setSelectedReducer: (reducer) => set({ selectedReducer: reducer }),
   setSelectedRatio: (ratio) => set({ selectedRatio: ratio }),
+  setSelectedType: (type) => set({ selectedType: type }),
   setSelectedSeries: (series) => set({ selectedSeries: series }),
   setOperatingConditions: (conditions) =>
     set((state) => ({
@@ -52,6 +56,7 @@ export const useSelectionStore = create<SelectionState>((set) => ({
     selectedMotor: null,
     selectedReducer: null,
     selectedRatio: null,
+    selectedType: '',
     selectedSeries: '',
     operatingConditions: { hoursPerDay: 8, loadType: '균일 부하', mountingDirection: '수평' },
     selectionResult: null,

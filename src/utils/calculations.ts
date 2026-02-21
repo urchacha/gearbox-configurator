@@ -64,8 +64,9 @@ export function findBushing(shaftMm: number, holeMm: number): Bushing | null {
 
 /** 모터 축경이 감속기 홀경과 직결 or 부싱으로 호환되는지 확인 */
 export function isShaftCompatible(shaftMm: number, holeMm: number): boolean {
+  if (!holeMm) return true;            // holeMm=0: 할로우 로터리 등 — 항상 표시
   if (shaftMm === holeMm) return true;
-  if (shaftMm > holeMm) return false;  // 축이 크면 불가
+  if (shaftMm > holeMm) return false;
   return findBushing(shaftMm, holeMm) !== null;
 }
 

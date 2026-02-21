@@ -37,6 +37,7 @@ export interface ReducerDrawings {
 
 export interface Reducer {
   id: string;
+  type: string;                              // 감속기 타입 (Planetary Gearbox 등)
   series: string;
   size: number;                              // 프레임 크기
   modelName: string;                         // e.g. "GPB-42"

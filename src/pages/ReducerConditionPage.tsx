@@ -81,6 +81,7 @@ export default function ReducerConditionPage() {
     selectedMotor,
     selectedReducer, setSelectedReducer,
     selectedRatio, setSelectedRatio,
+    selectedType, setSelectedType,
     selectedSeries, setSelectedSeries,
     operatingConditions, setOperatingConditions,
     goToStep,
@@ -96,27 +97,39 @@ export default function ReducerConditionPage() {
     [selectedMotor],
   );
 
-  const allSeries = useMemo(
-    () => [...new Set(matchingReducers.map((r) => r.series))],
+  // 타입(카테고리) 목록
+  const allTypes = useMemo(
+    () => [...new Set(matchingReducers.map((r) => r.type))].sort(),
     [matchingReducers],
+  );
+
+  // 타입으로 필터링된 감속기
+  const typeFilteredReducers = useMemo(
+    () => selectedType ? matchingReducers.filter((r) => r.type === selectedType) : matchingReducers,
+    [selectedType, matchingReducers],
+  );
+
+  const allSeries = useMemo(
+    () => [...new Set(typeFilteredReducers.map((r) => r.series))].sort(),
+    [typeFilteredReducers],
   );
 
   // 선택한 시리즈에서 사용 가능한 전체 감속비 목록
   const seriesRatios = useMemo(() => {
     if (!selectedSeries) return [];
-    const models = matchingReducers.filter((r) => r.series === selectedSeries);
+    const models = typeFilteredReducers.filter((r) => r.series === selectedSeries);
     const ratioSet = new Set<number>();
     models.forEach((r) => r.supportedRatios.forEach((ratio) => ratioSet.add(ratio)));
     return [...ratioSet].sort((a, b) => a - b);
-  }, [selectedSeries, matchingReducers]);
+  }, [selectedSeries, typeFilteredReducers]);
 
   // 시리즈 + 선택 감속비 모두 지원하는 모델만
   const seriesModels = useMemo(() => {
     if (!selectedSeries) return [];
-    const bySeries = matchingReducers.filter((r) => r.series === selectedSeries);
+    const bySeries = typeFilteredReducers.filter((r) => r.series === selectedSeries);
     if (!selectedRatio) return bySeries;
     return bySeries.filter((r) => r.supportedRatios.includes(selectedRatio));
-  }, [selectedSeries, selectedRatio, matchingReducers]);
+  }, [selectedSeries, selectedRatio, typeFilteredReducers]);
 
   const calc = useMemo(() => {
     if (!selectedMotor || !selectedReducer || !selectedRatio) return null;
@@ -148,6 +161,13 @@ export default function ReducerConditionPage() {
       </div>
     );
   }
+
+  const handleTypeChange = (type: string) => {
+    setSelectedType(type);
+    setSelectedSeries('');
+    setSelectedRatio(null);
+    setSelectedReducer(null);
+  };
 
   const handleSeriesChange = (series: string) => {
     setSelectedSeries(series);
@@ -193,7 +213,20 @@ export default function ReducerConditionPage() {
               {allSeries.length === 0 && <span className="text-red-500 ml-2">매칭되는 감속기가 없습니다.</span>}
             </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
+              {/* Type (카테고리) */}
+              <div>
+                <label className="block text-xs font-medium text-gray-500 mb-1">카테고리</label>
+                <select
+                  value={selectedType}
+                  onChange={(e) => handleTypeChange(e.target.value)}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">전체</option>
+                  {allTypes.map((t) => <option key={t} value={t}>{t}</option>)}
+                </select>
+              </div>
+
               {/* Series */}
               <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">시리즈</label>
