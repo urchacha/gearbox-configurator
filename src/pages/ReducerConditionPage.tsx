@@ -216,7 +216,7 @@ export default function ReducerConditionPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
               {/* Type (카테고리) */}
               <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1">카테고리</label>
+                <label className="block text-xs font-medium text-gray-500 mb-1">타입(Type)</label>
                 <select
                   value={selectedType}
                   onChange={(e) => handleTypeChange(e.target.value)}
@@ -330,7 +330,7 @@ export default function ReducerConditionPage() {
               <div>
                 <label className="block text-xs font-medium text-gray-500 mb-2">설치 방향</label>
                 <div className="flex gap-4">
-                  {['수평', '수직', '플랜지'].map((dir) => (
+                  {['수평', '수직'].map((dir) => (
                     <label key={dir} className="flex items-center gap-2 cursor-pointer">
                       <input type="radio" name="mountingDirection" value={dir}
                         checked={operatingConditions.mountingDirection === dir}

@@ -25,5 +25,5 @@ export const SERIES_PHOTOS: Record<string, string[]> = {
 };
 
 export function getSeriesPhotos(series: string): string[] {
-  return (SERIES_PHOTOS[series] ?? []).map((f) => `/photo/${f}`);
+  return (SERIES_PHOTOS[series] ?? []).map((f) => `${import.meta.env.BASE_URL}photo/${f}`);
 }
