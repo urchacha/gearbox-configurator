@@ -69,7 +69,8 @@ export default function MotorSpecPage() {
           <SpecRow label="정격 출력" value={`${m.ratedPower} kW`} />
           <SpecRow label="정격 토크" value={`${m.ratedTorque} N·m`} />
           <SpecRow label="피크 토크" value={`${m.peakTorque} N·m`} />
-          <SpecRow label="토크 비 (피크/정격)" value={`${(m.peakTorque / m.ratedTorque).toFixed(1)}x`} />
+          {/* BUG-1: Guard against ratedTorque=0 which would produce Infinity */}
+          <SpecRow label="토크 비 (피크/정격)" value={m.ratedTorque > 0 ? `${(m.peakTorque / m.ratedTorque).toFixed(1)}x` : '-'} />
         </div>
         <div>
           <h4 className="text-sm font-semibold text-gray-700 mb-2 pb-2 border-b-2 border-gray-200">

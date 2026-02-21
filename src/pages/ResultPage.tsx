@@ -111,6 +111,10 @@ export default function ResultPage() {
   /* ── 액션 핸들러 ── */
   const handlePrint = () => window.print();
 
+  // BUG-3: navigator.clipboard.writeText rejects when the page is not focused
+  // or the browser denies the Clipboard permission. Without try/catch the
+  // unhandled rejection surfaces as a console error and the button stays in
+  // the default state without feedback.
   const handleCopyLink = async () => {
     const params = new URLSearchParams({
       motor: motor.modelName,
@@ -122,9 +126,15 @@ export default function ResultPage() {
       result: suitability,
     });
     const url = `${window.location.origin}${window.location.pathname}?${params}`;
-    await navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard API unavailable (e.g. non-HTTPS, permission denied).
+      // Fall back to selecting the URL so the user can copy manually.
+      window.prompt('아래 링크를 복사하세요:', url);
+    }
   };
 
   const handleMailto = () => {

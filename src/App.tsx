@@ -6,6 +6,16 @@ import ReducerConditionPage from './pages/ReducerConditionPage';
 import ReducerSelectPage from './pages/ReducerSelectPage';
 import ResultPage from './pages/ResultPage';
 
+// PERF-1: Static component reference map — avoids creating 5 JSX nodes on every
+// App re-render. Only the active step's component is instantiated per render.
+const PAGE_COMPONENTS: Record<number, React.ComponentType> = {
+  1: MotorSelectPage,
+  2: MotorSpecPage,
+  3: ReducerConditionPage,
+  4: ReducerSelectPage,
+  5: ResultPage,
+};
+
 function App() {
   const { currentStep, selectedMotor, selectedReducer, selectedRatio } = useSelectionStore();
 
@@ -30,17 +40,11 @@ function App() {
     }
   })();
 
-  const pages: Record<number, React.ReactNode> = {
-    1: <MotorSelectPage />,
-    2: <MotorSpecPage />,
-    3: <ReducerConditionPage />,
-    4: <ReducerSelectPage />,
-    5: <ResultPage />,
-  };
+  const PageComponent = PAGE_COMPONENTS[currentStep];
 
   return (
     <Layout canProceed={canProceed} nextTooltip={nextTooltip}>
-      {pages[currentStep]}
+      <PageComponent />
     </Layout>
   );
 }

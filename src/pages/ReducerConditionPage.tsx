@@ -144,7 +144,13 @@ export default function ReducerConditionPage() {
     return { outputRPM, outputTorque, serviceFactor, suitability, eff, ratedTorque, stage, loadFactor };
   }, [selectedMotor, selectedReducer, selectedRatio, operatingConditions.loadType]);
 
-  const seriesPhotos = selectedSeries ? getSeriesPhotos(selectedSeries) : [];
+  // PERF-3: getSeriesPhotos returns a new array on every call. Memoize so the
+  // array reference is stable and downstream JSX doesn't treat it as changed
+  // when unrelated state (e.g. operatingConditions) triggers a re-render.
+  const seriesPhotos = useMemo(
+    () => (selectedSeries ? getSeriesPhotos(selectedSeries) : []),
+    [selectedSeries],
+  );
 
   const bushing = useMemo(() => {
     if (!selectedMotor || !selectedReducer) return null;

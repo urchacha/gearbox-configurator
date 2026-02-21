@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { useSelectionStore } from '../store/selectionStore';
 import { calcOutputRPM, calcOutputTorque, calcServiceFactor, getSuitability, getEfficiency, getRatedTorque, findBushing, findAdapter, isShaftCompatible, LOAD_FACTORS } from '../utils/calculations';
 import type { Adapter, Bushing, Reducer, Suitability } from '../types';
@@ -8,8 +8,13 @@ import drawingsIndex from '../data/drawingsIndex.json';
 const reducers: Reducer[] = reducersData as unknown as Reducer[];
 const dwgIndex = drawingsIndex as Record<string, { pdf: string[]; step: string[] }>;
 
-/** 도면/CAD 다운로드 버튼 그룹 */
-function DrawingLinks({ series, size, stage, shaftHoleDiameter, mountingTap }: {
+/** 도면/CAD 다운로드 버튼 그룹
+ * PERF-4: Wrapped in React.memo to prevent re-renders when the side panel
+ * re-renders due to unrelated state changes (e.g. warningTarget toggle).
+ * Object.entries(dwgIndex) is O(n) over the full index — memoising the
+ * component avoids this traversal unless the props actually change.
+ */
+const DrawingLinks = memo(function DrawingLinks({ series, size, stage, shaftHoleDiameter, mountingTap }: {
   series: string; size: string; stage: string; shaftHoleDiameter: number; mountingTap?: string;
 }) {
   const basePrefix = `${series}|${size}|${stage}|${shaftHoleDiameter}`;
@@ -58,7 +63,7 @@ function DrawingLinks({ series, size, stage, shaftHoleDiameter, mountingTap }: {
       ))}
     </div>
   );
-}
+});
 
 const SUITABILITY_CONFIG: Record<Suitability, { label: string; icon: string; bg: string; text: string; border: string; cardBorder: string }> = {
   suitable:   { label: 'Suitable',   icon: '\u2705', bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-200', cardBorder: 'border-green-300' },
@@ -112,8 +117,14 @@ export default function ReducerSelectPage() {
   const [detailTarget, setDetailTarget] = useState<CalcResult | null>(null);
   const [warningTarget, setWarningTarget] = useState<CalcResult | null>(null);
 
+  // PERF-2: selectedReducer is only used here as a null-guard (the actual model
+  // set is derived from selectedSeries / selectedMotor). Using a boolean avoids
+  // re-running this expensive loop every time the reducer object identity
+  // changes after the user clicks a card in the list.
+  const hasReducer = selectedReducer !== null;
+
   const candidates = useMemo(() => {
-    if (!selectedMotor || !selectedReducer || !selectedRatio) return [];
+    if (!selectedMotor || !hasReducer || !selectedRatio) return [];
 
     const loadFactor = LOAD_FACTORS[operatingConditions.loadType] ?? 1.0;
     const list: CalcResult[] = [];
@@ -142,7 +153,7 @@ export default function ReducerSelectPage() {
     const order: Record<Suitability, number> = { suitable: 0, caution: 1, unsuitable: 2 };
     list.sort((a, b) => order[a.suitability] - order[b.suitability] || b.serviceFactor - a.serviceFactor);
     return list;
-  }, [selectedMotor, selectedReducer, selectedRatio, selectedSeries, operatingConditions.loadType]);
+  }, [selectedMotor, hasReducer, selectedRatio, selectedSeries, operatingConditions.loadType]);
 
   if (!selectedMotor || !selectedReducer || !selectedRatio) {
     return (
@@ -199,14 +210,16 @@ export default function ReducerSelectPage() {
               </button>
             </div>
           ) : (
-            candidates.map((item, idx) => {
+            candidates.map((item) => {
               const sc = SUITABILITY_CONFIG[item.suitability];
               const isUnsub = item.suitability === 'unsuitable';
               const isDetail = detailTarget?.reducer.id === item.reducer.id && detailTarget?.ratio === item.ratio;
 
               return (
                 <div
-                  key={`${item.reducer.id}-${item.ratio}-${idx}`}
+                  // BUG-6: reducer.id + ratio is already unique per combination;
+                  // appending idx was masking potential key stability issues.
+                  key={`${item.reducer.id}-${item.ratio}`}
                   onClick={() => setDetailTarget(item)}
                   className={`border rounded-lg p-4 cursor-pointer transition-all
                     ${isDetail ? `ring-2 ring-blue-500 ${sc.cardBorder}` : 'border-gray-200 hover:border-gray-300'}

@@ -266,7 +266,9 @@ export default function MotorSelectPage() {
                         <span className="text-xs text-gray-400 ml-3 shrink-0">
                           {motor.ratedPower != null
                             ? motor.ratedPower < 1
-                              ? `${motor.ratedPower * 1000}W`
+                              // BUG-2: Use Math.round to avoid IEEE-754 artifacts
+                              // e.g. 0.75 * 1000 → "750W" not "750.0000000001W"
+                              ? `${Math.round(motor.ratedPower * 1000)}W`
                               : `${motor.ratedPower}kW`
                             : ''}
                           {motor.ratedRPM != null ? ` · ${motor.ratedRPM.toLocaleString()}rpm` : ''}
