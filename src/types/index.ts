@@ -1,6 +1,8 @@
 export interface Motor {
   id: string;
   brand: string;
+  series: string;           // 제품군 (예: HG, MINAS A6, SGM7)
+  basicType: string;        // 카테고리 (예: HG-KR, HG-MR, SGM7A)
   modelName: string;
   shaftDiameter: number;    // mm
   ratedPower: number;       // kW
@@ -8,20 +10,17 @@ export interface Motor {
   peakTorque: number;       // Nm
   ratedRPM: number;
   maxRPM: number;
-  inertia: number;          // kgm² × 10⁻⁴
-  // motor_data 출처 추가 스펙 (선택)
-  mountingTap?: string;     // 마운팅 탭 규격 (M3, M4, M5, M6, M8, M12)
-  svGroup?: string;
+  inertia: number;          // kg·cm² (= kgm² × 10⁻⁴)
+  // 추가 스펙 (선택)
   weightKg?: number;
   shaftLength?: number;
-  shaftActualLength?: number;
   centeringDia?: number;
   centeringHeight?: number;
   fixingPcd?: number;
   fixingHoleSize?: number;
   bodySize?: number;
-  flangeThickness?: number;
-  inertiaBk?: number;
+  adapterCode?: string;
+  mountingTap?: string;     // 마운팅 탭 (M3/M4/M5/M6, adapterCode에서 파싱)
 }
 
 export interface RatioSpec {

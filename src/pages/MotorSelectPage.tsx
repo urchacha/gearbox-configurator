@@ -3,28 +3,15 @@ import { useSelectionStore } from '../store/selectionStore';
 import type { Motor } from '../types';
 import motorsData from '../data/motors.json';
 
-const motors: Motor[] = motorsData;
+const motors: Motor[] = motorsData as Motor[];
 const allBrands = [...new Set(motors.map((m) => m.brand))].sort();
-
-/** 모델명에서 시리즈(카테고리) 접두사 추출 */
-function extractSeries(modelName: string): string {
-  // "1FK7042-2AC71" → "1FK7"  /  "APMC-FCL08A" → "APMC"  /  "HG-SR26" → "HG"
-  // "FMA EK06" → "FMA"  /  "R88M-..." → "R88M"  /  "BSH0703P" → "BSH"
-  // 공백으로 나뉘면 첫 토큰, 아니면 '-' 첫 토큰에서 뒤쪽 숫자 제거
-  const spaceIdx = modelName.indexOf(' ');
-  if (spaceIdx > 0) return modelName.slice(0, spaceIdx);
-  const dashIdx = modelName.indexOf('-');
-  const base = dashIdx > 0 ? modelName.slice(0, dashIdx) : modelName;
-  // 뒤쪽 순수 숫자 부분 제거 (예: "1FK7042" → "1FK", "AM8011" → "AM", "BSH0703P" → "BSH")
-  const trimmed = base.replace(/[0-9]+[A-Za-z]*$/, '');
-  return trimmed || base;
-}
 
 export default function MotorSelectPage() {
   const { selectedMotor, setSelectedMotor } = useSelectionStore();
 
   const [brand, setBrand] = useState<string>('');
   const [series, setSeries] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
   const [modelQuery, setModelQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [highlightIdx, setHighlightIdx] = useState(-1);
@@ -41,33 +28,44 @@ export default function MotorSelectPage() {
   // 브랜드 내 시리즈 목록
   const seriesList = useMemo(() => {
     if (!brand) return [];
-    const map = new Map<string, number>();
-    for (const m of brandMotors) {
-      const s = extractSeries(m.modelName);
-      map.set(s, (map.get(s) ?? 0) + 1);
-    }
-    return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+    const set = new Set(brandMotors.map((m) => m.series));
+    return [...set].sort();
   }, [brand, brandMotors]);
 
   // 시리즈에 해당하는 모터
   const seriesMotors = useMemo(() => {
     if (!series) return brandMotors;
-    return brandMotors.filter((m) => extractSeries(m.modelName) === series);
+    return brandMotors.filter((m) => m.series === series);
   }, [series, brandMotors]);
+
+  // 시리즈 내 카테고리(basicType) 목록
+  const categoryList = useMemo(() => {
+    if (!brand) return [];
+    const set = new Set(seriesMotors.map((m) => m.basicType));
+    return [...set].sort();
+  }, [brand, seriesMotors]);
+
+  // 카테고리에 해당하는 모터
+  const categoryMotors = useMemo(() => {
+    if (!category) return seriesMotors;
+    return seriesMotors.filter((m) => m.basicType === category);
+  }, [category, seriesMotors]);
 
   // 검색어로 필터링
   const filteredModels = useMemo(() => {
     if (!brand) return [];
-    if (!modelQuery) return seriesMotors;
+    if (!modelQuery) return categoryMotors;
     const q = modelQuery.toLowerCase();
-    return seriesMotors.filter((m) => m.modelName.toLowerCase().includes(q));
-  }, [brand, modelQuery, seriesMotors]);
+    return categoryMotors.filter((m) => m.modelName.toLowerCase().includes(q));
+  }, [brand, modelQuery, categoryMotors]);
 
   // 외부 클릭 시 드롭다운 닫기
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node) &&
-          inputRef.current && !inputRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current && !dropdownRef.current.contains(e.target as Node) &&
+        inputRef.current && !inputRef.current.contains(e.target as Node)
+      ) {
         setShowDropdown(false);
       }
     };
@@ -78,6 +76,7 @@ export default function MotorSelectPage() {
   const handleBrandChange = (newBrand: string) => {
     setBrand(newBrand);
     setSeries('');
+    setCategory('');
     setModelQuery('');
     setPendingMotor(null);
     setHighlightIdx(-1);
@@ -85,6 +84,14 @@ export default function MotorSelectPage() {
 
   const handleSeriesChange = (newSeries: string) => {
     setSeries(newSeries);
+    setCategory('');
+    setModelQuery('');
+    setPendingMotor(null);
+    setHighlightIdx(-1);
+  };
+
+  const handleCategoryChange = (newCategory: string) => {
+    setCategory(newCategory);
     setModelQuery('');
     setPendingMotor(null);
     setHighlightIdx(-1);
@@ -97,9 +104,7 @@ export default function MotorSelectPage() {
   };
 
   const handleConfirm = () => {
-    if (pendingMotor) {
-      setSelectedMotor(pendingMotor);
-    }
+    if (pendingMotor) setSelectedMotor(pendingMotor);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -130,6 +135,9 @@ export default function MotorSelectPage() {
     { label: '할로우로터리 카탈로그', file: '할로우로터리_카다로그_종합_250117.pdf' },
   ];
 
+  // 시리즈가 1개뿐이면 숨김 처리 (불필요한 단계 제거)
+  const showSeriesSelect = seriesList.length > 1;
+
   return (
     <div>
       <div className="flex items-start justify-between mb-1">
@@ -155,9 +163,10 @@ export default function MotorSelectPage() {
 
       {/* Selection Row */}
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-8">
-        <div className="flex items-end gap-4">
-          {/* Brand Dropdown */}
-          <div className="w-48 shrink-0">
+        <div className="flex items-end gap-4 flex-wrap">
+
+          {/* Brand */}
+          <div className="w-44 shrink-0">
             <label className="block text-xs font-medium text-gray-500 mb-1.5">브랜드</label>
             <select
               value={brand}
@@ -173,27 +182,48 @@ export default function MotorSelectPage() {
             </select>
           </div>
 
-          {/* Series Dropdown */}
-          <div className="w-44 shrink-0">
-            <label className="block text-xs font-medium text-gray-500 mb-1.5">시리즈</label>
+          {/* Series — 브랜드 내 시리즈가 2개 이상일 때만 표시 */}
+          {showSeriesSelect && (
+            <div className="w-36 shrink-0">
+              <label className="block text-xs font-medium text-gray-500 mb-1.5">시리즈</label>
+              <select
+                value={series}
+                onChange={(e) => handleSeriesChange(e.target.value)}
+                disabled={!brand}
+                className={`w-full border rounded-lg px-4 py-3 text-sm bg-white
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                  disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed
+                  ${series ? 'border-blue-500 text-gray-900' : 'border-gray-300 text-gray-400'}`}
+              >
+                <option value="">전체</option>
+                {seriesList.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Category (basicType) */}
+          <div className="w-40 shrink-0">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5">카테고리</label>
             <select
-              value={series}
-              onChange={(e) => handleSeriesChange(e.target.value)}
+              value={category}
+              onChange={(e) => handleCategoryChange(e.target.value)}
               disabled={!brand}
               className={`w-full border rounded-lg px-4 py-3 text-sm bg-white
                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
                 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed
-                ${series ? 'border-blue-500 text-gray-900' : 'border-gray-300 text-gray-400'}`}
+                ${category ? 'border-blue-500 text-gray-900' : 'border-gray-300 text-gray-400'}`}
             >
-              <option value="">전체 시리즈</option>
-              {seriesList.map(([s]) => (
-                <option key={s} value={s}>{s}</option>
+              <option value="">전체</option>
+              {categoryList.map((c) => (
+                <option key={c} value={c}>{c}</option>
               ))}
             </select>
           </div>
 
-          {/* Model Search Input */}
-          <div className="flex-1 min-w-[200px] relative">
+          {/* Model Search */}
+          <div className="flex-1 min-w-[180px] relative">
             <label className="block text-xs font-medium text-gray-500 mb-1.5">모델 선택</label>
             <input
               ref={inputRef}
@@ -213,7 +243,6 @@ export default function MotorSelectPage() {
                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
                 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
             />
-            {/* Dropdown */}
             {showDropdown && brand && (
               <div
                 ref={dropdownRef}
@@ -232,7 +261,17 @@ export default function MotorSelectPage() {
                         ${idx === highlightIdx ? 'bg-blue-50' : 'hover:bg-gray-50'}
                         ${pendingMotor?.id === motor.id ? 'bg-blue-50' : ''}`}
                     >
-                      <span className="text-sm text-gray-800">{motor.modelName}</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-800">{motor.modelName}</span>
+                        <span className="text-xs text-gray-400 ml-3 shrink-0">
+                          {motor.ratedPower != null
+                            ? motor.ratedPower < 1
+                              ? `${motor.ratedPower * 1000}W`
+                              : `${motor.ratedPower}kW`
+                            : ''}
+                          {motor.ratedRPM != null ? ` · ${motor.ratedRPM.toLocaleString()}rpm` : ''}
+                        </span>
+                      </div>
                     </div>
                   ))
                 )}
@@ -254,6 +293,17 @@ export default function MotorSelectPage() {
             </button>
           </div>
         </div>
+
+        {/* 필터 요약 */}
+        {brand && (
+          <div className="mt-4 flex items-center gap-2 text-xs text-gray-400">
+            <span>검색 범위:</span>
+            <span className="font-medium text-gray-600">{brand}</span>
+            {series && <><span>›</span><span className="font-medium text-gray-600">{series}</span></>}
+            {category && <><span>›</span><span className="font-medium text-gray-600">{category}</span></>}
+            <span className="ml-1 text-gray-400">({filteredModels.length}개)</span>
+          </div>
+        )}
       </div>
 
       {/* Selected Motor Spec Card */}
@@ -268,12 +318,20 @@ export default function MotorSelectPage() {
 
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs text-blue-500 font-medium">{selectedMotor.brand}</p>
+              <p className="text-xs text-blue-500 font-medium">
+                {selectedMotor.brand}
+                {selectedMotor.series && ` · ${selectedMotor.series}`}
+                {selectedMotor.basicType && ` · ${selectedMotor.basicType}`}
+              </p>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{selectedMotor.modelName}</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-2 text-sm">
                 <div>
                   <span className="text-gray-400 text-xs">정격 출력</span>
-                  <p className="font-semibold text-gray-800">{selectedMotor.ratedPower} kW</p>
+                  <p className="font-semibold text-gray-800">
+                    {selectedMotor.ratedPower < 1
+                      ? `${selectedMotor.ratedPower * 1000} W`
+                      : `${selectedMotor.ratedPower} kW`}
+                  </p>
                 </div>
                 <div>
                   <span className="text-gray-400 text-xs">정격 RPM</span>
