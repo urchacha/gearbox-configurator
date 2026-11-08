@@ -1,0 +1,1177 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>감속기 선정툴</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* 레이아웃: 상단 바 / 5단계 스테퍼 / 단계별 카드 1장 / 하단 이전·다음 */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #f6f8fc;
+  --line: #e1e6ef;
+  --fg: #161b26;
+  --muted: #6b7486;
+  --accent: #4a5af0;
+  --accent-fg: #ffffff;
+  --accent-soft: #eef0fe;
+  --accent-line: #c9cffb;
+  --ok: #17803d;
+  --ok-soft: #e4f5ea;
+  --warn: #9a5b00;
+  --warn-soft: #fdf2dd;
+  --danger: #c0352b;
+  --danger-soft: #fdeceb;
+  --font: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --mono: ui-monospace, Consolas, "D2Coding", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f131b; --surface: #171d28; --surface-2: #1d2532; --line: #2c3646; --fg: #e7ebf2; --muted: #9aa5b8;
+    --accent: #7d89ff; --accent-fg: #0d1022; --accent-soft: #232a4d; --accent-line: #3a4380;
+    --ok: #5fd08a; --ok-soft: #173622; --warn: #e8ad53; --warn-soft: #3a2b12; --danger: #f2877d; --danger-soft: #41201d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f131b; --surface: #171d28; --surface-2: #1d2532; --line: #2c3646; --fg: #e7ebf2; --muted: #9aa5b8;
+  --accent: #7d89ff; --accent-fg: #0d1022; --accent-soft: #232a4d; --accent-line: #3a4380;
+  --ok: #5fd08a; --ok-soft: #173622; --warn: #e8ad53; --warn-soft: #3a2b12; --danger: #f2877d; --danger-soft: #41201d;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font: 14px/1.55 var(--font); }
+button, input, select { font: inherit; color: inherit; }
+.num { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* 상단 */
+.top { background: var(--surface); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 12px; padding-block: 14px; }
+.logo { width: 34px; height: 34px; color: var(--accent); flex: none; }
+.brand h1 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+@media (max-width: 600px) { .conn { display: none; } .brand p { display: none; } }
+.brand p { margin: 0; font-size: 12px; color: var(--muted); }
+.top .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.conn { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.conn::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+.conn.on::before { background: var(--ok); }
+
+/* 스테퍼 */
+.stepper { background: var(--surface); border-bottom: 1px solid var(--line); }
+.stepper ol { list-style: none; margin: 0 auto; padding: 22px 0 18px; display: grid; grid-template-columns: repeat(5, 1fr); max-width: 820px; }
+.stepper li { position: relative; display: grid; justify-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.stepper li::before { content: ""; position: absolute; top: 19px; left: calc(-50% + 30px); right: calc(50% + 30px); height: 2px; background: var(--line); }
+.stepper li:first-child::before { display: none; }
+.stepper li.done::before, .stepper li.cur::before { background: var(--accent); }
+.stepper .dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; background: var(--surface-2); border: 2px solid var(--line); color: var(--muted); }
+.stepper li.cur { color: var(--accent); font-weight: 700; }
+.stepper li.cur .dot { border-color: var(--accent); color: var(--accent); background: var(--surface); box-shadow: 0 0 0 4px var(--accent-soft); }
+.stepper li.done .dot { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.stepper li.done { color: var(--fg); cursor: pointer; }
+@media (max-width: 560px) { .stepper li span.lbl { font-size: 11px; } .stepper .dot { width: 32px; height: 32px; } .stepper li::before { top: 15px; } }
+
+main { padding-block: 28px 48px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; box-shadow: 0 1px 3px rgba(20, 30, 60, .05); display: grid; gap: 20px; }
+.card-head { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.card-head h2 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; }
+.card-head p { margin: 4px 0 0; color: var(--muted); }
+.card-head .aside { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 7px 14px; min-height: 36px; font-weight: 600; font-size: 13px; cursor: pointer; text-decoration: none; color: var(--fg); }
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.btn.primary:hover { filter: brightness(1.07); }
+.btn.lg { min-height: 46px; padding: 10px 26px; font-size: 15px; border-radius: 10px; }
+.btn.link { border: 0; background: none; color: var(--muted); padding: 4px; min-height: 0; font-weight: 500; }
+.btn.link:hover { color: var(--danger); }
+.btn:disabled { opacity: .45; cursor: not-allowed; filter: none; }
+.btn svg { width: 15px; height: 15px; }
+
+.panel { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+.form-row { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(220px, 2.2fr) auto; gap: 14px; align-items: end; }
+@media (max-width: 760px) { .form-row { grid-template-columns: 1fr 1fr; } .form-row .grow { grid-column: 1 / -1; } .form-row .act { grid-column: 1 / -1; } }
+label.f { display: grid; gap: 6px; min-width: 0; align-content: start; }
+label.f > span { font-size: 13px; color: var(--muted); font-weight: 600; }
+label.f .hint { font-size: 12px; color: var(--muted); font-weight: 400; }
+input[type=text], input[type=number], input[type=url], select {
+  width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--surface);
+}
+input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+input:disabled, select:disabled { background: var(--surface-2); color: var(--muted); }
+
+/* 선택된 모터 */
+.picked { border: 1px solid var(--accent-line); background: var(--accent-soft); border-radius: 12px; padding: 20px 22px; display: grid; gap: 14px; }
+.picked .t { display: flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 700; }
+.picked .t svg { width: 20px; height: 20px; }
+.picked .path { font-size: 12px; color: var(--accent); }
+.picked .name { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; margin-top: 2px; }
+.picked .head { display: flex; align-items: flex-start; gap: 12px; }
+.picked .head .btn { margin-left: auto; }
+.kv { display: flex; flex-wrap: wrap; gap: 8px 40px; }
+.kv div { display: grid; gap: 2px; }
+.kv dt { font-size: 12px; color: var(--muted); }
+.kv dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+.empty-pick { border: 1px dashed var(--line); border-radius: 12px; padding: 26px; text-align: center; color: var(--muted); }
+
+/* 사양표 */
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.spec { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.spec h3 { margin: 0; font-size: 13px; font-weight: 700; padding: 10px 16px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
+.spec table { width: 100%; border-collapse: collapse; }
+.spec th, .spec td { padding: 9px 16px; border-bottom: 1px solid var(--line); font-size: 13px; text-align: left; }
+.spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
+.spec th { color: var(--muted); font-weight: 500; width: 46%; }
+.spec td { font-weight: 600; font-variant-numeric: tabular-nums; }
+.spec td small { color: var(--muted); font-weight: 400; margin-left: 4px; }
+
+.callout { border-radius: 10px; padding: 12px 16px; font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+.callout.ok { background: var(--ok-soft); color: var(--ok); }
+.callout.warn { background: var(--warn-soft); color: var(--warn); }
+.callout.bad { background: var(--danger-soft); color: var(--danger); }
+.callout.info { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+.callout b { color: inherit; }
+
+/* 조건 */
+.choice { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.choice label { border: 1.5px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; display: grid; gap: 4px; background: var(--surface); }
+.choice label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice b { font-size: 15px; }
+.choice span { font-size: 12px; color: var(--muted); }
+.cond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; align-items: start; }
+.section-title { font-size: 14px; font-weight: 700; margin: 0 0 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 12px; font-size: 13px; cursor: pointer; font-variant-numeric: tabular-nums; }
+.chips button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.seg { display: inline-flex; background: var(--surface-2); border: 1px solid var(--line); border-radius: 9px; padding: 3px; gap: 2px; flex-wrap: wrap; }
+.seg button { border: 0; background: none; padding: 6px 14px; border-radius: 7px; cursor: pointer; font-weight: 600; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgba(0,0,0,.1); }
+
+/* 결과 표 */
+.res-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.res-bar .count { color: var(--muted); font-size: 13px; }
+.res-bar .spacer { flex: 1; }
+.tbl-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 12px; max-height: 62vh; }
+table.res { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+table.res th { position: sticky; top: 0; background: var(--surface-2); color: var(--muted); font-weight: 600; font-size: 12px; padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; line-height: 1.25; }
+table.res th small { display: block; font-weight: 500; font-size: 10.5px; }
+table.res td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.res tbody tr { cursor: pointer; }
+table.res tbody tr:hover td { background: var(--surface-2); }
+table.res tbody tr.sel td { background: var(--accent-soft); }
+table.res tbody tr.sel td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+table.res td.code { font-family: var(--mono); font-size: 12px; }
+.pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.bad { background: var(--danger-soft); color: var(--danger); }
+.pill.caution { background: transparent; color: var(--warn); border: 1px solid currentColor; padding: 1px 8px; }
+.bar { display: inline-grid; grid-template-columns: 54px auto; gap: 6px; align-items: center; }
+.bar i { display: block; height: 6px; border-radius: 3px; background: var(--line); position: relative; overflow: hidden; }
+.bar i b { position: absolute; inset: 0 auto 0 0; background: var(--ok); border-radius: 3px; }
+.bar i b.warn { background: var(--warn); } .bar i b.bad { background: var(--danger); }
+
+/* 최종 */
+.drawing-body { padding: 14px 16px; display: grid; gap: 12px; }
+.dk { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+.dk span { color: var(--muted); }
+.dk code { font-family: var(--mono); font-size: 14px; font-weight: 700; background: var(--surface-2); padding: 3px 8px; border-radius: 6px; }
+.dfiles { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
+.dfiles .btn small { font-weight: 500; color: var(--muted); margin-left: 4px; }
+.muted { margin: 0; color: var(--muted); font-size: 13px; }
+.final { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: start; }
+.combo { border: 1px solid var(--accent-line); background: var(--accent-soft); border-radius: 12px; padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+.combo .part { display: grid; }
+.combo .part small { font-size: 11px; color: var(--muted); }
+.combo .part b { font-size: 17px; }
+.combo .plus { color: var(--accent); font-weight: 800; font-size: 18px; }
+.combo .verdict { margin-left: auto; flex: 1 1 300px; max-width: 520px; padding: 10px 14px; }
+@media (max-width: 760px) { .combo .verdict { margin-left: 0; max-width: none; width: 100%; } }
+
+.nav { display: flex; gap: 10px; margin-top: 20px; }
+.nav .spacer { flex: 1; }
+
+/* 연결 설정 */
+.setup { max-width: 560px; margin: 0 auto; }
+#toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(22px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 13px; max-width: min(560px, calc(100vw - 32px)); z-index: 50; }
+#toast.err { background: var(--danger); color: #fff; }
+.loading { padding: 50px 0; text-align: center; color: var(--muted); }
+
+/* 감속기 종류 안내 팝업 */
+.modal { position: fixed; inset: 0; z-index: 60; background: rgba(12, 18, 30, .55); display: grid; place-items: center; overflow: auto;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.modal-box { background: var(--surface); border-radius: 14px; width: min(640px, 100%); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); min-height: 0; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+.modal-head { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.modal-head h3 { margin: 0; font-size: 17px; flex: 1; }
+.modal-body { overflow-y: auto; overscroll-behavior: contain; min-height: 0; flex: 1 1 auto; padding: 18px 20px 22px; display: grid; gap: 18px; align-content: start; }
+.photo-group h4 { margin: 0 0 10px; font-size: 13px; color: var(--muted); font-weight: 600; }
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, 100px); gap: 12px; justify-content: center; }
+.photo-grid figure { margin: 0; width: 100px; display: grid; gap: 4px; }
+.photo-grid img { width: 100px; height: 100px; object-fit: contain; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; display: block; }
+.photo-grid figcaption { font-size: 12px; text-align: center; color: var(--fg); word-break: break-all; }
+.photo-empty { color: var(--muted); text-align: center; padding: 30px 0; }
+.photo-grid .desc { display: block; min-height: 2.6em; font-size: 11px; line-height: 1.3; color: var(--muted); text-align: center; word-break: keep-all; overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.photo-pick:hover .desc, .photo-pick.on .desc { color: var(--fg); }
+.photo-tip { margin: 0 0 12px; font-size: 12px; color: var(--muted); text-align: center; }
+.photo-pick { all: unset; box-sizing: border-box; width: 100px; display: grid; gap: 4px; cursor: pointer; border-radius: 10px; }
+.photo-pick:hover img, .photo-pick:focus-visible img { border-color: var(--accent, #4f5bd5); box-shadow: 0 0 0 2px var(--accent, #4f5bd5); }
+.photo-pick:focus-visible { outline: 2px solid var(--accent, #4f5bd5); outline-offset: 2px; }
+.photo-pick.on img { border-color: var(--accent, #4f5bd5); box-shadow: 0 0 0 3px var(--accent, #4f5bd5); }
+.photo-pick .cap { font-size: 12px; text-align: center; color: var(--fg); word-break: break-all; }
+.photo-pick.on .cap { font-weight: 700; }
+.photo-off { opacity: .45; cursor: not-allowed; }
+.photo-none { cursor: default; }
+.photo-off small { display: block; font-size: 10px; color: var(--muted); }
+@media print {
+  .top .right, .stepper, .nav, .no-print { display: none !important; }
+  body { background: #fff; }
+  .card { box-shadow: none; border: 0; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <div class="brand"><h1>감속기 선정툴</h1><p>Gearbox Configuration Tool</p></div>
+    <div class="right">
+      <span class="conn" id="connState">연결 안 됨</span>
+      <button class="btn" id="btnSettings">연결 설정</button>
+    </div>
+  </div>
+</header>
+
+<nav class="stepper" id="stepper" aria-label="진행 단계" hidden>
+  <ol>
+    <li data-step="1"><span class="dot">1</span><span class="lbl">모터 선택</span></li>
+    <li data-step="2"><span class="dot">2</span><span class="lbl">모터 확인</span></li>
+    <li data-step="3"><span class="dot">3</span><span class="lbl">감속기 조건</span></li>
+    <li data-step="4"><span class="dot">4</span><span class="lbl">감속기 선택</span></li>
+    <li data-step="5"><span class="dot">5</span><span class="lbl">최종 확인</span></li>
+  </ol>
+</nav>
+
+<main class="wrap" id="main"><div class="loading">불러오는 중…</div></main>
+<div id="toast" hidden></div>
+<div class="modal" id="photoModal" hidden role="dialog" aria-modal="true" aria-labelledby="photoTitle"><div class="modal-box"><div class="modal-head"><h3 id="photoTitle"></h3><button class="btn" id="photoClose">닫기</button></div><div class="modal-body" id="photoBody"></div></div></div>
+<datalist id="dl-model"></datalist>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = (s, el = document) => el.querySelector(s);
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+};
+let toastTimer;
+function toast(msg, err = false) {
+  const t = $('#toast'); t.textContent = msg; t.className = err ? 'err' : ''; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, err ? 7000 : 2600);
+}
+const N = v => (v == null || v === '' ? null : Number(v));
+const fmt = (v, d = 2) => {
+  if (v == null || Number.isNaN(v)) return '–';
+  const n = Number(v);
+  return n.toLocaleString('ko-KR', { maximumFractionDigits: Math.abs(n) >= 100 ? 0 : d });
+};
+const ratioNum = code => { const m = String(code ?? '').match(/\d+(?:\.\d+)?/); return m ? +m[0] : null; };   // 104.43K → 104.43
+const cmpNat = (a, b) => String(a ?? '').localeCompare(String(b ?? ''), 'ko', { numeric: true });
+function errText(e) {
+  const m = (e && (e.message || e.error_description)) || String(e);
+  if (/Failed to fetch|NetworkError/i.test(m)) return 'Supabase에 접속하지 못했습니다. Project URL과 인터넷 연결을 확인하세요.';
+  if (/Invalid API key|No API key/i.test(m)) return 'API 키가 올바르지 않습니다. 연결 설정에서 anon / publishable 키를 확인하세요.';
+  if (/permission denied|42501/i.test(m)) return '조회 권한이 없습니다. supabase_policies.sql 을 실행했는지 확인하세요.';
+  if (/does not exist|PGRST205|Could not find the table/i.test(m)) return '테이블을 찾지 못했습니다. 데이터 SQL 스크립트를 실행했는지 확인하세요.';
+  return m;
+}
+
+/* ---------- 연결 ---------- */
+const CFG_URL = 'mgdb.url', CFG_KEY = 'mgdb.key';
+const CATALOG = { bucket: 'catalogue', planetary: 'planetary.pdf', hollow: 'hollow.pdf' };
+const DRAWING = { bucket: 'download', exts: { pdf: 'PDF 도면', step: 'STEP 3D', stp: 'STEP 3D' } };
+let sb = null;
+async function fetchAll(table, select = '*', order) {
+  const out = [];
+  for (let from = 0; ; from += 1000) {
+    let q = sb.from(table).select(select).range(from, from + 999);
+    if (order) q = q.order(order, { ascending: true });
+    const { data, error } = await q;
+    if (error) throw error;
+    out.push(...data);
+    if (data.length < 1000) break;
+  }
+  return out;
+}
+
+/* ---------- 데이터 ---------- */
+const DB = { seriesDesc: new Map(), motors: [], planetary: [], hollow: [], slotsBySize: new Map(), ifaceById: new Map(), bushings: [], bushingLoaded: false, holes: new Map(), holeLoaded: false };
+async function loadAll() {
+  const [motors, btypes, mseries, mfrs, plan, hol, models, ifaces, links] = await Promise.all([
+    fetchAll('motor', '*', 'motor_id'), fetchAll('motor_basic_type'), fetchAll('motor_series'), fetchAll('manufacturer'),
+    fetchAll('planetary_gearbox', '*', 'gearbox_id'), fetchAll('hollow_gearbox', '*', 'gearbox_id'),
+    fetchAll('model'), fetchAll('interface'), fetchAll('model_interface'),
+  ]);
+  const mById = new Map(mfrs.map(x => [x.manufacturer_id, x])), sById = new Map(mseries.map(x => [x.series_id, x])), bById = new Map(btypes.map(x => [x.basic_type_id, x]));
+  DB.motors = motors.map(m => {
+    const b = bById.get(m.basic_type_id), s = b && sById.get(b.series_id), f = s && mById.get(s.manufacturer_id);
+    return { ...m, basic_type: b?.basic_type_name ?? '', series: s?.series_name ?? '', manufacturer: f?.name ?? '' };
+  }).sort((a, b) => cmpNat(a.manufacturer, b.manufacturer) || cmpNat(a.series, b.series) || cmpNat(a.motor_code, b.motor_code));
+  DB.planetary = plan; DB.hollow = hol;
+  // 부싱 표 (없으면 부싱 없이 직결만 판정)
+  // 입력 홀: basic_dimension 테이블을 먼저, 없으면 input_hole 테이블 (컬럼 이름은 자동 인식). 둘 다 없으면 어댑터 축경으로 판단
+  DB.holes = new Map(); DB.holeLoaded = false; DB.holeSource = '';
+  for (const table of ['basic_dimension', 'input_hole']) {
+    try {
+      const rows = await fetchAll(table);
+      const cols = rows.length ? Object.keys(rows[0]) : [];
+      const sCol = pickCol(cols, ['series_code', 'series']);
+      const zCol = pickCol(cols, ['size']);
+      const hCol = pickCol(cols, ['basic_hole', 'input_hole', 'input_hole_dia', 'hole', 'input_g', 'gearbox_input_dia', 'input_dia']);
+      if (!sCol || !zCol || !hCol) { console.warn(`${table}: 시리즈/사이즈/입력 홀 컬럼을 찾지 못함`, cols); continue; }
+      for (const r of rows) if (r[sCol] != null && N(r[hCol]) != null) DB.holes.set(holeKey(r[sCol], r[zCol]), N(r[hCol]));
+      DB.holeLoaded = true; DB.holeSource = table;
+      break;
+    } catch { /* 테이블 없음 → 다음 후보 */ }
+  }
+  // 시리즈 설명 (사진 팝업에 표시). 테이블이 없거나 못 읽어도 나머지는 그대로 동작
+  try { DB.seriesDesc = new Map((await fetchAll('series')).filter(r => r.series_code && r.description).map(r => [String(r.series_code).toUpperCase(), String(r.description).trim()])); }
+  catch { DB.seriesDesc = new Map(); }
+  try { DB.bushings = await fetchAll('bushing', '*', 'bushing_code'); DB.bushingLoaded = true; }
+  catch { DB.bushings = []; DB.bushingLoaded = false; }
+  DB.ifaceById = new Map(ifaces.map(i => [i.interface_id, i]));
+  const modelById = new Map(models.map(m => [m.model_id, m]));
+  DB.slotsBySize = new Map();   // "GPB|060" -> [{type, slot, iface}]
+  for (const l of links) {
+    const m = modelById.get(l.model_id); if (!m) continue;
+    const k = m.series_code + '|' + m.size;
+    if (!DB.slotsBySize.has(k)) DB.slotsBySize.set(k, []);
+    DB.slotsBySize.get(k).push({ type: l.motor_type, slot: l.slot_no, iface: DB.ifaceById.get(l.interface_id) });
+  }
+}
+
+/* 모터와 맞는 어댑터: 파일롯경·PCD·체결나사는 같아야 하고,
+   축경은 같으면 직결, 다르면 부싱(모터 축경 S → 감속기 입력경 G)으로 맞춤. 직결을 먼저 고름 */
+const same = (a, b) => a != null && b != null && Math.abs(Number(a) - Number(b)) < 1e-6;
+const pickCol = (cols, names) => cols.find(c => names.includes(String(c).toLowerCase())) || null;
+const normSize = z => { const t = String(z ?? '').trim().toUpperCase(); return /^\d+$/.test(t) ? String(Number(t)) : t; };   // '042' = '42'
+const holeKey = (series, size) => String(series ?? '').trim().toUpperCase() + '|' + normSize(size);
+// 부싱: 모터 축경 → 감속기 입력경. 부싱 표에 시리즈·사이즈 컬럼이 있으면 그것까지 맞는 부싱을 먼저 고름
+function bushingFor(motorShaft, inputDia, series, size) {
+  const hits = DB.bushings.filter(bu => same(bu.motor_shaft_dia, motorShaft) && same(bu.gearbox_input_dia, inputDia));
+  if (!hits.length) return null;
+  const sCol = pickCol(Object.keys(hits[0]), ['series_code', 'series']), zCol = pickCol(Object.keys(hits[0]), ['size']);
+  if (series != null && (sCol || zCol)) {
+    const fits = bu => (!sCol || bu[sCol] == null || bu[sCol] === '' || String(bu[sCol]).toUpperCase() === String(series).toUpperCase())
+                    && (!zCol || bu[zCol] == null || bu[zCol] === '' || normSize(bu[zCol]) === normSize(size));
+    const exact = hits.find(bu => fits(bu) && (!sCol || bu[sCol]) && (!zCol || bu[zCol]));
+    return exact || hits.find(fits) || null;
+  }
+  return hits[0];
+}
+// 모터 종류로 어댑터 슬롯 종류 결정: 스테핑(스텝) 모터 → ST, 그 외(서보) → SV
+// PCD 비교: 스테핑 모터는 카탈로그 값이 사각 볼트 간격(예: 31)인 경우가 많아, 대각선 PCD(31×√2 = 43.8)도 같은 것으로 봄
+const pcdMatch = (ifacePcd, motor) => same(ifacePcd, motor.pcd)
+  || (slotTypeOf(motor) === 'ST' && motor.pcd != null && Math.abs(Number(ifacePcd) - Number(motor.pcd) * Math.SQRT2) < 0.15);
+const slotTypeOf = motor => /step|스테핑|스텝/i.test(String(motor.motor_type || '')) ? 'ST' : 'SV';
+function adapterFor(motor, series, size) {
+  const st = slotTypeOf(motor);
+  const slots = (DB.slotsBySize.get(series + '|' + size) || []).filter(s => s.type === st && s.iface
+    && same(s.iface.pilot_dia, motor.centering) && pcdMatch(s.iface.pcd, motor)
+    && String(s.iface.tap_size).toUpperCase() === String(motor.mounting_thread || '').toUpperCase())
+    .sort((a, b) => a.slot - b.slot);
+  const direct = slots.find(s => same(s.iface.shaft_dia, motor.diameter));
+  if (direct) return { ...direct, bushing: null };
+  for (const s of slots) {
+    const bu = Number(s.iface.shaft_dia) > Number(motor.diameter) ? bushingFor(motor.diameter, s.iface.shaft_dia, series, size) : null;
+    if (bu) return { ...s, bushing: bu };
+  }
+  return null;
+}
+function candidates(motor, kind) {
+  const list = [];
+  const add = (g, k, flangeSize) => {
+    // 어댑터는 4→5단계로 넘어갈 때 확인. 여기서는 모든 감속기를 넣고 어댑터 정보만 붙임 (없으면 null)
+    const ad = adapterFor(motor, g.series_code, flangeSize);
+    const fit = shaftFit(motor, g.series_code, flangeSize, g.size);
+    // 입력 홀·어댑터플랜지 정보가 아직 하나도 등록되지 않은 사이즈 (예: 새로 추가한 GBX) → 맞는지 알 수 없음
+    const unknown = !fit && !ad && !hasIfaceData(g.series_code, flangeSize, g.size);
+    list.push({ g, kind: k, adapter: ad, fit, unknown, ratio: ratioNum(g.ratio_code), sizeLabel: k === 'hollow' ? flangeSize : g.size });
+  };
+  if (kind !== 'hollow') for (const g of DB.planetary) add(g, 'planetary', g.size);
+  if (kind !== 'planetary') for (const g of DB.hollow) add(g, 'hollow', g.flange_size);
+  return list;
+}
+
+const withAdapter = list => list.filter(c => c.adapter);
+// 이 시리즈·사이즈에 입력 홀이나 어댑터플랜지(ST/SV) 정보가 하나라도 있는지
+const hasIfaceData = (series, size, baseSize) =>
+  (DB.holeLoaded && DB.holes.get(holeKey(series, baseSize)) != null) || (DB.slotsBySize.get(series + '|' + size) || []).some(s => s.iface);
+// 조합에 쓰는 부싱: 입력 홀 표가 있으면 입력 홀 기준, 없으면 어댑터 축경 기준
+const comboBushing = r => (DB.holeLoaded && r.fit) ? r.fit.bushing : (r.adapter ? r.adapter.bushing : r.fit?.bushing ?? null);
+/* 축경만 보고 사이즈가 맞는지: SV 어댑터 축경 = 모터 축경(직결) 또는 부싱으로 맞춤. 파일롯경·PCD·나사는 4→5에서 확인 */
+function shaftFit(motor, series, size, baseSize) {
+  // 1순위: 입력 홀 표 (시리즈·사이즈별 입력 홀 지름). 같으면 직결, 다르면 부싱 G{입력홀}S{모터축경}
+  // 3순위: 모터 축경과 같은 축경의 어댑터(ST/SV)가 있으면 어댑터로 직결 (예: 스테핑 6.35축 어댑터)
+  const adapterDirect = () => (DB.slotsBySize.get(series + '|' + size) || [])
+    .some(s => s.type === slotTypeOf(motor) && s.iface && same(s.iface.shaft_dia, motor.diameter));
+  if (DB.holeLoaded) {
+    const hole = DB.holes.get(holeKey(series, baseSize));
+    if (hole != null) {
+      if (same(hole, motor.diameter)) return { label: '직결', bushing: null, hole };
+      if (Number(hole) > Number(motor.diameter)) {            // 입력 홀이 모터 축경보다 클 때만 부싱
+        const bu = bushingFor(motor.diameter, hole, series, baseSize);
+        if (bu) return { label: `부싱 ${bu.bushing_code}`, bushing: bu, hole };
+      }
+    }
+    return adapterDirect() ? { label: '어댑터 직결', bushing: null, hole } : null;
+  }
+  // 입력 홀 표가 없을 때: 어댑터(ST/SV) 축경으로 판단
+  const slots = (DB.slotsBySize.get(series + '|' + size) || []).filter(s => s.type === slotTypeOf(motor) && s.iface);
+  if (slots.some(s => same(s.iface.shaft_dia, motor.diameter))) return { label: '직결', bushing: null, hole: null };
+  for (const s of slots.sort((a, b) => a.slot - b.slot)) {
+    const bu = Number(s.iface.shaft_dia) > Number(motor.diameter) ? bushingFor(motor.diameter, s.iface.shaft_dia, series, baseSize) : null;
+    if (bu) return { label: `부싱 ${bu.bushing_code}`, bushing: bu, hole: null };
+  }
+  return null;
+}
+
+/* ---------- 상태 ---------- */
+const S = {
+  step: 1,
+  f: { brand: '', type: '', model: '' },
+  motor: null,
+  cond: { kind: 'planetary', ratioMode: 'spec', spec: { series: '', size: '', ratio: '', rep: '', pos: '' }, grade: 'P2', ratios: [], sf: 1.5, loadTorque: '', useEff: true },
+  onlyOk: true, onlyAdapter: false, sort: 'margin', pick: null,
+};
+const KIND = { planetary: '유성감속기', hollow: '할로우로터리', all: '전체' };
+
+/* ---------- 계산 ---------- */
+function evaluate(c) {
+  const m = S.motor, g = c.g, cond = S.cond;
+  const eff = cond.useEff && N(g.efficiency) ? N(g.efficiency) : 1;
+  const t2 = N(m.nominal_torque) != null && c.ratio ? N(m.nominal_torque) * c.ratio * eff : null;           // 출력 토크
+  const t2peak = N(m.peak_torque) != null && c.ratio ? N(m.peak_torque) * c.ratio * eff : null;
+  const need = t2 != null ? t2 * (Number(cond.sf) || 1) : null;                                               // 필요 정격토크
+  const rated = N(g.rated_torque);
+  const margin = rated && need ? rated / need : null;                                                          // 여유율
+  const n2 = N(m.nominal_speed) && c.ratio ? N(m.nominal_speed) / c.ratio : null;
+  const issues = [];
+  let level = 'ok';
+  if (margin == null) { level = 'warn'; issues.push('정격토크 정보 없음'); }
+  else if (margin < 1) { level = 'bad'; issues.push('토크 부족'); }
+  // 속도는 판정에서 제외하고 주의 메시지만 남김
+  const cautions = [];
+  if (N(g.rated_speed) && N(m.nominal_speed) > N(g.rated_speed)) cautions.push(`모터 정격속도 ${fmt(m.nominal_speed)} rpm > 감속기 정격입력속도 ${fmt(g.rated_speed)} rpm`);
+  if (N(g.max_speed) && N(m.max_speed) > N(g.max_speed)) cautions.push(`모터 최대속도 ${fmt(m.max_speed)} rpm > 감속기 최대입력속도 ${fmt(g.max_speed)} rpm`);
+  const load = N(cond.loadTorque);
+  if (load && t2 != null && t2 < load) { level = 'bad'; issues.push('부하토크보다 출력 부족'); }
+  return { eff, t2, t2peak, need, rated, margin, n2, issues, cautions, level };
+}
+// 정밀도 값 표기
+const withUnit = (v, u) => v == null || v === '' ? null : `${fmt(N(v))} ${u || ''}`.trim();
+const backlashOf = (g, grade) => { const v = g[grade] ?? g[grade.toLowerCase()]; return withUnit(v, g.backlash_unit || 'arcmin'); };
+const repOf = g => withUnit(g.repeatibility ?? g.repeatability, g.repeatibility_unit ?? g.repeatability_unit);
+const posOf = g => withUnit(g.positioning, g.positioning_unit);
+function condAllows(x) {
+  const c = S.cond;
+  if (c.ratioMode === 'all') return true;
+  if (c.ratioMode === 'pick') return !c.ratios.length || c.ratios.includes(x.ratio);
+  const sp = c.spec;   // 감속기 지정: 시리즈(필수) · 사이즈 · 감속비
+  return (!!x.fit || x.unknown) && x.g.series_code === sp.series && (!sp.size || x.sizeLabel === sp.size) && (!sp.ratio || x.ratio === +sp.ratio)
+    && (x.kind !== 'hollow' || ((!sp.rep || repOf(x.g) === sp.rep) && (!sp.pos || posOf(x.g) === sp.pos)));
+}
+function results() {
+  if (!S.motor) return [];
+  return candidates(S.motor, S.cond.kind).filter(c => c.ratio && condAllows(c)).map(c => ({ ...c, ev: evaluate(c) }));
+}
+
+/* ---------- 렌더 ---------- */
+const STEP_NAMES = ['', '모터 선택', '모터 확인', '감속기 조건', '감속기 선택', '최종 확인'];
+function renderStepper() {
+  document.querySelectorAll('#stepper li').forEach(li => {
+    const n = +li.dataset.step;
+    li.className = n === S.step ? 'cur' : n < S.step ? 'done' : '';
+  });
+}
+function go(n) {
+  S.step = n; renderStepper(); render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+$('#stepper').addEventListener('click', e => {
+  const li = e.target.closest('li.done'); if (li) go(+li.dataset.step);
+});
+
+function render() {
+  const main = $('#main');
+  const html = [view1, view2, view3, view4, view5][S.step - 1]();
+  main.innerHTML = html;
+  [bind1, bind2, bind3, bind4, bind5][S.step - 1]();
+}
+function navHTML({ prev = true, next = '다음 →', nextDisabled = false, extra = '' } = {}) {
+  return `<div class="nav">${prev ? '<button class="btn lg" id="btnPrev">← 이전</button>' : ''}<span class="spacer"></span>${extra}${next ? `<button class="btn primary lg" id="btnNext" ${nextDisabled ? 'disabled' : ''}>${next}</button>` : ''}</div>`;
+}
+function bindNav(onNext) {
+  $('#btnPrev')?.addEventListener('click', () => go(S.step - 1));
+  $('#btnNext')?.addEventListener('click', onNext || (() => go(S.step + 1)));
+}
+const iconCheck = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>';
+const iconDoc = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3 3 3-3"/></svg>';
+
+const MOUNTING_TYPE = { B5: '관통 홀(Through Hole)', B14: '탭가공 홀(Threaded Hole)' };
+function motorKV(m) {
+  return `<dl class="kv">
+    <div><dt>정격 출력</dt><dd>${fmt(m.nominal_power)} W</dd></div>
+    <div><dt>정격 RPM</dt><dd>${fmt(m.nominal_speed)} rpm</dd></div>
+    <div><dt>정격 토크</dt><dd>${fmt(m.nominal_torque, 3)} N·m</dd></div>
+    <div><dt>샤프트 직경</dt><dd>${fmt(m.diameter)} mm</dd></div>
+  </dl>`;
+}
+function catalogButtons() {
+  return `<span>카탈로그</span>
+    <button class="btn" data-cat="planetary">${iconDoc}유성감속기 카탈로그</button>
+    <button class="btn" data-cat="hollow">${iconDoc}할로우로터리 카탈로그</button>`;
+}
+// 스토리지 파일 내려받기: 비공개 버킷은 서명 URL, 공개 버킷은 공개 URL
+async function downloadFromStorage(bucketName, path, saveName = path.split('/').pop()) {
+  const bucket = sb.storage.from(bucketName);
+  const signed = await bucket.createSignedUrl(path, 600);
+  const url = !signed.error && signed.data?.signedUrl ? signed.data.signedUrl : bucket.getPublicUrl(path).data.publicUrl;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(res.status === 400 || res.status === 404
+    ? `${bucketName} 버킷에서 ${path} 파일을 찾지 못했거나 읽기 권한이 없습니다.` : `서버 응답 ${res.status}`);
+  const blobUrl = URL.createObjectURL(await res.blob());
+  const a = document.createElement('a'); a.href = blobUrl; a.download = saveName;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(blobUrl); a.remove(); }, 2000);
+}
+function bindCatalog() {
+  document.querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', async () => {
+    const file = CATALOG[b.dataset.cat];
+    const label = b.textContent.trim();
+    b.disabled = true;
+    try { await downloadFromStorage(CATALOG.bucket, file); toast(`${label}를 내려받았습니다.`); }
+    catch (e) { toast(`카탈로그를 받지 못했습니다. ${errText(e)}`, true); }
+    finally { b.disabled = false; }
+  }));
+}
+
+/* Step 1 */
+function view1() {
+  const f = S.f;
+  const brands = [...new Set(DB.motors.map(m => m.manufacturer))].sort(cmpNat);
+  const inBrand = DB.motors.filter(m => !f.brand || m.manufacturer === f.brand);
+  const series = [...new Set(inBrand.map(m => m.series))].sort(cmpNat);
+  const typeOpts = series.map(s => {
+    const types = [...new Set(inBrand.filter(m => m.series === s).map(m => m.basic_type))].sort(cmpNat);
+    return `<optgroup label="${esc(s)}">${types.map(t => `<option ${t === f.type ? 'selected' : ''}>${esc(t)}</option>`).join('')}</optgroup>`;
+  }).join('');
+  const m = S.motor;
+  return `<section class="card">
+    <div class="card-head">
+      <div><h2>Step 1. 모터 선택</h2><p>원하는 모터 브랜드/모델을 검색하거나 선택하세요.</p></div>
+      <div class="aside">${catalogButtons()}</div>
+    </div>
+    <div class="panel"><div class="form-row">
+      <label class="f"><span>브랜드</span><select id="fBrand"><option value="">브랜드 선택</option>${brands.map(b => `<option ${b === f.brand ? 'selected' : ''}>${esc(b)}</option>`).join('')}</select></label>
+      <label class="f"><span>타입</span><select id="fType" ${f.brand ? '' : 'disabled'}><option value="">전체</option>${f.brand ? typeOpts : ''}</select></label>
+      <label class="f grow"><span>모델 선택</span><input type="text" id="fModel" list="dl-model" value="${esc(f.model)}" placeholder="${f.brand ? '모델 형번 입력 또는 선택' : '형번으로 바로 검색하거나 브랜드를 먼저 선택하세요'}" autocomplete="off"></label>
+      <div class="act"><button class="btn primary lg" id="btnPick">모터 선택</button></div>
+    </div></div>
+    ${m ? `<div class="picked">
+      <div class="t">${iconCheck}선택된 모터</div>
+      <div class="head"><div><div class="path">${esc(m.manufacturer)} · ${esc(m.series)} · ${esc(m.basic_type)}</div><div class="name">${esc(m.motor_code)}</div></div>
+        <button class="btn link" id="btnUnpick">선택 해제</button></div>
+      ${motorKV(m)}
+    </div>` : `<div class="empty-pick">아직 선택한 모터가 없습니다. 모터 ${DB.motors.length}종 중에서 고르세요.</div>`}
+  </section>${navHTML({ prev: false, nextDisabled: !m })}`;
+}
+function fillModelList() {
+  const f = S.f;
+  const list = DB.motors.filter(m => (!f.brand || m.manufacturer === f.brand) && (!f.type || m.basic_type === f.type));
+  $('#dl-model').innerHTML = list.map(m => `<option value="${esc(m.motor_code)}"></option>`).join('');
+}
+function bind1() {
+  fillModelList(); bindCatalog();
+  $('#fBrand').addEventListener('change', e => { S.f.brand = e.target.value; S.f.type = ''; S.f.model = ''; render(); });
+  $('#fType').addEventListener('change', e => { S.f.type = e.target.value; S.f.model = ''; $('#fModel').value = ''; fillModelList(); });
+  $('#fModel').addEventListener('input', e => { S.f.model = e.target.value; });
+  $('#fModel').addEventListener('keydown', e => { if (e.key === 'Enter') pickMotor(); });
+  $('#btnPick').addEventListener('click', pickMotor);
+  // 선택 해제: 모델 입력칸을 비워서 목록 전체에서 다시 고를 수 있게 함 (브랜드·타입 필터는 유지)
+  $('#btnUnpick')?.addEventListener('click', () => {
+    S.motor = null; S.pick = null; S.f.model = '';
+    S.cond.ratios = []; S.cond.spec = { series: '', size: '', ratio: '', rep: '', pos: '' };
+    render();
+    const inp = $('#fModel'); if (inp) { inp.value = ''; inp.focus(); }
+  });
+  bindNav();
+}
+function pickMotor() {
+  const code = String($('#fModel').value || '').trim().toUpperCase();
+  if (!code) { toast('모델 형번을 입력하거나 선택하세요.', true); return; }
+  const f = S.f;
+  const pool = DB.motors.filter(m => (!f.brand || m.manufacturer === f.brand) && (!f.type || m.basic_type === f.type));
+  let m = pool.find(x => x.motor_code.toUpperCase() === code) || DB.motors.find(x => x.motor_code.toUpperCase() === code);
+  if (!m) {
+    const hits = pool.filter(x => x.motor_code.toUpperCase().includes(code));
+    if (hits.length === 1) m = hits[0];
+    else { toast(hits.length ? `"${code}"와 맞는 모델이 ${hits.length}개입니다. 목록에서 하나를 고르세요.` : `"${code}" 모델을 찾지 못했습니다.`, true); return; }
+  }
+  if (S.motor?.motor_id !== m.motor_id) { S.pick = null; S.cond.ratios = []; S.cond.spec = { series: '', size: '', ratio: '', rep: '', pos: '' }; }
+  S.motor = m; S.f = { brand: m.manufacturer, type: m.basic_type, model: m.motor_code };
+  render();
+}
+
+/* Step 2 */
+function bushingNote(list) {
+  const used = [...new Set(list.filter(c => comboBushing(c)).map(c => comboBushing(c).bushing_code))].sort(cmpNat);
+  const direct = list.filter(c => !comboBushing(c)).length;
+  if (!DB.bushingLoaded) return '<div class="callout warn"><div>부싱 표(bushing)를 읽지 못해 축경이 같은 감속기만 찾습니다. bushing.sql 을 실행했는지 확인하세요.</div></div>';
+  if (!used.length) return '';
+  return `<div class="callout info"><div>축경이 다른 감속기는 부싱으로 조합합니다. 직결 ${direct}개 조합, 부싱 사용 ${list.length - direct}개 조합 (사용 가능한 부싱: ${used.map(esc).join(', ')}).</div></div>`;
+}
+function view2() {
+  const m = S.motor;
+  const cP = withAdapter(candidates(m, 'planetary')), cH = withAdapter(candidates(m, 'hollow'));
+  const sizes = list => [...new Set(list.map(c => c.g.series_code + ' ' + c.sizeLabel))].length;
+  const row = (label, v, unit = '') => `<tr><th>${label}</th><td>${v == null || v === '' ? '–' : esc(v)}${unit && v != null && v !== '' ? `<small>${unit}</small>` : ''}</td></tr>`;
+  return `<section class="card">
+    <div class="card-head"><div><h2>Step 2. 모터 확인</h2><p>선택한 모터의 사양과 장착 가능한 감속기를 확인하세요.</p></div></div>
+    <div class="picked"><div class="head"><div><div class="path">${esc(m.manufacturer)} · ${esc(m.series)} · ${esc(m.basic_type)}</div><div class="name">${esc(m.motor_code)}</div></div></div></div>
+    <div class="spec-grid">
+      <div class="spec"><h3>성능</h3><table>
+        ${row('정격출력', fmt(m.nominal_power), 'W')}${row('정격토크', fmt(m.nominal_torque, 3), 'Nm')}${row('최대토크', fmt(m.peak_torque, 3), 'Nm')}
+        ${row('정격속도', fmt(m.nominal_speed), 'rpm')}${row('최대속도', fmt(m.max_speed), 'rpm')}${row('관성모멘트', fmt(m.inertia, 4), 'kg·cm²')}
+      </table></div>
+      <div class="spec"><h3>인터페이스 (어댑터플랜지 선정 기준)</h3><table>
+        ${row('축경', fmt(m.diameter), 'mm')}${row('축길이', fmt(m.length), 'mm')}${row('파일롯경', fmt(m.centering), 'mm')}
+        ${row('PCD', fmt(m.pcd), 'mm')}${row('체결나사', m.mounting_thread)}${row('체결방식', m.mounting_type)}
+        ${row('어댑터 사양 코드', [m.diameter, m.centering, m.pcd].map(v => fmt(v)).join('-') + '-' + (m.mounting_thread || '?'))}
+      </table></div>
+    </div>
+    ${cP.length + cH.length
+      ? `<div class="callout info"><div>${Object.entries(MOUNTING_TYPE).map(([k, v]) => `<b>${k}</b> : ${v}`).join('<br>')}</div></div>${bushingNote(cP.concat(cH))}`
+      : `<div class="callout warn"><div>이 모터의 인터페이스(축경 ${fmt(m.diameter)} · 파일롯경 ${fmt(m.centering)} · PCD ${fmt(m.pcd)} · ${esc(m.mounting_thread || '나사 정보 없음')})와 맞는 어댑터플랜지 사양이 DB에 없습니다${DB.bushingLoaded ? ' (부싱으로 축경을 맞추는 경우 포함)' : ''}. 감속기 비교는 계속할 수 있지만, 최종 확인으로 넘어가려면 관리 페이지의 어댑터플랜지 사양에 해당 코드를 등록해야 합니다.</div></div>`}
+  </section>${navHTML()}`;
+}
+function bind2() { bindNav(); }
+
+/* Step 3 */
+/* ---------- 감속기 종류 안내 사진 (photo 버킷) ---------- */
+const PHOTO = { bucket: 'photo', exts: /\.(jpe?g|png|webp|gif|bmp)$/i,
+  match: { planetary: /planetary|유성|^gp/i, hollow: /hollow|할로우|rotary|^gs/i } };
+let photoIndex = null;   // Promise<{ folders: [{name, files:[{path,name}]}] } | {error}>
+function buildPhotoIndex() {
+  if (photoIndex) return photoIndex;
+  photoIndex = (async () => {
+    const bucket = sb.storage.from(PHOTO.bucket);
+    const root = await listAll(bucket, '');
+    const folders = [];
+    const walk = async (prefix, depth) => {
+      const files = [];
+      for (const o of await listAll(bucket, prefix)) {
+        if (o.name === '.emptyFolderPlaceholder') continue;
+        const path = `${prefix}/${o.name}`;
+        if (o.id == null && !o.metadata) { if (depth < 4) files.push(...await walk(path, depth + 1)); }
+        else if (PHOTO.exts.test(o.name)) files.push({ path, name: o.name });
+      }
+      return files;
+    };
+    for (const o of root) if (o.id == null && !o.metadata) folders.push({ name: o.name, files: (await walk(o.name, 1)).sort((a, b) => cmpNat(a.name, b.name)) });
+    return { folders };
+  })().catch(e => { photoIndex = null; return { error: `사진 목록을 읽지 못했습니다 (${PHOTO.bucket} 버킷 읽기 권한을 확인하세요): ${errText(e)}` }; });
+  return photoIndex;
+}
+async function photoUrls(paths) {
+  const bucket = sb.storage.from(PHOTO.bucket);
+  const map = new Map();
+  try {
+    const { data, error } = await bucket.createSignedUrls(paths, 3600);
+    if (!error) for (const d of data || []) if (d.signedUrl && !d.error) map.set(d.path, d.signedUrl);
+  } catch {}
+  for (const p of paths) if (!map.has(p)) map.set(p, bucket.getPublicUrl(p).data.publicUrl);
+  return map;
+}
+let photoSeq = 0;
+async function openPhotoModal(kind) {
+  const seq = ++photoSeq;
+  const modal = $('#photoModal');
+  $('#photoTitle').textContent = `${KIND[kind]} 안내`;
+  $('#photoBody').innerHTML = '<div class="photo-empty">사진을 불러오는 중…</div>';
+  modal.hidden = false; $('#photoClose').focus();
+  const idx = await buildPhotoIndex();
+  if (seq !== photoSeq || modal.hidden) return;
+  if (idx.error) { $('#photoBody').innerHTML = `<div class="photo-empty">${esc(idx.error)}</div>`; return; }
+  const kinds = kind === 'all' ? ['planetary', 'hollow'] : [kind];
+  let groups = idx.folders.filter(f => kinds.some(k => PHOTO.match[k].test(f.name)) && f.files.length);
+  if (!groups.length) { $('#photoBody').innerHTML = `<div class="photo-empty">${esc(PHOTO.bucket)} 버킷에서 ${esc(KIND[kind])} 사진 폴더를 찾지 못했습니다. 폴더 이름에 ${kind === 'hollow' ? 'hollow 또는 할로우' : kind === 'planetary' ? 'planetary 또는 유성' : 'planetary / hollow'}를 넣어 주세요.</div>`; return; }
+  const urls = await photoUrls(groups.flatMap(g => g.files.map(f => f.path)));
+  if (seq !== photoSeq || modal.hidden) return;
+  const label = n => n.replace(/\.[^.]+$/, '');
+  const ser = photoSeriesInfo(kinds);
+  const cur = S.cond.ratioMode === 'spec' ? S.cond.spec.series : '';
+  const descCodes = [...DB.seriesDesc.keys()].sort((a, b) => b.length - a.length);
+  const item = f => {
+    const code = seriesOfPhoto(f, ser.codes), info = code && ser.map.get(code);
+    const dcode = code || seriesOfPhoto(f, descCodes), desc = dcode && DB.seriesDesc.get(String(dcode).toUpperCase());
+    const head = `<span class="desc"${desc ? ` title="${esc(dcode + ' · ' + desc)}"` : ''}>${desc ? esc(desc) : '&nbsp;'}</span>`;
+    const img = head + `<img src="${esc(urls.get(f.path))}" alt="${esc(label(f.name))}" width="100" height="100" loading="lazy">`;
+    if (info?.fit) return `<button type="button" class="photo-pick${code === cur ? ' on' : ''}" data-series="${esc(code)}" data-kind="${info.kind}" title="${esc(code)} 시리즈 선택">${img}<span class="cap">${esc(label(f.name))}</span></button>`;
+    const why = !code ? '' : '이 모터에 맞는 사이즈 없음';
+    return `<figure class="${code ? 'photo-off' : 'photo-none'}" title="${esc(why || '시리즈를 찾지 못한 사진')}">${img}<figcaption>${esc(label(f.name))}${why ? `<small>${why}</small>` : ''}</figcaption></figure>`;
+  };
+  $('#photoBody').innerHTML = `<p class="photo-tip">사진을 클릭하면 해당 시리즈가 "감속기 지정"으로 선택됩니다.</p>` + groups.map(g => `<section class="photo-group">${groups.length > 1 ? `<h4>${esc(g.name)}</h4>` : ''}
+    <div class="photo-grid">${g.files.map(item).join('')}</div></section>`).join('');
+}
+/* 사진 → 시리즈: 파일명(확장자 제외)이 시리즈 코드로 시작하면 그 시리즈 (예: GPB.jpg, GPB_외형.png, GSN85Z.jpg)
+   파일명으로 못 찾으면 사진이 들어 있는 하위 폴더 이름으로 찾음. 긴 코드부터 비교 (GSNR 이 GSN 보다 먼저) */
+function photoSeriesInfo(kinds) {
+  const map = new Map();
+  for (const k of kinds) for (const x of candidates(S.motor, k)) {
+    if (!x.ratio) continue;
+    const code = x.g.series_code, e = map.get(code) || { kind: k, fit: false };
+    if (x.fit || x.unknown) e.fit = true;
+    map.set(code, e);
+  }
+  return { map, codes: [...map.keys()].sort((a, b) => b.length - a.length) };
+}
+function seriesOfPhoto(f, codes) {
+  const norm = s => String(s).toUpperCase().replace(/[\s_-]+/g, '');
+  const tokens = [f.name.replace(/\.[^.]+$/, ''), ...f.path.split('/').slice(0, -1).reverse()].map(norm);
+  for (const t of tokens) for (const c of codes) {
+    const nc = norm(c);
+    if (t.startsWith(nc) && !/[A-Z]/.test(t.charAt(nc.length))) return c;
+  }
+  return null;
+}
+$('#photoBody').addEventListener('click', e => {
+  const b = e.target.closest('.photo-pick'); if (!b) return;
+  const c = S.cond, code = b.dataset.series;
+  if (c.kind !== 'all') c.kind = b.dataset.kind;
+  c.ratioMode = 'spec';
+  Object.assign(c.spec, { series: code, size: '', ratio: '', rep: '', pos: '' });
+  closePhotoModal(); render();
+  toast(`${code} 시리즈를 선택했습니다. 사이즈와 감속비를 고르세요.`);
+  $('#spSeries')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+});
+function closePhotoModal() { $('#photoModal').hidden = true; photoSeq++; }
+$('#photoClose').addEventListener('click', closePhotoModal);
+$('#photoModal').addEventListener('click', e => { if (e.target.id === 'photoModal') closePhotoModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#photoModal').hidden) closePhotoModal(); });
+
+function specHTML(cands) {
+  const sp = S.cond.spec;
+  cands = cands.filter(x => x.fit || x.unknown);   // 축경이 맞는(직결·부싱) 사이즈 + 인터페이스 정보가 아직 없는 사이즈
+  const unknownSeries = new Set([...new Set(cands.map(x => x.g.series_code))].filter(sc => !cands.some(x => x.g.series_code === sc && x.fit)));
+  const series = [...new Set(cands.map(x => x.g.series_code))].sort(cmpNat);
+  if (sp.series && !series.includes(sp.series)) { sp.series = ''; sp.size = ''; sp.ratio = ''; sp.rep = ''; sp.pos = ''; }
+  const inS = cands.filter(x => x.g.series_code === sp.series);
+  const sizes = [...new Set(inS.map(x => x.sizeLabel))].sort(cmpNat);
+  // 사이즈별 장착 방식: 직결 또는 부싱 코드
+  const howBySize = new Map(sizes.map(z => { const f = inS.find(x => x.sizeLabel === z).fit; return [z, f ? f.label + (f.hole != null ? ` · 입력홀 ${fmt(f.hole)}` : '') : '입력홀·어댑터 미등록']; }));
+  const nUnknownSizes = [...howBySize.values()].filter(v => v.endsWith('미등록')).length;
+  const nBushSizes = [...howBySize.values()].filter(v => v.startsWith('부싱')).length;
+  if (sp.size && !sizes.includes(sp.size)) { sp.size = ''; sp.ratio = ''; }
+  const inSz = inS.filter(x => !sp.size || x.sizeLabel === sp.size);
+  const ratios = [...new Set(inSz.map(x => x.ratio))].sort((a, b) => a - b);
+  if (sp.ratio && !ratios.includes(+sp.ratio)) sp.ratio = '';
+  const inR = inSz.filter(x => !sp.ratio || x.ratio === +sp.ratio);
+  const opt = (v, cur, label = v) => `<option value="${esc(v)}" ${String(v) === String(cur) ? 'selected' : ''}>${esc(label)}</option>`;
+  // 정밀도 항목: 유성 = 백래시 등급(P2/P1), 할로우 = 반복정밀도·포지셔닝
+  const seriesKind = inS[0]?.kind || (S.cond.kind === 'hollow' ? 'hollow' : 'planetary');
+  let precHTML = '', inP = inR;
+  if (seriesKind === 'planetary') {
+    const range = grade => { const vs = [...new Set(inR.map(x => N(x.g[grade])).filter(v => v != null))].sort((a, b) => a - b);
+      const u = inR[0]?.g.backlash_unit || 'arcmin';
+      return vs.length ? (vs.length === 1 ? `${fmt(vs[0])} ${u}` : `${fmt(vs[0])}~${fmt(vs[vs.length - 1])} ${u}`) : '값 없음'; };
+    precHTML = `<label class="f"><span>백래시</span><select id="spGrade" ${sp.series ? '' : 'disabled'}>
+        ${opt('P2', S.cond.grade, `P2 (표준) · ${range('P2')}`)}${opt('P1', S.cond.grade, `P1 (정밀) · ${range('P1')}`)}</select></label>`;
+  } else {
+    const reps = [...new Set(inR.map(x => repOf(x.g)).filter(Boolean))].sort(cmpNat);
+    if (sp.rep && !reps.includes(sp.rep)) sp.rep = '';
+    const inRep = inR.filter(x => !sp.rep || repOf(x.g) === sp.rep);
+    const poss = [...new Set(inRep.map(x => posOf(x.g)).filter(Boolean))].sort(cmpNat);
+    if (sp.pos && !poss.includes(sp.pos)) sp.pos = '';
+    inP = inRep.filter(x => !sp.pos || posOf(x.g) === sp.pos);
+    precHTML = `<label class="f"><span>반복정밀도</span><select id="spRep" ${sp.series ? '' : 'disabled'}><option value="">전체</option>${reps.map(v => opt(v, sp.rep)).join('')}</select></label>
+      <label class="f"><span>포지셔닝</span><select id="spPos" ${sp.series ? '' : 'disabled'}><option value="">전체</option>${poss.map(v => opt(v, sp.pos)).join('')}</select></label>`;
+  }
+  const n = inP.length;
+  return `<div class="cond-grid">
+      <label class="f"><span>시리즈</span><select id="spSeries"><option value="">시리즈 선택</option>${series.map(v => opt(v, sp.series, unknownSeries.has(v) ? `${v}  (입력홀·어댑터 미등록)` : v)).join('')}</select></label>
+      <label class="f"><span>사이즈</span><select id="spSize" ${sp.series ? '' : 'disabled'}><option value="">전체</option>${sizes.map(v => opt(v, sp.size, `${v}  (${howBySize.get(v)})`)).join('')}</select></label>
+      <label class="f"><span>감속비</span><select id="spRatio" ${sp.series ? '' : 'disabled'}><option value="">전체</option>${ratios.map(v => opt(v, sp.ratio, '1/' + v)).join('')}</select></label>
+      ${precHTML}
+    </div>
+    <p class="hint" style="font-size:12px;color:var(--muted);margin:8px 0 0">${sp.series ? `선택한 범위에서 ${n}개 조합을 비교합니다.${nBushSizes ? ` 사이즈 ${sizes.length}개 중 ${nBushSizes}개는 부싱으로 조합합니다.` : ''}${nUnknownSizes ? ` <b style="color:var(--warn)">사이즈 ${nUnknownSizes}개는 입력 홀·어댑터플랜지 정보가 아직 등록되지 않아 축 장착 여부를 확인하지 못했습니다 (토크만 비교, 최종 확인 단계로는 넘어갈 수 없음).</b>` : ''}` : series.length ? `모터 축경 ${fmt(S.motor.diameter)} mm에 ${DB.holeLoaded ? '입력 홀이 맞거나 부싱으로 맞출 수 있는' : '맞는(직결 또는 부싱)'} 시리즈 ${series.length}개 중에서 고르세요. 사이즈와 감속비는 비워 두면 전체를 비교합니다.` : `모터 축경 ${fmt(S.motor.diameter)} mm에 직결하거나 부싱으로 맞출 수 있는 ${KIND[S.cond.kind]} 사이즈가 없습니다. "감속비만 지정"이나 "전체 보기"로 비교할 수 있습니다.`}</p>`;
+}
+function view3() {
+  const c = S.cond, m = S.motor;
+  const allP = candidates(m, 'planetary'), allH = candidates(m, 'hollow');
+  const avail = { planetary: allP.length, hollow: allH.length };
+  const withAd = { planetary: withAdapter(allP).length, hollow: withAdapter(allH).length };
+  if (c.kind !== 'all' && !avail[c.kind]) c.kind = avail.planetary ? 'planetary' : 'hollow';
+  const cands = candidates(m, c.kind).filter(x => x.ratio);
+  const ratios = [...new Set(cands.map(x => x.ratio))].sort((a, b) => a - b);
+  c.ratios = c.ratios.filter(r => ratios.includes(r));
+  const kindCard = (k, sub) => `<label><input type="radio" name="kind" value="${k}" ${c.kind === k ? 'checked' : ''} ${k !== 'all' && !avail[k] ? 'disabled' : ''}><b>${KIND[k]}</b><span>${sub}</span></label>`;
+  return `<section class="card">
+    <div class="card-head"><div><h2>Step 3. 감속기 조건</h2><p>감속기 종류와 선정 범위, 사용 조건을 정하세요.</p></div></div>
+    <div>
+      <p class="section-title">감속기 종류 <span style="font-weight:400;font-size:12px;color:var(--muted)">(감속기 종류 박스를 클릭하면 감속기 형태를 안내)</span></p>
+      <div class="choice">
+        ${kindCard('planetary', avail.planetary ? `${avail.planetary}개 조합 · 어댑터 있음 ${withAd.planetary}개` : '등록된 제품 없음')}
+        ${kindCard('hollow', avail.hollow ? `${avail.hollow}개 조합 · 어댑터 있음 ${withAd.hollow}개` : '등록된 제품 없음')}
+        ${kindCard('all', '두 종류를 함께 비교')}
+      </div>
+    </div>
+    <div>
+      <p class="section-title">선정 범위</p>
+      <div class="seg" id="ratioMode">
+        <button type="button" data-v="spec" aria-pressed="${c.ratioMode === 'spec'}">감속기 지정</button>
+        <button type="button" data-v="pick" aria-pressed="${c.ratioMode === 'pick'}">감속비만 지정</button>
+        <button type="button" data-v="all" aria-pressed="${c.ratioMode === 'all'}">전체 보기</button>
+      </div>
+      <div style="margin-top:12px">
+        ${c.ratioMode === 'spec' ? specHTML(cands) : ''}
+        ${c.ratioMode === 'pick' ? `<div class="chips" id="ratioChips">${ratios.map(r => `<button type="button" data-r="${r}" aria-pressed="${c.ratios.includes(r)}">1/${r}</button>`).join('')}</div>
+          <p class="hint" style="font-size:12px;color:var(--muted);margin:8px 0 0">여러 개 고를 수 있습니다. 하나도 고르지 않으면 모든 감속비를 보여줍니다.</p>` : ''}
+        ${c.ratioMode === 'all' ? '<p style="margin:0;color:var(--muted);font-size:13px">장착 가능한 모든 시리즈·사이즈·감속비를 비교합니다.</p>' : ''}
+      </div>
+    </div>
+    <div>
+      <p class="section-title">사용 조건</p>
+      <div class="cond-grid">
+        <label class="f"><span>사용계수 (안전율)</span><input type="number" id="cSf" min="0.5" step="0.1" value="${esc(c.sf)}"><span class="hint">필요 정격토크 = 모터 정격토크 × 감속비 × 효율 × 사용계수</span></label>
+        <label class="f"><span>부하 토크 (Nm, 선택)</span><input type="number" id="cLoad" min="0" step="any" value="${esc(c.loadTorque)}" placeholder="입력하지 않아도 됩니다"><span class="hint">입력하면 출력 토크가 이보다 작은 조합은 부적합으로 표시합니다.</span></label>
+        <label class="f"><span>효율 반영</span><select id="cEff"><option value="1" ${c.useEff ? 'selected' : ''}>감속기 효율(η) 반영</option><option value="0" ${!c.useEff ? 'selected' : ''}>반영 안 함 (η = 1)</option></select></label>
+      </div>
+    </div>
+  </section>${navHTML({ next: '감속기 찾기 →' })}`;
+}
+function bind3() {
+  const c = S.cond;
+  // 종류 박스를 마우스로 클릭(터치)했을 때만 감속기 형태 사진을 보여줌 (이미 선택된 박스여도 열림)
+  document.querySelectorAll('.choice label').forEach(lb => lb.addEventListener('click', e => {
+    const r = lb.querySelector('input[name=kind]');
+    if (!r || r.disabled || e.target === r) return;
+    e.preventDefault();
+    if (c.kind !== r.value) { c.kind = r.value; render(); }
+    openPhotoModal(r.value);
+  }));
+  // 키보드(방향키)로 바꿀 때는 종류만 바꾸고 사진은 띄우지 않음
+  document.querySelectorAll('input[name=kind]').forEach(r => r.addEventListener('change', () => { if (c.kind !== r.value) { c.kind = r.value; render(); } }));
+  document.querySelectorAll('#ratioMode button').forEach(b => b.addEventListener('click', () => { c.ratioMode = b.dataset.v; render(); }));
+  document.querySelectorAll('#ratioChips button').forEach(b => b.addEventListener('click', () => {
+    const r = +b.dataset.r; c.ratios = c.ratios.includes(r) ? c.ratios.filter(x => x !== r) : [...c.ratios, r];
+    b.setAttribute('aria-pressed', String(c.ratios.includes(r)));
+  }));
+  const sp = c.spec;
+  $('#spSeries')?.addEventListener('change', e => { sp.series = e.target.value; sp.size = ''; sp.ratio = ''; sp.rep = ''; sp.pos = ''; render(); });
+  $('#spSize')?.addEventListener('change', e => { sp.size = e.target.value; sp.ratio = ''; render(); });
+  $('#spRatio')?.addEventListener('change', e => { sp.ratio = e.target.value; render(); });
+  $('#spGrade')?.addEventListener('change', e => { c.grade = e.target.value; });
+  $('#spRep')?.addEventListener('change', e => { sp.rep = e.target.value; sp.pos = ''; render(); });
+  $('#spPos')?.addEventListener('change', e => { sp.pos = e.target.value; render(); });
+  $('#cSf').addEventListener('input', e => { c.sf = e.target.value; });
+  $('#cLoad').addEventListener('input', e => { c.loadTorque = e.target.value; });
+  $('#cEff').addEventListener('change', e => { c.useEff = e.target.value === '1'; });
+  bindNav(() => {
+    if (!(Number(c.sf) > 0)) { toast('사용계수를 0보다 큰 숫자로 입력하세요.', true); return; }
+    if (c.ratioMode === 'spec' && !c.spec.series) { toast('감속기 시리즈를 고르세요. 범위 없이 보려면 "전체 보기"를 누르세요.', true); return; }
+    S.pick = null; go(4);
+  });
+}
+
+/* Step 4 */
+function marginBar(ev) {
+  if (ev.margin == null) return '–';
+  const pct = Math.min(ev.margin / 3, 1) * 100;
+  const cls = ev.margin < 1 ? 'bad' : ev.margin < 1.2 ? 'warn' : '';
+  return `<span class="bar"><i><b class="${cls}" style="width:${pct}%"></b></i><span>${fmt(ev.margin * 100, 0)}%</span></span>`;
+}
+function statusPill(ev) {
+  return statusPill0(ev) + (ev.cautions.length ? ` <span class="pill caution" title="${esc(ev.cautions.join('\n'))}">속도 주의</span>` : '');
+}
+function statusPill0(ev) {
+  if (ev.level === 'ok') return '<span class="pill ok">적합</span>';
+  if (ev.level === 'warn') return `<span class="pill warn" title="${esc(ev.issues.join(', '))}">${esc(ev.issues[0])}</span>`;
+  return `<span class="pill bad" title="${esc(ev.issues.join(', '))}">${esc(ev.issues[0])}</span>`;
+}
+function view4() {
+  const all = results();
+  let rows = S.onlyOk ? all.filter(r => r.ev.level !== 'bad') : all;
+  if (S.onlyAdapter) rows = rows.filter(r => r.adapter);
+  const sorters = {
+    margin: (a, b) => (a.ev.level === 'bad') - (b.ev.level === 'bad') || (a.ev.margin ?? 99) - (b.ev.margin ?? 99),
+    size: (a, b) => cmpNat(a.g.series_code, b.g.series_code) || cmpNat(a.sizeLabel, b.sizeLabel) || a.ratio - b.ratio,
+    ratio: (a, b) => a.ratio - b.ratio || (a.ev.margin ?? 99) - (b.ev.margin ?? 99),
+  };
+  rows = [...rows].sort(sorters[S.sort]);
+  const nOk = all.filter(r => r.ev.level === 'ok').length, nWarn = all.filter(r => r.ev.level === 'warn').length, nBad = all.length - nOk - nWarn;
+  const sel = S.pick;
+  const kindCol = S.cond.kind === 'all';
+  const showBL = S.cond.kind !== 'hollow', showHP = S.cond.kind !== 'planetary';
+  return `<section class="card">
+    <div class="card-head"><div><h2>Step 4. 감속기 선택</h2><p>${esc(S.motor.motor_code)} 기준으로 조건에 맞는 ${KIND[S.cond.kind]} 조합입니다. 행을 눌러 선택하세요. 어댑터는 다음 단계로 넘어갈 때 확인합니다.</p></div></div>
+    <div class="res-bar">
+      <span class="pill ok">적합 ${nOk}</span><span class="pill warn">확인 필요 ${nWarn}</span><span class="pill bad">부적합 ${nBad}</span>
+      <span class="spacer"></span>
+      <label style="display:inline-flex;gap:6px;align-items:center;font-size:13px"><input type="checkbox" id="onlyOk" ${S.onlyOk ? 'checked' : ''}> 부적합 숨기기</label>
+      <label style="display:inline-flex;gap:6px;align-items:center;font-size:13px"><input type="checkbox" id="onlyAdapter" ${S.onlyAdapter ? 'checked' : ''}> 어댑터 있는 것만</label>
+      <div class="seg" id="sortSeg">
+        <button type="button" data-v="margin" aria-pressed="${S.sort === 'margin'}">여유율 낮은 순</button>
+        <button type="button" data-v="size" aria-pressed="${S.sort === 'size'}">사이즈 순</button>
+        <button type="button" data-v="ratio" aria-pressed="${S.sort === 'ratio'}">감속비 순</button>
+      </div>
+    </div>
+    ${rows.length ? `<div class="tbl-wrap"><table class="res"><thead><tr>
+      <th>상태</th>${kindCol ? '<th>종류</th>' : ''}<th>시리즈<small>(Series)</small></th><th>사이즈<small>(size)</small></th><th>감속비<small>(ratio)</small></th>
+      <th>정격토크<small>(Nm)</small></th><th>필요토크<small>(Nm)</small></th><th>여유율<small>정격/필요</small></th>
+      <th>출력토크<small>(Nm)</small></th><th>출력속도<small>(rpm)</small></th><th>효율<small>(η)</small></th><th>무게<small>(kg)</small></th>${showBL ? `<th>백래시<small>(${S.cond.grade})</small></th>` : ''}${showHP ? '<th>반복정밀도</th><th>포지셔닝</th>' : ''}<th>어댑터<small>사양</small></th><th>부싱<small>(Bushing)</small></th>
+    </tr></thead><tbody>${rows.map(r => {
+      const id = r.kind + ':' + r.g.gearbox_id;
+      return `<tr data-id="${id}" class="${sel === id ? 'sel' : ''}">
+        <td>${statusPill(r.ev)}</td>${kindCol ? `<td>${KIND[r.kind]}</td>` : ''}<td>${esc(r.g.series_code)}</td><td>${esc(r.sizeLabel)}</td><td>1/${r.ratio}</td>
+        <td>${fmt(r.ev.rated)}</td><td>${fmt(r.ev.need)}</td><td>${marginBar(r.ev)}</td>
+        <td>${fmt(r.ev.t2)}</td><td>${fmt(r.ev.n2, 1)}</td><td>${fmt(r.g.efficiency)}</td><td>${fmt(r.g.weight)}</td>${showBL ? `<td>${r.kind === 'planetary' ? esc(backlashOf(r.g, S.cond.grade) ?? '–') : ''}</td>` : ''}${showHP ? (r.kind === 'hollow' ? `<td>${esc(repOf(r.g) ?? '–')}</td><td>${esc(posOf(r.g) ?? '–')}</td>` : '<td></td><td></td>') : ''}
+        ${r.adapter ? `<td class="code">${r.adapter.type}${r.adapter.slot} · ${esc(r.adapter.iface.code)}</td>` : (r.unknown ? '<td><span class="pill warn" title="입력 홀·어댑터플랜지 정보가 아직 등록되지 않았습니다">어댑터 미등록</span></td>' : '<td><span class="pill bad">어댑터 없음</span></td>')}
+        <td class="code">${(() => { const bu = comboBushing(r); return bu ? esc(bu.bushing_code) : (r.adapter || r.fit ? '–' : ''); })()}</td></tr>`;
+    }).join('')}</tbody></table></div>`
+    : `<div class="callout warn"><div>조건에 맞는 감속기가 없습니다. ${all.length ? '"부적합 숨기기"를 끄면 토크가 부족한 조합도 볼 수 있습니다. ' : ''}이전 단계에서 감속비나 사용계수를 바꿔 보세요.</div></div>`}
+    <p style="margin:0;font-size:12px;color:var(--muted)">필요토크 = 모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비 × 효율 × 사용계수 ${esc(S.cond.sf)}. 여유율 100% 이상이면 감속기 정격토크 안에서 사용합니다.
+      출력속도 = 모터 정격속도 ÷ 감속비. 속도는 판정에 넣지 않고, 모터 속도가 감속기 정격·최대 입력속도를 넘으면 "속도 주의"만 표시합니다 (마우스를 올리면 내용 표시).</p>
+  </section>${navHTML({ next: '선택 완료 →', nextDisabled: !sel || !rows.some(r => r.kind + ':' + r.g.gearbox_id === sel) })}`;
+}
+function bind4() {
+  $('#onlyOk').addEventListener('change', e => { S.onlyOk = e.target.checked; render(); });
+  $('#onlyAdapter').addEventListener('change', e => { S.onlyAdapter = e.target.checked; render(); });
+  document.querySelectorAll('#sortSeg button').forEach(b => b.addEventListener('click', () => { S.sort = b.dataset.v; render(); }));
+  document.querySelectorAll('table.res tbody tr').forEach(tr => tr.addEventListener('click', () => {
+    S.pick = tr.dataset.id;
+    document.querySelectorAll('table.res tbody tr').forEach(x => x.classList.toggle('sel', x === tr));
+    $('#btnNext').disabled = false;
+  }));
+  bindNav(() => {
+    // 4→5: 고른 감속기에 이 모터용 어댑터(직결 또는 부싱)가 있는지 확인
+    const r = picked();
+    if (!r) { toast('감속기를 선택하세요.', true); return; }
+    if (!r.adapter && r.unknown) { toast(`${gearboxCode(r)}은(는) 입력 홀·어댑터플랜지 정보가 아직 등록되지 않아 최종 확인을 할 수 없습니다. 관리 페이지에서 어댑터플랜지 사양을 등록하세요.`, true); return; }
+    if (!r.adapter) {
+      const m = S.motor;
+      toast(`${gearboxCode(r)}에는 ${m.motor_code}(축경 ${fmt(m.diameter)} · 파일롯경 ${fmt(m.centering)} · PCD ${fmt(m.pcd)} · ${m.mounting_thread || '나사 정보 없음'})에 맞는 어댑터플랜지가 없습니다. 다른 감속기를 고르세요.`, true);
+      return;
+    }
+    go(5);
+  });
+}
+
+/* Step 5 */
+function picked() {
+  if (!S.pick) return null;
+  const [kind, id] = S.pick.split(':');
+  return results().find(r => r.kind === kind && String(r.g.gearbox_id) === id) || null;
+}
+// 형번 표기: 감속기형번 GSN85Z-10K, 조합 GSN85Z-10K-(14-50-70-M5)
+const ratioCode = r => String(r.g.ratio_code || (r.ratio + 'K')).toUpperCase();
+const gearboxCode = r => `${r.g.series_code}${r.sizeLabel}-${ratioCode(r)}`;
+// 도면 키
+//  유성감속기:   GPB090-L1-(19-70-90-M5)   시리즈+사이즈-단수-(어댑터 코드)
+//  할로우로터리: GSH100-30K-(14-50-70-M5)  시리즈+사이즈-감속비-(어댑터 코드)
+const drawingKey = r => {
+  if (!r.adapter) return null;
+  if (r.kind === 'hollow') return `${r.g.series_code}${r.sizeLabel}-${ratioCode(r)}-(${r.adapter.iface.code})`;
+  return r.g.stage ? `${r.g.series_code}${r.sizeLabel}-${String(r.g.stage).toUpperCase()}-(${r.adapter.iface.code})` : null;
+};
+const comboCode = r => `${r.g.series_code}${r.sizeLabel}-${ratioCode(r)}-(${r.adapter.iface.code})`;
+const bushingCode = r => comboBushing(r)?.bushing_code ?? null;
+function summaryText(r) {
+  const m = S.motor, g = r.g, ev = r.ev;
+  return [
+    '[감속기 선정 결과]',
+    `모터: ${m.manufacturer} ${m.motor_code} (${fmt(m.nominal_power)} W, ${fmt(m.nominal_torque, 3)} Nm, ${fmt(m.nominal_speed)} rpm)`,
+    `조합: ${m.motor_code} + ${comboCode(r)}${bushingCode(r) ? ` + ${bushingCode(r)}` : ''}`,
+    `감속기형번: ${gearboxCode(r)} (${KIND[r.kind]}, 정격토크 ${fmt(ev.rated)} Nm)`,
+    r.kind === 'planetary' ? `백래시: ${S.cond.grade} ${backlashOf(g, S.cond.grade) ?? '값 없음'}` : `반복정밀도: ${repOf(g) ?? '–'} / 포지셔닝: ${posOf(g) ?? '–'}`,
+    `인터페이스: ${r.adapter.type}${r.adapter.slot} (${r.adapter.iface.code})`,
+    ...(drawingKey(r) ? [`도면 키: ${drawingKey(r)}`] : []),
+    bushingCode(r) ? `부싱: ${bushingCode(r)} (모터 축경 ${fmt(comboBushing(r).motor_shaft_dia)} → 감속기 입력경 ${fmt(comboBushing(r).gearbox_input_dia)} mm)` : '부싱: 없음 (직결)',
+    `출력: ${fmt(ev.t2)} Nm / ${fmt(ev.n2, 1)} rpm, 여유율 ${fmt(ev.margin * 100, 0)}% (사용계수 ${S.cond.sf})`,
+    ev.issues.length ? `확인 사항: ${ev.issues.join(', ')}` : '판정: 적합',
+    ...ev.cautions.map(c => `주의: ${c}`),
+  ].join('\n');
+}
+function view5() {
+  const r = picked();
+  if (!r || !r.adapter) return `<section class="card"><div class="callout warn"><div>${r ? '선택한 감속기에 맞는 어댑터플랜지가 없습니다.' : '선택한 감속기를 찾지 못했습니다.'} 감속기를 다시 선택하세요.</div></div></section>${navHTML({ next: '' })}`;
+  const m = S.motor, g = r.g, ev = r.ev;
+  const row = (label, v, unit = '') => `<tr><th>${label}</th><td>${v == null || v === '' ? '–' : v}${unit ? `<small>${unit}</small>` : ''}</td></tr>`;
+  const verdict = ev.level === 'ok' ? `<div class="callout ok verdict"><div><b>적합.</b> 감속기 정격토크 ${fmt(ev.rated)} Nm가 필요토크 ${fmt(ev.need)} Nm보다 큽니다 (여유율 ${fmt(ev.margin * 100, 0)}%).</div></div>`
+    : `<div class="callout verdict ${ev.level === 'bad' ? 'bad' : 'warn'}"><div><b>${ev.level === 'bad' ? '부적합' : '확인 필요'}:</b> ${esc(ev.issues.join(', '))}. 사양을 검토한 뒤 사용하세요.</div></div>`;
+  const caution = ev.cautions.length ? `<div class="callout warn"><div><b>속도 주의.</b> ${ev.cautions.map(esc).join(' / ')}. 선정 판정에는 넣지 않았으니 실제 운전 속도를 확인하세요.</div></div>` : '';
+  return `<section class="card" id="finalCard">
+    <div class="card-head"><div><h2>Step 5. 최종 확인</h2><p>선정한 모터와 감속기 조합입니다.</p></div>
+      <div class="aside no-print"><button class="btn" id="btnCopy">요약 복사</button><button class="btn" id="btnPrint">인쇄 / PDF</button></div></div>
+    <div class="combo">
+      <div class="part"><small>모터</small><b>${esc(m.motor_code)}</b></div><span class="plus">+</span>
+      <div class="part"><small>${KIND[r.kind]} + 어댑터플랜지</small><b>${esc(comboCode(r))}</b></div>
+      ${comboBushing(r) ? `<span class="plus">+</span><div class="part"><small>부싱</small><b>${esc(comboBushing(r).bushing_code)}</b></div>` : ''}
+      ${verdict}
+    </div>
+    ${caution}
+    <div class="spec drawing" id="drawingBox"><h3>도면 다운로드</h3>
+      <div class="drawing-body">${drawingKey(r)
+        ? `<div class="dk"><span>도면 키</span><code id="dKey">${esc(drawingKey(r))}</code></div><div id="dFiles" class="dfiles">download 스토리지와 하위 폴더에서 도면을 찾는 중…</div>`
+        : '<p class="muted">단수 정보가 없어 도면 키를 만들 수 없습니다.</p>'}</div>
+    </div>
+    <div class="final">
+      <div class="spec"><h3>모터</h3><table>
+        ${row('브랜드 / 형번', `${esc(m.manufacturer)} ${esc(m.motor_code)}`)}${row('정격출력', fmt(m.nominal_power), 'W')}
+        ${row('정격토크 / 최대토크', `${fmt(m.nominal_torque, 3)} / ${fmt(m.peak_torque, 3)}`, 'Nm')}
+        ${row('정격속도 / 최대속도', `${fmt(m.nominal_speed)} / ${fmt(m.max_speed)}`, 'rpm')}
+        ${row('인터페이스', `${r.adapter.type}${r.adapter.slot}`)}${row('부싱', comboBushing(r) ? `${esc(comboBushing(r).bushing_code)} <small>축경 ${fmt(comboBushing(r).motor_shaft_dia)} → 입력경 ${fmt(comboBushing(r).gearbox_input_dia)} mm</small>` : '없음 (직결)')}
+      </table></div>
+      <div class="spec"><h3>감속기</h3><table>
+        ${row('종류', KIND[r.kind])}${row('감속기형번', esc(gearboxCode(r)))}
+        ${row('정격토크', fmt(ev.rated), 'Nm')}${row('정격속도 / 최대속도', `${fmt(g.rated_speed)} / ${fmt(g.max_speed)}`, 'rpm')}
+        ${row('무게', fmt(g.weight), 'kg')}${r.kind === 'planetary' ? row('백래시', `${S.cond.grade} · ${esc(backlashOf(g, S.cond.grade) ?? '값 없음')}`) : row('반복정밀도', esc(repOf(g) ?? '–')) + row('포지셔닝', esc(posOf(g) ?? '–'))}
+        ${r.kind === 'hollow' ? row('틸팅모멘트', fmt(g.tilting_moment), 'Nm') : ''}
+      </table></div>
+      <div class="spec"><h3>계산 결과</h3><table>
+        ${row('출력 토크 (정격)', fmt(ev.t2), 'Nm')}${row('출력 토크 (최대)', fmt(ev.t2peak), 'Nm')}
+        ${row('필요 정격토크', fmt(ev.need), `Nm · 사용계수 ${esc(S.cond.sf)}`)}${row('여유율', ev.margin == null ? '–' : fmt(ev.margin * 100, 0), '%')}
+        ${row('출력 속도', fmt(ev.n2, 1), 'rpm')}${S.cond.loadTorque ? row('부하 토크', fmt(S.cond.loadTorque), 'Nm') : ''}
+        ${row('효율 반영', S.cond.useEff ? `η = ${fmt(ev.eff)}` : '반영 안 함')}
+      </table></div>
+    </div>
+  </section>${navHTML({ next: '처음부터 다시', extra: '' })}`;
+}
+const fmtSize = n => n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB';
+// download 버킷 전체(하위 폴더 포함)를 한 번 훑어 파일 목록을 만들어 두고, 도면 키로 찾음
+let drawingIndex = null;   // Promise<{ files: [{path,name,size}], folders: n } | { error }>
+async function listAll(bucket, prefix) {
+  const out = [];
+  for (let offset = 0; ; offset += 1000) {
+    const { data, error } = await bucket.list(prefix, { limit: 1000, offset, sortBy: { column: 'name', order: 'asc' } });
+    if (error) throw error;
+    out.push(...(data || []));
+    if (!data || data.length < 1000) break;
+  }
+  return out;
+}
+function buildDrawingIndex() {
+  if (drawingIndex) return drawingIndex;
+  drawingIndex = (async () => {
+    const bucket = sb.storage.from(DRAWING.bucket);
+    const files = []; let folders = 0;
+    const queue = [{ prefix: '', depth: 0 }];
+    while (queue.length) {
+      const { prefix, depth } = queue.shift();
+      const items = await listAll(bucket, prefix);
+      for (const o of items) {
+        if (o.name === '.emptyFolderPlaceholder') continue;
+        const path = prefix ? `${prefix}/${o.name}` : o.name;
+        if (o.id == null && !o.metadata) {                 // 폴더
+          folders++;
+          if (depth < 8 && folders <= 2000) queue.push({ prefix: path, depth: depth + 1 });
+        } else files.push({ path, name: o.name, size: o.metadata?.size });
+      }
+    }
+    return { files, folders };
+  })().catch(e => { drawingIndex = null; return { error: `도면 목록을 읽지 못했습니다 (${DRAWING.bucket} 버킷 읽기 권한을 확인하세요): ${errText(e)}` }; });
+  return drawingIndex;
+}
+async function findDrawings(key) {
+  const idx = await buildDrawingIndex();
+  if (idx.error) return idx;
+  const order = { pdf: 0, step: 1, stp: 1 };
+  const hits = idx.files.map(f => {
+    const m = String(f.name).match(/^(.*)\.([^.]+)$/);
+    return m && m[1].toUpperCase() === key.toUpperCase() && DRAWING.exts[m[2].toLowerCase()] ? { ...f, ext: m[2].toLowerCase(), folder: f.path.includes('/') ? f.path.slice(0, f.path.lastIndexOf('/')) : '' } : null;
+  }).filter(Boolean).sort((a, b) => order[a.ext] - order[b.ext] || a.path.localeCompare(b.path));
+  const seen = new Set();
+  const uniq = hits.filter(f => { const k = f.name.toUpperCase(); if (seen.has(k)) return false; seen.add(k); return true; });
+  uniq.searched = { files: idx.files.length, folders: idx.folders };
+  return uniq;
+}
+function bind5() {
+  $('#btnCopy')?.addEventListener('click', async () => {
+    const r = picked(); if (!r) return;
+    try { await navigator.clipboard.writeText(summaryText(r)); toast('요약을 복사했습니다.'); }
+    catch { toast('복사하지 못했습니다. 화면 내용을 직접 선택해 복사하세요.', true); }
+  });
+  $('#btnPrint')?.addEventListener('click', () => window.print());
+  const r = picked();
+  const key = r && drawingKey(r);
+  if (key) {
+    findDrawings(key).then(files => {
+      const box = $('#dFiles'); if (!box || $('#dKey')?.textContent !== key) return;
+      if (files.error) { box.innerHTML = `<span style="color:var(--danger)">${esc(files.error)}</span>`; return; }
+      if (!files.length) { box.textContent = `${DRAWING.bucket} 스토리지와 하위 폴더에 ${key}.pdf / .step 파일이 없습니다.`; return; }
+      box.innerHTML = files.map((f, i) => `<button class="btn" data-dl="${i}" title="${esc(f.path)}">${esc(DRAWING.exts[f.ext])} 받기<small>${esc(f.name)}${f.size ? ' · ' + fmtSize(f.size) : ''}</small></button>`).join('')
+;
+      box.querySelectorAll('[data-dl]').forEach(btn => btn.addEventListener('click', async () => {
+        const f = files[+btn.dataset.dl]; btn.disabled = true;
+        try { await downloadFromStorage(DRAWING.bucket, f.path, f.name); toast(`${f.name} 을(를) 내려받았습니다.`); }
+        catch (e) { toast(`도면을 받지 못했습니다. ${errText(e)}`, true); }
+        finally { btn.disabled = false; }
+      }));
+    });
+  }
+  bindNav(() => { S.motor = null; S.pick = null; S.f = { brand: '', type: '', model: '' }; S.cond.ratios = []; S.cond.spec = { series: '', size: '', ratio: '', rep: '', pos: '' }; go(1); });
+}
+
+/* ---------- 연결 설정 화면 ---------- */
+function openSettings() {
+  $('#stepper').hidden = true;
+  $('#main').innerHTML = `<section class="card setup">
+    <div class="card-head"><div><h2>Supabase 연결</h2><p>Supabase 대시보드의 Connect 버튼(또는 Project Settings → API Keys)에서 두 값을 복사해 넣으세요. 이 컴퓨터의 브라우저에만 저장됩니다.</p></div></div>
+    <label class="f"><span>Project URL</span><input type="url" id="sUrl" value="${esc(store.get(CFG_URL) || '')}" placeholder="https://abcdefgh.supabase.co"></label>
+    <label class="f"><span>anon / publishable key</span><input type="text" id="sKey" value="${esc(store.get(CFG_KEY) || '')}" placeholder="eyJhbGciOi… 또는 sb_publishable_…"></label>
+    <p style="margin:0;font-size:12px;color:var(--muted)">이 페이지는 조회만 합니다. 로그인은 필요 없고, service_role(secret) 키는 넣지 마세요.</p>
+    <div class="nav" style="margin:0">${sb ? '<button class="btn" id="sCancel">취소</button>' : ''}<span class="spacer"></span><button class="btn primary lg" id="sSave">연결</button></div>
+  </section>`;
+  $('#sCancel')?.addEventListener('click', () => { $('#stepper').hidden = false; render(); });
+  $('#sSave').addEventListener('click', async () => {
+    const url = $('#sUrl').value.trim().replace(/\/+$/, ''), key = $('#sKey').value.trim();
+    if (!/^https?:\/\/.+/.test(url) || key.length < 20) { toast('Project URL과 키를 확인하세요.', true); return; }
+    if (/sb_secret_/.test(key) || (() => { try { return JSON.parse(atob(key.split('.')[1])).role === 'service_role'; } catch { return false; } })()) { toast('service_role(secret) 키입니다. anon / publishable 키를 넣어 주세요.', true); return; }
+    store.set(CFG_URL, url); store.set(CFG_KEY, key);
+    await start();
+  });
+}
+$('#btnSettings').addEventListener('click', openSettings);
+
+async function start() {
+  const url = store.get(CFG_URL), key = store.get(CFG_KEY);
+  if (!window.supabase) { $('#main').innerHTML = '<section class="card"><div class="callout bad"><div>Supabase 라이브러리를 불러오지 못했습니다. 인터넷 연결을 확인하세요.</div></div></section>'; return; }
+  if (!url || !key) { openSettings(); return; }
+  sb = window.supabase.createClient(url, key, { auth: { persistSession: false } });
+  $('#main').innerHTML = '<div class="loading">모터·감속기 데이터를 불러오는 중…</div>';
+  try {
+    await loadAll();
+    const c = $('#connState'); c.className = 'conn on'; c.textContent = `모터 ${DB.motors.length} · 유성 ${DB.planetary.length} · 할로우 ${DB.hollow.length} · 부싱 ${DB.bushingLoaded ? DB.bushings.length : '없음'} · 입력홀 ${DB.holeLoaded ? `${DB.holes.size} (${DB.holeSource})` : '없음'}`;
+    $('#stepper').hidden = false; renderStepper(); render();
+  } catch (e) {
+    $('#connState').className = 'conn'; $('#connState').textContent = '연결 실패';
+    toast(errText(e), true); openSettings();
+  }
+}
+start();
+})();
+</script>
+</body>
+</html>
