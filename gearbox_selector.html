@@ -267,6 +267,8 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
 <datalist id="dl-model"></datalist>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<!-- 고정 연결 설정 (선택). 같은 폴더에 config.js 가 있으면 연결 화면 없이 바로 접속합니다. 없으면 무시됩니다. -->
+<script src="config.js"></script>
 <script>
 (() => {
 'use strict';
@@ -317,7 +319,8 @@ async function fetchAll(table, select = '*', order) {
 }
 
 /* ---------- 데이터 ---------- */
-const DB = { seriesDesc: new Map(), motors: [], planetary: [], hollow: [], slotsBySize: new Map(), ifaceById: new Map(), bushings: [], bushingLoaded: false, holes: new Map(), holeLoaded: false };
+const up = v => String(v ?? '').trim().toUpperCase();
+const DB = { seriesDesc: new Map(), photoMeta: new Map(), motors: [], planetary: [], hollow: [], slotsBySize: new Map(), ifaceById: new Map(), bushings: [], bushingLoaded: false, holes: new Map(), holeLoaded: false };
 async function loadAll() {
   const [motors, btypes, mseries, mfrs, plan, hol, models, ifaces, links] = await Promise.all([
     fetchAll('motor', '*', 'motor_id'), fetchAll('motor_basic_type'), fetchAll('motor_series'), fetchAll('manufacturer'),
@@ -347,8 +350,19 @@ async function loadAll() {
     } catch { /* 테이블 없음 → 다음 후보 */ }
   }
   // 시리즈 설명 (사진 팝업에 표시). 테이블이 없거나 못 읽어도 나머지는 그대로 동작
-  try { DB.seriesDesc = new Map((await fetchAll('series')).filter(r => r.series_code && r.description).map(r => [String(r.series_code).toUpperCase(), String(r.description).trim()])); }
-  catch { DB.seriesDesc = new Map(); }
+  // 시리즈 설명·사진 정보 (사진 팝업에 표시). 테이블이 없거나 못 읽어도 나머지는 그대로 동작
+  //  사진 정보: series 테이블에 photo_filename 컬럼(사진 1장 = 1행)이 있으면 그것을 쓰고, 없으면 series_photo 테이블을 씀
+  //  순서 컬럼: sort_order / order / sort / seq 중 있는 것
+  let seriesRows = [];
+  try { seriesRows = await fetchAll('series'); } catch {}
+  DB.seriesDesc = new Map(seriesRows.filter(r => r.series_code && r.description && (r.photo_filename == null || up(r.photo_filename) === up(r.series_code)))
+    .map(r => [up(r.series_code), String(r.description).trim()]));
+  let photoRows = seriesRows.filter(r => r.photo_filename);
+  if (!photoRows.length) { try { photoRows = await fetchAll('series_photo'); } catch {} }
+  const orderOf = (r, i) => { for (const k of ['sort_order', 'order', 'sort', 'seq']) { const v = parseFloat(r[k]); if (Number.isFinite(v)) return v; } return 1e6 + i; };
+  DB.photoMeta = new Map(photoRows.filter(r => r.series_code && r.photo_filename).map((r, i) => [up(String(r.photo_filename).replace(/\.[^.]+$/, '')), {
+    series: up(r.series_code), title: String(r.photo_title ?? '').trim(), desc: String(r.description ?? '').trim(), order: orderOf(r, i), idx: i }]));
+  for (const r of seriesRows) if (r.series_code && r.description && !DB.seriesDesc.has(up(r.series_code))) DB.seriesDesc.set(up(r.series_code), String(r.description).trim());
   try { DB.bushings = await fetchAll('bushing', '*', 'bushing_code'); DB.bushingLoaded = true; }
   catch { DB.bushings = []; DB.bushingLoaded = false; }
   DB.ifaceById = new Map(ifaces.map(i => [i.interface_id, i]));
@@ -724,15 +738,28 @@ async function openPhotoModal(kind) {
   const ser = photoSeriesInfo(kinds);
   const cur = S.cond.ratioMode === 'spec' ? S.cond.spec.series : '';
   const descCodes = [...DB.seriesDesc.keys()].sort((a, b) => b.length - a.length);
+  // 사진 정보 표(series_photo)에 파일명이 있으면 그 행의 시리즈·제목·설명을 쓰고,
+  // 없으면 파일명·폴더 이름이 시리즈 코드로 시작하는지로 찾음 (예전 방식)
+  const metaOf = f => DB.photoMeta.get(up(label(f.name)));
   const item = f => {
-    const code = seriesOfPhoto(f, ser.codes), info = code && ser.map.get(code);
-    const dcode = code || seriesOfPhoto(f, descCodes), desc = dcode && DB.seriesDesc.get(String(dcode).toUpperCase());
-    const head = `<span class="desc"${desc ? ` title="${esc(dcode + ' · ' + desc)}"` : ''}>${desc ? esc(desc) : '&nbsp;'}</span>`;
-    const img = head + `<img src="${esc(urls.get(f.path))}" alt="${esc(label(f.name))}" width="100" height="100" loading="lazy">`;
-    if (info?.fit) return `<button type="button" class="photo-pick${code === cur ? ' on' : ''}" data-series="${esc(code)}" data-kind="${info.kind}" title="${esc(code)} 시리즈 선택">${img}<span class="cap">${esc(label(f.name))}</span></button>`;
-    const why = !code ? '' : '이 모터에 맞는 사이즈 없음';
-    return `<figure class="${code ? 'photo-off' : 'photo-none'}" title="${esc(why || '시리즈를 찾지 못한 사진')}">${img}<figcaption>${esc(label(f.name))}${why ? `<small>${why}</small>` : ''}</figcaption></figure>`;
+    const meta = metaOf(f);
+    const code = meta ? meta.series : seriesOfPhoto(f, ser.codes), info = code && ser.map.get(code);
+    const dcode = code || seriesOfPhoto(f, descCodes);
+    const desc = meta?.desc || (dcode && DB.seriesDesc.get(up(dcode))) || '';
+    const title = meta?.title || label(f.name);
+    const head = `<span class="desc"${desc ? ` title="${esc((dcode ? dcode + ' · ' : '') + desc)}"` : ''}>${desc ? esc(desc) : '&nbsp;'}</span>`;
+    const img = head + `<img src="${esc(urls.get(f.path))}" alt="${esc(title)}" width="100" height="100" loading="lazy">`;
+    if (info?.fit) return `<button type="button" class="photo-pick${code === cur ? ' on' : ''}" data-series="${esc(code)}" data-kind="${info.kind}" title="${esc(code)} 시리즈 선택">${img}<span class="cap">${esc(title)}</span></button>`;
+    const why = !code ? '' : info ? '이 모터에 맞는 사이즈 없음' : '감속기 데이터 없음';
+    return `<figure class="${code ? 'photo-off' : 'photo-none'}" title="${esc(why || '시리즈를 찾지 못한 사진')}">${img}<figcaption>${esc(title)}${why ? `<small>${why}</small>` : ''}</figcaption></figure>`;
   };
+  // 사진 정보 표의 순서(sort_order)대로, 표에 없는 사진은 뒤에 파일명 순
+  for (const g of groups) g.files = [...g.files].sort((a, b) => {
+    const ma = metaOf(a), mb = metaOf(b);
+    if (ma && mb) return ma.order - mb.order || ma.idx - mb.idx;
+    if (ma || mb) return ma ? -1 : 1;
+    return a.name.localeCompare(b.name, 'ko', { numeric: true });
+  });
   $('#photoBody').innerHTML = `<p class="photo-tip">사진을 클릭하면 해당 시리즈가 "감속기 지정"으로 선택됩니다.</p>` + groups.map(g => `<section class="photo-group">${groups.length > 1 ? `<h4>${esc(g.name)}</h4>` : ''}
     <div class="photo-grid">${g.files.map(item).join('')}</div></section>`).join('');
 }
@@ -1155,8 +1182,19 @@ function openSettings() {
 }
 $('#btnSettings').addEventListener('click', openSettings);
 
+/* config.js 의 고정 연결 값 (있으면 연결 화면을 건너뜀) */
+const FIXED = (() => {
+  const c = window.GEARBOX_CONFIG || {};
+  const url = String(c.supabaseUrl || '').trim().replace(/\/+$/, ''), key = String(c.supabaseAnonKey || '').trim();
+  if (!/^https?:\/\/.+/.test(url) || key.length < 20) return null;
+  const secret = /sb_secret_/.test(key) || (() => { try { return JSON.parse(atob(key.split('.')[1])).role === 'service_role'; } catch { return false; } })();
+  return secret ? { error: 'config.js 에 service_role(secret) 키가 들어 있습니다. anon / publishable 키로 바꾸세요.' } : { url, key };
+})();
+if (FIXED) $('#btnSettings').hidden = true;
+
 async function start() {
-  const url = store.get(CFG_URL), key = store.get(CFG_KEY);
+  if (FIXED?.error) { $('#main').innerHTML = `<section class="card"><div class="callout bad"><div>${esc(FIXED.error)}</div></div></section>`; return; }
+  const url = FIXED ? FIXED.url : store.get(CFG_URL), key = FIXED ? FIXED.key : store.get(CFG_KEY);
   if (!window.supabase) { $('#main').innerHTML = '<section class="card"><div class="callout bad"><div>Supabase 라이브러리를 불러오지 못했습니다. 인터넷 연결을 확인하세요.</div></div></section>'; return; }
   if (!url || !key) { openSettings(); return; }
   sb = window.supabase.createClient(url, key, { auth: { persistSession: false } });
@@ -1167,7 +1205,9 @@ async function start() {
     $('#stepper').hidden = false; renderStepper(); render();
   } catch (e) {
     $('#connState').className = 'conn'; $('#connState').textContent = '연결 실패';
-    toast(errText(e), true); openSettings();
+    toast(errText(e), true);
+    if (FIXED) $('#main').innerHTML = `<section class="card"><div class="callout bad"><div>DB에 연결하지 못했습니다. 잠시 후 새로고침하거나 관리자에게 알려 주세요.<br><small>${esc(errText(e))}</small></div></div></section>`;
+    else openSettings();
   }
 }
 start();

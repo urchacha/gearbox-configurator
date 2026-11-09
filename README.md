@@ -16,6 +16,19 @@
    - Supabase 대시보드 → 프로젝트 → **Connect** 버튼 (또는 Project Settings → API Keys)에서 복사합니다.
 3. 값은 이 컴퓨터 브라우저에만 저장됩니다. 바꾸려면 상단의 **연결 설정** 버튼을 누릅니다.
 
+### 연결 화면 없이 바로 열기 (config.js)
+
+웹 주소(Vercel·GitHub Pages)로 여러 사람이 쓸 때는 연결 값을 파일로 고정할 수 있습니다.
+
+1. `config.example.js`를 `config.js`로 이름을 바꿉니다.
+2. `supabaseUrl`, `supabaseAnonKey`에 값을 넣습니다.
+3. `gearbox_selector.html`과 같은 폴더에 올립니다.
+
+이렇게 하면 페이지를 열 때 바로 모터 선택 화면이 나오고, **연결 설정** 버튼은 숨겨집니다. `config.js`가 없으면 예전처럼 연결 화면이 나옵니다.
+
+- anon(publishable) 키만 넣습니다. anon 키는 원래 브라우저에 공개되는 키이고, 데이터는 RLS 정책으로 보호됩니다(조회만 허용).
+- `service_role` / `sb_secret_` 키를 넣으면 페이지가 동작하지 않고 경고를 표시합니다.
+
 > 인터넷 연결이 필요합니다. 페이지가 아래 두 파일을 CDN에서 받아 옵니다.
 > - `@supabase/supabase-js@2.45.4` (jsDelivr)
 > - Pretendard 글꼴
@@ -38,7 +51,8 @@
 
 - 종류 박스를 **클릭하면** 사진 팝업이 열립니다. 이미 선택된 박스를 다시 눌러도 열립니다.
 - 팝업에서 사진(100×100)을 누르면 그 시리즈가 바로 **감속기 지정**으로 선택됩니다.
-- 사진 위에는 `series` 테이블의 설명(description)이, 아래에는 파일명이 표시됩니다.
+- 사진 위에는 설명(description), 아래에는 사진 제목(photo_title)이 표시됩니다. 사진 정보 표에 없는 사진은 시리즈 설명과 파일명이 표시됩니다.
+- 사진은 사진 정보 표의 순서(sort_order)대로 나오고, 표에 없는 사진은 뒤에 파일명 순으로 나옵니다.
 - 사진이 많으면 팝업 안에서 스크롤됩니다.
 
 **선정 범위**
@@ -81,7 +95,8 @@
 | `planetary_gearbox` | ✔ | 유성감속기 (감속비·정격토크·효율·속도·P1/P2 백래시 등) |
 | `hollow_gearbox` | ✔ | 할로우로터리 (flange_size, 반복정밀도·포지셔닝 등) |
 | `model`, `interface`, `model_interface` | ✔ | 시리즈·사이즈별 어댑터플랜지(ST/SV 슬롯) 사양 |
-| `series` | 선택 | 시리즈 설명 → 사진 팝업에 표시 |
+| `series` | 선택 | 시리즈 설명 + 사진 정보 (사진 1장 = 1행): `series_code`, `photo_filename`, `photo_title`, `description`, `sort_order`(또는 `order`) |
+| `series_photo` | 선택 | `series`에 `photo_filename` 컬럼이 없을 때 쓰는 사진 정보 표 (같은 컬럼) |
 | `basic_dimension` 또는 `input_hole` | 선택 | 시리즈·사이즈별 감속기 입력 홀 지름 |
 | `bushing` | 선택 | 부싱 (모터 축경 → 감속기 입력경) |
 
@@ -102,8 +117,10 @@
 | `download` | 5단계 도면 다운로드 | 파일명 = 도면 키 + `.pdf` / `.step` / `.stp`. 하위 폴더까지 모두 찾습니다. |
 
 - 비공개 버킷이면 서명 URL로, 공개 버킷이면 공개 URL로 읽습니다. 비공개 버킷은 `anon`에 읽기(select) 정책이 필요합니다.
-- 사진 파일명(또는 사진이 든 폴더 이름)이 **시리즈 코드로 시작**해야 사진 클릭으로 시리즈가 선택되고 설명이 붙습니다.
-  - 예: `GPB.jpg`, `GPB_외형.png`, `GSN85Z.png`, `photo/planetary/GPB/1.jpg`
+- 사진은 **사진 정보(`series` 또는 `series_photo`)의 `photo_filename`**으로 찾습니다. 버킷 파일명에서 확장자를 뺀 이름과 비교하고, 대소문자는 구분하지 않습니다.
+  - 예: `photo_filename = GSG-ZL` → `GSG-ZL.png` → 시리즈 GSG, 제목·설명은 그 행의 값
+- 표에 없는 사진은 파일명(또는 사진이 든 폴더 이름)이 **시리즈 코드로 시작**하면 그 시리즈로 봅니다.
+  - 예: `GPB.jpg`, `GPB_외형.png`, `photo/planetary/GPB/1.jpg`
   - 긴 코드를 먼저 비교합니다 (`GPBR.png` → GPBR).
 
 ---
@@ -160,8 +177,8 @@
 | 처음 화면에서 데이터를 못 읽음 | Project URL·anon key, 테이블 읽기 권한(`supabase_policies.sql`) |
 | 시리즈 목록에 원하는 시리즈가 없음 | 그 시리즈의 입력 홀·부싱·어댑터 정보가 모터 축경과 맞는지. 감속기 테이블에 행이 있는지 |
 | 사진 팝업이 비어 있음 | `photo` 버킷 폴더 이름(planetary/hollow 등), 버킷 읽기 정책 |
-| 사진을 눌러도 선택되지 않음 | 파일명·폴더 이름이 시리즈 코드로 시작하는지. 흐린 사진은 그 모터에 맞는 사이즈가 없는 시리즈 |
-| 사진 위 설명이 비어 있음 | `series` 테이블에 그 시리즈의 description이 있는지 |
+| 사진을 눌러도 선택되지 않음 | `photo_filename`이 버킷 파일명(확장자 제외)과 같은지. 흐린 사진은 그 모터에 맞는 사이즈가 없거나 감속기 데이터가 없는 시리즈 |
+| 사진 위 설명·제목이 안 나옴 | `series`(또는 `series_photo`)에 그 사진 행이 있는지, `anon` 읽기 권한(`supabase_policies.sql`)이 있는지 |
 | "어댑터 없음"으로 5단계에 못 감 | `model`·`model_interface`에 그 사이즈의 ST/SV 슬롯이 있는지. 파일롯경·PCD·체결나사가 모터와 같은지 |
 | 도면이 안 나옴 | `download` 버킷 파일명이 도면 키와 같은지 (`.pdf` / `.step` / `.stp`). 유성은 `stage`(단수) 값이 필요 |
 | 감속비가 이상함 (예: 10443) | `hollow_gearbox.ratio`가 소수형인지 (`hollow_gearbox_reload.sql` 실행) |
@@ -173,6 +190,7 @@
 | 파일 | 설명 |
 |---|---|
 | `gearbox_selector.html` | 감속기 선정툴 (이 문서) |
+| `config.js` (선택) | 고정 연결 값. `config.example.js`를 복사해 만듦 |
 | `motor_gearbox_admin.html` | 모터·감속기 데이터 관리 페이지 (로그인 후 추가·수정·삭제, CSV 가져오기) |
 | `supabase_policies.sql` | 테이블 읽기·쓰기 권한(RLS) 설정 |
 | `reducer_motor_interface.sql`, `motor.sql`, `planetary_gearbox.sql`, `hollow_gearbox.sql`, `bushing.sql`, `input_hole.sql` | 테이블 생성 + 초기 데이터 |
