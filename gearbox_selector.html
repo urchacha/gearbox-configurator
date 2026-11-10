@@ -1369,7 +1369,7 @@ function bind5() {
     findDrawings(key).then(files => {
       const box = $('#dFiles'); if (!box || $('#dKey')?.textContent !== key) return;
       if (files.error) { box.innerHTML = `<span style="color:var(--danger)">${esc(files.error)}</span>`; return; }
-      if (!files.length) { box.textContent = `${DRAWING.bucket} 스토리지와 하위 폴더에 ${key}.pdf / .step 파일이 없습니다.`; return; }
+      if (!files.length) { box.textContent = `${DRAWING.bucket} 스토리지에 ${key}.pdf / .step 파일이 없습니다.`; return; }
       // 보기·다운로드 주소를 미리 만들어 진짜 링크로 둠 (모바일 팝업 차단 방지). 유효 시간이 지나면 클릭할 때 새로 만듦
       const paths = files.map(f => f.path);
       const made = Date.now();
