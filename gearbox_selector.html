@@ -184,8 +184,14 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
 .dk { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; }
 .dk span { color: var(--muted); }
 .dk code { font-family: var(--mono); font-size: 14px; font-weight: 700; background: var(--surface-2); padding: 3px 8px; border-radius: 6px; }
-.dfiles { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
-.dfiles .btn small { font-weight: 500; color: var(--muted); margin-left: 4px; }
+.dfiles { display: grid; gap: 8px; font-size: 13px; color: var(--muted); }
+.dfile { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.dfile .dname { display: grid; flex: 1 1 180px; min-width: 0; }
+.dfile .dname b { color: var(--fg); font-size: 13px; }
+.dfile .dname small { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+.dfile a.btn { text-decoration: none; white-space: nowrap; }
+.dnote { font-size: 12px; }
+@media (max-width: 600px) { .dfile .dname { flex-basis: 100%; } .dfile a.btn { flex: 1 1 0; justify-content: center; } }
 .muted { margin: 0; color: var(--muted); font-size: 13px; }
 .final { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: start; }
 .combo { border: 1px solid var(--accent-line); background: var(--accent-soft); border-radius: 12px; padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
@@ -245,7 +251,7 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
     <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
     <div class="brand"><h1>감속기 선정툴</h1><p>Gearbox Configuration Tool</p></div>
     <div class="right">
-      <span class="conn" id="connState">연결 안 됨</span>
+      <span class="conn" id="connState" hidden></span>
       <button class="btn" id="btnSettings">연결 설정</button>
     </div>
   </div>
@@ -558,25 +564,35 @@ function catalogButtons() {
     <button class="btn" data-cat="planetary">${iconDoc}유성감속기 카탈로그</button>
     <button class="btn" data-cat="hollow">${iconDoc}할로우로터리 카탈로그</button>`;
 }
-// 스토리지 파일 내려받기: 비공개 버킷은 서명 URL, 공개 버킷은 공개 URL
-async function downloadFromStorage(bucketName, path, saveName = path.split('/').pop()) {
+// 스토리지 파일 주소: 비공개 버킷은 서명 URL, 공개 버킷은 공개 URL
+//  download 를 주면 '첨부파일'로 내려오는 주소 (PC·모바일 모두 저장), 없으면 브라우저에서 바로 여는 주소 (PDF 뷰어)
+const LINK_TTL = 3600;   // 서명 URL 유효 시간(초)
+async function storageUrls(bucketName, paths, download) {
   const bucket = sb.storage.from(bucketName);
-  const signed = await bucket.createSignedUrl(path, 600);
-  const url = !signed.error && signed.data?.signedUrl ? signed.data.signedUrl : bucket.getPublicUrl(path).data.publicUrl;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(res.status === 400 || res.status === 404
-    ? `${bucketName} 버킷에서 ${path} 파일을 찾지 못했거나 읽기 권한이 없습니다.` : `서버 응답 ${res.status}`);
-  const blobUrl = URL.createObjectURL(await res.blob());
-  const a = document.createElement('a'); a.href = blobUrl; a.download = saveName;
-  document.body.appendChild(a); a.click();
-  setTimeout(() => { URL.revokeObjectURL(blobUrl); a.remove(); }, 2000);
+  const { data, error } = await bucket.createSignedUrls(paths, LINK_TTL, download ? { download: true } : undefined);
+  return paths.map((p, i) => {
+    const d = !error && data?.[i];
+    if (d && !d.error && d.signedUrl) return d.signedUrl;
+    return bucket.getPublicUrl(p, download ? { download: true } : undefined).data.publicUrl;
+  });
 }
+// 파일 내려받기: 첨부파일 주소로 이동 → 브라우저가 저장 (모바일 포함, 화면은 그대로)
+async function downloadFromStorage(bucketName, path) {
+  const [url] = await storageUrls(bucketName, [path], true);
+  const res = await fetch(url, { method: 'HEAD' }).catch(() => null);
+  if (res && !res.ok) throw new Error(res.status === 400 || res.status === 404
+    ? `${bucketName} 버킷에서 ${path} 파일을 찾지 못했거나 읽기 권한이 없습니다.` : `서버 응답 ${res.status}`);
+  const a = document.createElement('a'); a.href = url; a.rel = 'noopener';
+  document.body.appendChild(a); a.click(); setTimeout(() => a.remove(), 1000);
+}
+// STEP 파일 3D 보기: Online 3D Viewer(3dviewer.net)가 브라우저에서 파일 주소를 직접 읽어 보여 줌
+const STEP_VIEWER = url => 'https://3dviewer.net/#model=' + url;
 function bindCatalog() {
   document.querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', async () => {
     const file = CATALOG[b.dataset.cat];
     const label = b.textContent.trim();
     b.disabled = true;
-    try { await downloadFromStorage(CATALOG.bucket, file); toast(`${label}를 내려받았습니다.`); }
+    try { await downloadFromStorage(CATALOG.bucket, file); toast(`${label} 다운로드를 시작했습니다.`); }
     catch (e) { toast(`카탈로그를 받지 못했습니다. ${errText(e)}`, true); }
     finally { b.disabled = false; }
   }));
@@ -1148,14 +1164,35 @@ function bind5() {
       const box = $('#dFiles'); if (!box || $('#dKey')?.textContent !== key) return;
       if (files.error) { box.innerHTML = `<span style="color:var(--danger)">${esc(files.error)}</span>`; return; }
       if (!files.length) { box.textContent = `${DRAWING.bucket} 스토리지와 하위 폴더에 ${key}.pdf / .step 파일이 없습니다.`; return; }
-      box.innerHTML = files.map((f, i) => `<button class="btn" data-dl="${i}" title="${esc(f.path)}">${esc(DRAWING.exts[f.ext])} 받기<small>${esc(f.name)}${f.size ? ' · ' + fmtSize(f.size) : ''}</small></button>`).join('')
-;
-      box.querySelectorAll('[data-dl]').forEach(btn => btn.addEventListener('click', async () => {
-        const f = files[+btn.dataset.dl]; btn.disabled = true;
-        try { await downloadFromStorage(DRAWING.bucket, f.path, f.name); toast(`${f.name} 을(를) 내려받았습니다.`); }
-        catch (e) { toast(`도면을 받지 못했습니다. ${errText(e)}`, true); }
-        finally { btn.disabled = false; }
-      }));
+      // 보기·다운로드 주소를 미리 만들어 진짜 링크로 둠 (모바일 팝업 차단 방지). 유효 시간이 지나면 클릭할 때 새로 만듦
+      const paths = files.map(f => f.path);
+      const made = Date.now();
+      Promise.all([storageUrls(DRAWING.bucket, paths, false), storageUrls(DRAWING.bucket, paths, true)]).then(([view, dl]) => {
+        if ($('#dFiles') !== box) return;
+        box.innerHTML = files.map((f, i) => {
+          const isPdf = f.ext === 'pdf';
+          const viewHref = isPdf ? view[i] : STEP_VIEWER(view[i]);
+          return `<div class="dfile">
+            <div class="dname"><b>${esc(DRAWING.exts[f.ext])}</b><small>${esc(f.name)}${f.size ? ' · ' + fmtSize(f.size) : ''}</small></div>
+            <a class="btn" data-i="${i}" data-act="view" href="${esc(viewHref)}" target="_blank" rel="noopener">${isPdf ? 'PDF 보기' : '3D 보기'}</a>
+            <a class="btn primary" data-i="${i}" data-act="dl" href="${esc(dl[i])}" download="${esc(f.name)}" rel="noopener">${iconDoc}다운로드</a>
+          </div>`;
+        }).join('') + `<p class="muted dnote">PDF는 브라우저 뷰어로, STEP은 Online 3D Viewer(3dviewer.net)로 엽니다. 링크는 ${LINK_TTL / 60}분 동안 유효합니다.</p>`;
+        box.querySelectorAll('a[data-act]').forEach(a => a.addEventListener('click', async e => {
+          if (Date.now() - made < (LINK_TTL - 120) * 1000) {
+            if (a.dataset.act === 'dl') toast(`${files[+a.dataset.i].name} 다운로드를 시작했습니다.`);
+            return;
+          }
+          e.preventDefault();   // 주소가 만료됨 → 새로 만들어 이동
+          const f = files[+a.dataset.i];
+          const w = a.dataset.act === 'view' ? window.open('about:blank', '_blank') : null;
+          try {
+            const [u] = await storageUrls(DRAWING.bucket, [f.path], a.dataset.act === 'dl');
+            const href = a.dataset.act === 'view' ? (f.ext === 'pdf' ? u : STEP_VIEWER(u)) : u;
+            if (w) w.location.href = href; else location.href = href;
+          } catch (err) { w?.close(); toast(`도면을 열지 못했습니다. ${errText(err)}`, true); }
+        }));
+      }).catch(e => { box.innerHTML = `<span style="color:var(--danger)">도면 주소를 만들지 못했습니다: ${esc(errText(e))}</span>`; });
     });
   }
   bindNav(() => { S.motor = null; S.pick = null; S.f = { brand: '', type: '', model: '' }; S.cond.ratios = []; S.cond.spec = { series: '', size: '', ratio: '', rep: '', pos: '' }; go(1); });
@@ -1201,10 +1238,10 @@ async function start() {
   $('#main').innerHTML = '<div class="loading">모터·감속기 데이터를 불러오는 중…</div>';
   try {
     await loadAll();
-    const c = $('#connState'); c.className = 'conn on'; c.textContent = `모터 ${DB.motors.length} · 유성 ${DB.planetary.length} · 할로우 ${DB.hollow.length} · 부싱 ${DB.bushingLoaded ? DB.bushings.length : '없음'} · 입력홀 ${DB.holeLoaded ? `${DB.holes.size} (${DB.holeSource})` : '없음'}`;
+    $('#connState').hidden = true;   // 연결되면 상단 상태 문구는 표시하지 않음
     $('#stepper').hidden = false; renderStepper(); render();
   } catch (e) {
-    $('#connState').className = 'conn'; $('#connState').textContent = '연결 실패';
+    $('#connState').className = 'conn'; $('#connState').textContent = '연결 실패'; $('#connState').hidden = false;
     toast(errText(e), true);
     if (FIXED) $('#main').innerHTML = `<section class="card"><div class="callout bad"><div>DB에 연결하지 못했습니다. 잠시 후 새로고침하거나 관리자에게 알려 주세요.<br><small>${esc(errText(e))}</small></div></div></section>`;
     else openSettings();
