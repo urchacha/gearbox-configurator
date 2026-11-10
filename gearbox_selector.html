@@ -1297,13 +1297,69 @@ async function findDrawings(key) {
   uniq.searched = { files: idx.files.length, folders: idx.folders };
   return uniq;
 }
+/* 인쇄 / PDF
+   PC: 브라우저 인쇄 창 (PDF로 저장 가능)
+   모바일: 많은 모바일 브라우저(삼성 인터넷, 카카오톡·네이버 앱 안 브라우저 등)는 인쇄 창을 열지 못하므로
+           결과 화면을 A4 한 장 PDF 파일로 만들어 저장(또는 공유)함 */
+const IS_MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+const PDF_LIBS = ['https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+                  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'];
+const loadScript = src => new Promise((ok, fail) => {
+  if ([...document.scripts].some(x => x.src === src)) return ok();
+  const sc = document.createElement('script'); sc.src = src; sc.onload = ok;
+  sc.onerror = () => fail(new Error('PDF 도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요.')); document.head.appendChild(sc);
+});
+async function printOrPdf() {
+  if (!IS_MOBILE) { window.print(); return; }
+  const btn = $('#btnPrint'); const label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'PDF 만드는 중…';
+  let box;
+  try {
+    for (const src of PDF_LIBS) await loadScript(src);
+    // 결과 화면을 PC 폭(900px)으로 복사해 인쇄용 모양으로 정리 (버튼·링크 제거)
+    box = document.createElement('div');
+    box.style.cssText = 'position:fixed;left:-10000px;top:0;width:900px;background:#fff;padding:24px;box-sizing:border-box;';
+    const head = document.querySelector('.top .wrap').cloneNode(true);
+    head.querySelectorAll('.right > :not(.corp)').forEach(e => e.remove());
+    head.querySelector('.right')?.style.setProperty('margin-left', 'auto');   // 복사본은 .top 밖이라 오른쪽 정렬을 직접 지정
+    head.style.cssText = 'display:flex;align-items:center;gap:12px;padding:0 0 16px;max-width:none;flex-wrap:nowrap;';
+    const card = $('#finalCard').cloneNode(true);
+    card.removeAttribute('id');
+    card.querySelectorAll('.no-print, .dfile a.btn, button').forEach(e => e.remove());
+    card.style.cssText = 'box-shadow:none;border:0;padding:0;margin:0;';
+    box.append(head, card); document.body.appendChild(box);
+    const canvas = await html2canvas(box, { scale: 2, backgroundColor: '#ffffff', useCORS: true, windowWidth: 900 });
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+    const pw = 210, ph = 297, m = 10;
+    let w = pw - m * 2, h = canvas.height * w / canvas.width;
+    if (h > ph - m * 2) { h = ph - m * 2; w = canvas.width * h / canvas.height; }   // 한 장에 맞춤
+    pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', (pw - w) / 2, m, w, h);
+    const r = picked(), name = `G+_gearbox_${(S.motor?.motor_code || 'motor').replace(/[^\w.-]+/g, '_')}_${r ? gearboxCode(r).replace(/[^\w.-]+/g, '_') : ''}.pdf`;
+    const blob = pdf.output('blob');
+    const file = new File([blob], name, { type: 'application/pdf' });
+    if (navigator.canShare?.({ files: [file] })) {
+      try { await navigator.share({ files: [file], title: 'G+감속기 선정 결과' }); toast('PDF를 만들었습니다.'); return; }
+      catch (e) { if (e?.name === 'AbortError') return; }   // 공유 취소 → 그대로 끝
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 4000);
+    toast(`${name} 을(를) 저장했습니다. 다운로드 폴더를 확인하세요.`);
+  } catch (e) {
+    toast(`PDF를 만들지 못했습니다. ${errText(e)}`, true);
+  } finally {
+    box?.remove(); btn.disabled = false; btn.textContent = label;
+  }
+}
+
 function bind5() {
   $('#btnCopy')?.addEventListener('click', async () => {
     const r = picked(); if (!r) return;
     try { await navigator.clipboard.writeText(summaryText(r)); toast('요약을 복사했습니다.'); }
     catch { toast('복사하지 못했습니다. 화면 내용을 직접 선택해 복사하세요.', true); }
   });
-  $('#btnPrint')?.addEventListener('click', () => window.print());
+  $('#btnPrint')?.addEventListener('click', printOrPdf);
   const r = picked();
   const key = r && drawingKey(r);
   if (key) {
