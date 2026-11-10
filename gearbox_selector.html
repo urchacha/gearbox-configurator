@@ -190,7 +190,6 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
 .dfile .dname b { color: var(--fg); font-size: 13px; }
 .dfile .dname small { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
 .dfile a.btn { text-decoration: none; white-space: nowrap; }
-.dnote { font-size: 12px; }
 @media (max-width: 600px) { .dfile .dname { flex-basis: 100%; } .dfile a.btn { flex: 1 1 0; justify-content: center; } }
 .muted { margin: 0; color: var(--muted); font-size: 13px; }
 .final { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px; align-items: start; }
@@ -251,6 +250,15 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
   .top .right, .stepper, .nav, .no-print { display: none !important; }
   body { background: #fff; }
   .card { box-shadow: none; border: 0; padding: 0; }
+  @page { size: A4; margin: 10mm; }
+  .dfile a.btn { display: none !important; }            /* 보기·다운로드 버튼은 종이에서 의미 없음 */
+  .dfile { padding: 4px 8px; }
+  .card-head { margin-bottom: 8px; }
+  .combo { padding: 10px 14px; }
+  .drawing-body { padding: 8px 12px; gap: 6px; }
+  .final { gap: 10px; }
+  .spec table td, .spec table th { padding-top: 4px !important; padding-bottom: 4px !important; }
+  .spec, .combo, .final > * { break-inside: avoid; }
 }
 </style>
 </head>
@@ -655,6 +663,63 @@ function closePdfViewer() { pdfSeq++; pdfDoc?.destroy?.(); pdfDoc = null; $('#pd
 $('#pdfClose').addEventListener('click', closePdfViewer);
 $('#pdfModal').addEventListener('click', e => { if (e.target.id === 'pdfModal') closePdfViewer(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#pdfModal').hidden) closePdfViewer(); });
+/* 도면 보기 창: 별도 창(모바일은 새 탭)을 열고, 위쪽 막대의 '닫기'를 누르면 창이 닫히고 선정툴로 돌아옴
+   PDF  → 창 안에서 PDF.js 로 그림 (모든 기기 같은 방식, 다운로드 창이 뜨지 않음)
+   STEP → 창 안에 Online 3D Viewer(3dviewer.net/embed.html) 를 띄움 */
+const VIEW_WIN = 'gearbox_viewer';
+function openViewerWindow() {
+  const w = Math.min(1280, Math.round(screen.availWidth * 0.85)), h = Math.min(900, Math.round(screen.availHeight * 0.85));
+  const left = Math.round((screen.availWidth - w) / 2), top = Math.round((screen.availHeight - h) / 2);
+  const win = window.open('', VIEW_WIN, `popup=yes,width=${w},height=${h},left=${left},top=${top}`);
+  if (win) { try { win.document.title = '도면을 여는 중…'; win.document.body && (win.document.body.innerHTML = '<p style="font:14px sans-serif;color:#666;padding:24px">도면을 여는 중…</p>'); } catch {} }
+  return win;
+}
+function writeViewer(win, kind, name, url, dlUrl) {
+  const J = v => JSON.stringify(v).replace(/</g, '\\u003c');
+  const pdfScript = `
+    const URL_=${J(url)}, LIB=${J(PDFJS)};
+    let doc=null, scale=1, seq=0;
+    const body=document.getElementById('b'), zl=document.getElementById('zl');
+    function msg(t){ body.innerHTML='<p class="msg">'+t+'</p>'; }
+    async function draw(){ const my=++seq; if(!doc) return; const width=Math.max(200, document.documentElement.clientWidth-32); const dpr=Math.min(devicePixelRatio||1,3);
+      zl.textContent=Math.round(scale*100)+'%'; body.innerHTML='';
+      for(let n=1;n<=doc.numPages;n++){ const pg=await doc.getPage(n); if(my!==seq) return; const vp=pg.getViewport({scale:width/pg.getViewport({scale:1}).width*scale*dpr});
+        const c=document.createElement('canvas'); c.width=Math.floor(vp.width); c.height=Math.floor(vp.height); c.style.width=Math.floor(vp.width/dpr)+'px'; c.style.height=Math.floor(vp.height/dpr)+'px';
+        body.appendChild(c); await pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise; } }
+    document.getElementById('zi').onclick=()=>{scale=Math.min(4,+(scale*1.25).toFixed(2)); draw();};
+    document.getElementById('zo').onclick=()=>{scale=Math.max(0.5,+(scale*0.8).toFixed(2)); draw();};
+    let rt; addEventListener('resize',()=>{clearTimeout(rt); rt=setTimeout(draw,200);});
+    const sc=document.createElement('script'); sc.src=LIB+'pdf.min.js';
+    sc.onload=async()=>{ try{ pdfjsLib.GlobalWorkerOptions.workerSrc=LIB+'pdf.worker.min.js'; doc=await pdfjsLib.getDocument({url:URL_}).promise; await draw(); } catch(e){ msg('PDF를 표시하지 못했습니다. 다운로드 버튼으로 받아 보세요.<br><small>'+String(e&&e.message||e)+'</small>'); } };
+    sc.onerror=()=>msg('PDF 뷰어를 불러오지 못했습니다. 인터넷 연결을 확인하거나 다운로드 버튼으로 받아 보세요.');
+    document.head.appendChild(sc);`;
+  const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(name)}</title>
+<style>
+  *{box-sizing:border-box} html,body{margin:0;height:100%} body{font-family:"Pretendard",system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif;background:#eef1f6;color:#161b26;display:flex;flex-direction:column}
+  header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 14px;background:#fff;border-bottom:1px solid #e1e6ef;position:sticky;top:0;z-index:2}
+  header b{flex:1 1 200px;min-width:0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:6px 14px;border:1px solid #e1e6ef;border-radius:8px;background:#fff;color:#161b26;font-weight:600;font-size:13px;font-family:inherit;text-decoration:none;cursor:pointer}
+  .btn.primary{background:#4f5bd5;border-color:#4f5bd5;color:#fff}
+  .z{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#5b6577} .z .btn{min-width:36px;padding:6px 10px}
+  main{flex:1;min-height:0;overflow:auto} #b{display:grid;gap:12px;justify-items:center;padding:16px}
+  canvas{display:block;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)} iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+  .msg{color:#5b6577;font-size:13px;text-align:center;padding:40px 0}
+  @media (max-width:600px){ header b{flex-basis:100%} }
+</style></head><body>
+<header><b>${esc(name)}</b>
+  ${kind === 'pdf' ? '<span class="z"><button class="btn" id="zo" aria-label="축소">−</button><span id="zl">100%</span><button class="btn" id="zi" aria-label="확대">+</button></span>' : ''}
+  <a class="btn" href="${esc(dlUrl)}" download>다운로드</a>
+  <button class="btn primary" id="cl">닫기</button></header>
+<main>${kind === 'pdf' ? '<div id="b"><p class="msg">PDF를 불러오는 중…</p></div>' : `<iframe src="${esc('https://3dviewer.net/embed.html#model=' + url)}" title="3D 보기" allow="fullscreen"></iframe>`}</main>
+<script>
+  document.getElementById('cl').onclick=()=>{ try{ opener && opener.focus(); }catch(e){} window.close(); setTimeout(()=>{ if(!window.closed) history.back(); },300); };
+  addEventListener('keydown',e=>{ if(e.key==='Escape') document.getElementById('cl').click(); });
+  ${kind === 'pdf' ? pdfScript : ''}
+<\/script></body></html>`;
+  win.document.open(); win.document.write(html); win.document.close(); win.focus();
+}
+
 const zoomPdf = f => { if (!pdfDoc) return; pdfScale = Math.min(4, Math.max(0.5, +(pdfScale * f).toFixed(2))); drawPdf(++pdfSeq); };
 $('#pdfIn').addEventListener('click', () => zoomPdf(1.25));
 $('#pdfOut').addEventListener('click', () => zoomPdf(0.8));
@@ -1137,7 +1202,7 @@ function view5() {
     : `<div class="callout verdict ${ev.level === 'bad' ? 'bad' : 'warn'}"><div><b>${ev.level === 'bad' ? '부적합' : '확인 필요'}:</b> ${esc(ev.issues.join(', '))}. 사양을 검토한 뒤 사용하세요.</div></div>`;
   const caution = ev.cautions.length ? `<div class="callout warn"><div><b>속도 주의.</b> ${ev.cautions.map(esc).join(' / ')}. 선정 판정에는 넣지 않았으니 실제 운전 속도를 확인하세요.</div></div>` : '';
   return `<section class="card" id="finalCard">
-    <div class="card-head"><div><h2>Step 5. 최종 확인</h2><p>선정한 모터와 감속기 조합입니다.</p></div>
+    <div class="card-head"><div><h2>Step 5. 최종 확인</h2></div>
       <div class="aside no-print"><button class="btn" id="btnCopy">요약 복사</button><button class="btn" id="btnPrint">인쇄 / PDF</button></div></div>
     <div class="combo">
       <div class="part"><small>모터</small><b>${esc(m.motor_code)}</b></div><span class="plus">+</span>
@@ -1245,20 +1310,23 @@ function bind5() {
           const viewHref = isPdf ? view[i] : STEP_VIEWER(view[i]);
           return `<div class="dfile">
             <div class="dname"><b>${esc(DRAWING.exts[f.ext])}</b><small>${esc(f.name)}${f.size ? ' · ' + fmtSize(f.size) : ''}</small></div>
-            <a class="btn" data-i="${i}" data-act="view" href="${esc(viewHref)}" target="_blank" rel="noopener">${isPdf ? 'PDF 보기' : '3D 보기'}</a>
+            <a class="btn" data-i="${i}" data-act="view" href="${esc(viewHref)}" target="${VIEW_WIN}" rel="opener">${isPdf ? 'PDF 보기' : '3D 보기'}</a>
             <a class="btn primary" data-i="${i}" data-act="dl" href="${esc(dl[i])}" download="${esc(f.name)}" rel="noopener">${iconDoc}다운로드</a>
           </div>`;
-        }).join('') + `<p class="muted dnote">PDF는 브라우저 뷰어로, STEP은 Online 3D Viewer(3dviewer.net)로 엽니다. 링크는 ${LINK_TTL / 60}분 동안 유효합니다.</p>`;
+        }).join('');
         box.querySelectorAll('a[data-act]').forEach(a => a.addEventListener('click', async e => {
           const f = files[+a.dataset.i], fresh = Date.now() - made < (LINK_TTL - 120) * 1000;
-          // PDF 보기인데 브라우저에 PDF 뷰어가 없으면 → 페이지 안 뷰어
-          if (a.dataset.act === 'view' && f.ext === 'pdf' && !HAS_PDF_VIEWER) {
+          // 보기 → 별도 창(닫기 누르면 선정툴로 돌아옴). 팝업이 막히면 PDF 는 페이지 안 뷰어, STEP 은 새 탭
+          if (a.dataset.act === 'view') {
             e.preventDefault();
+            const win = openViewerWindow();   // 클릭 순간에 창을 먼저 열어야 팝업 차단을 피함
             try {
               const [u, d] = fresh ? [view[+a.dataset.i], dl[+a.dataset.i]]
                 : await Promise.all([storageUrls(DRAWING.bucket, [f.path], false), storageUrls(DRAWING.bucket, [f.path], true)]).then(x => [x[0][0], x[1][0]]);
-              openPdfViewer(u, f.name, d);
-            } catch (err) { toast(`도면을 열지 못했습니다. ${errText(err)}`, true); }
+              if (win) writeViewer(win, f.ext === 'pdf' ? 'pdf' : 'step', f.name, u, d);
+              else if (f.ext === 'pdf') { toast('팝업이 차단되어 이 화면 안에서 엽니다.'); openPdfViewer(u, f.name, d); }
+              else { toast('팝업이 차단되었습니다. 브라우저에서 이 사이트의 팝업을 허용해 주세요.', true); }
+            } catch (err) { win?.close(); toast(`도면을 열지 못했습니다. ${errText(err)}`, true); }
             return;
           }
           if (fresh) {
