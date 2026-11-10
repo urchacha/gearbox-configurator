@@ -1239,7 +1239,6 @@ function view5() {
         ${row('종류', KIND[r.kind])}${row('감속기형번', esc(gearboxCode(r)))}
         ${row('정격토크', fmt(ev.rated), 'Nm')}${row('정격속도 / 최대속도', `${fmt(g.rated_speed)} / ${fmt(g.max_speed)}`, 'rpm')}
         ${row('무게', fmt(g.weight), 'kg')}${r.kind === 'planetary' ? row('백래시', `${S.cond.grade} · ${esc(backlashOf(g, S.cond.grade) ?? '값 없음')}`) : row('반복정밀도', esc(repOf(g) ?? '–')) + row('포지셔닝', esc(posOf(g) ?? '–'))}
-        ${r.kind === 'hollow' ? row('틸팅모멘트', fmt(g.tilting_moment), 'Nm') : ''}
       </table></div>
       <div class="spec"><h3>계산 결과</h3><table>
         ${row('출력 토크 (정격)', fmt(ev.t2), 'Nm')}${row('출력 토크 (최대)', fmt(ev.t2peak), 'Nm')}
