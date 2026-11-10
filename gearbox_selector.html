@@ -437,9 +437,12 @@ function bushingFor(motorShaft, inputDia, series, size) {
   return hits[0];
 }
 // 모터 종류로 어댑터 슬롯 종류 결정: 스테핑(스텝) 모터 → ST, 그 외(서보) → SV
-// PCD 비교: 스테핑 모터는 카탈로그 값이 사각 볼트 간격(예: 31)인 경우가 많아, 대각선 PCD(31×√2 = 43.8)도 같은 것으로 봄
+// PCD 비교: 스테핑 모터는 사각 볼트 간격(예: 47.14)과 대각선 PCD(47.14×√2 = 66.67)가 섞여 쓰이므로,
+//  어댑터·모터 어느 쪽이 사각 간격이든 대각선이든 같은 것으로 봄
 const pcdMatch = (ifacePcd, motor) => same(ifacePcd, motor.pcd)
-  || (slotTypeOf(motor) === 'ST' && motor.pcd != null && Math.abs(Number(ifacePcd) - Number(motor.pcd) * Math.SQRT2) < 0.15);
+  || (slotTypeOf(motor) === 'ST' && motor.pcd != null && ifacePcd != null
+      && (Math.abs(Number(ifacePcd) - Number(motor.pcd) * Math.SQRT2) < 0.15
+       || Math.abs(Number(ifacePcd) * Math.SQRT2 - Number(motor.pcd)) < 0.15));
 const slotTypeOf = motor => /step|스테핑|스텝/i.test(String(motor.motor_type || '')) ? 'ST' : 'SV';
 function adapterFor(motor, series, size) {
   const st = slotTypeOf(motor);
