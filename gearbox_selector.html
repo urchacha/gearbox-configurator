@@ -60,6 +60,12 @@ button, input, select { font: inherit; color: inherit; }
 @media (max-width: 600px) { .conn { display: none; } .brand p { display: none; } }
 .brand p { margin: 0; font-size: 12px; color: var(--muted); }
 .top .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.corp { display: grid; justify-items: center; gap: 3px; margin-right: 8px; }
+.corp img { height: 30px; width: auto; display: block; }
+.corp a { font-size: 12px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.corp a:hover { color: var(--accent); text-decoration: underline; }
+.top .right .btn { white-space: nowrap; flex-shrink: 0; }
+@media (max-width: 600px) { .corp { margin-right: 0; } .corp a { font-size: 10px; } .corp a span { display: none; } }
 .conn { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
 .conn::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
 .conn.on::before { background: var(--ok); }
@@ -247,7 +253,7 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
 .photo-none { cursor: default; }
 .photo-off small { display: block; font-size: 10px; color: var(--muted); }
 @media print {
-  .top .right, .stepper, .nav, .no-print { display: none !important; }
+  .top .right > :not(.corp), .stepper, .nav, .no-print { display: none !important; }
   body { background: #fff; }
   .card { box-shadow: none; border: 0; padding: 0; }
   @page { size: A4; margin: 10mm; }
@@ -269,6 +275,7 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
     <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
     <div class="brand"><h1>감속기 선정툴</h1><p>Gearbox Configuration Tool</p></div>
     <div class="right">
+      <div class="corp"><img id="corpLogo" alt="G+ 로고" hidden><a href="mailto:gplus@gpluskorea.kr"><span>email : </span>gplus@gpluskorea.kr</a></div>
       <span class="conn" id="connState" hidden></span>
       <button class="btn" id="btnSettings">연결 설정</button>
     </div>
@@ -1180,7 +1187,7 @@ const bushingCode = r => comboBushing(r)?.bushing_code ?? null;
 function summaryText(r) {
   const m = S.motor, g = r.g, ev = r.ev;
   return [
-    '[감속기 선정 결과]',
+    '[G+감속기 선정 결과]',
     `모터: ${m.manufacturer} ${m.motor_code} (${fmt(m.nominal_power)} W, ${fmt(m.nominal_torque, 3)} Nm, ${fmt(m.nominal_speed)} rpm)`,
     `조합: ${m.motor_code} + ${comboCode(r)}${bushingCode(r) ? ` + ${bushingCode(r)}` : ''}`,
     `감속기형번: ${gearboxCode(r)} (${KIND[r.kind]}, 정격토크 ${fmt(ev.rated)} Nm)`,
@@ -1368,6 +1375,18 @@ function openSettings() {
 }
 $('#btnSettings').addEventListener('click', openSettings);
 
+/* 상단 로고: Supabase 스토리지 logo 버킷의 g+logo2.jpg (높이 30px). 없거나 못 읽으면 로고만 숨김 */
+const LOGO = { bucket: 'logo', file: 'g+logo2.jpg' };
+async function loadLogo() {
+  const img = $('#corpLogo');
+  try {
+    const [u] = await storageUrls(LOGO.bucket, [LOGO.file], false);
+    img.onload = () => { img.hidden = false; };
+    img.onerror = () => { img.hidden = true; };
+    img.src = u;
+  } catch { img.hidden = true; }
+}
+
 /* config.js 의 고정 연결 값 (있으면 연결 화면을 건너뜀) */
 const FIXED = (() => {
   const c = window.GEARBOX_CONFIG || {};
@@ -1384,6 +1403,7 @@ async function start() {
   if (!window.supabase) { $('#main').innerHTML = '<section class="card"><div class="callout bad"><div>Supabase 라이브러리를 불러오지 못했습니다. 인터넷 연결을 확인하세요.</div></div></section>'; return; }
   if (!url || !key) { openSettings(); return; }
   sb = window.supabase.createClient(url, key, { auth: { persistSession: false } });
+  loadLogo();
   $('#main').innerHTML = '<div class="loading">모터·감속기 데이터를 불러오는 중…</div>';
   try {
     await loadAll();
