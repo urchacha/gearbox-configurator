@@ -140,6 +140,9 @@ input:disabled, select:disabled { background: var(--surface-2); color: var(--mut
 .spec th, .spec td { padding: 9px 16px; border-bottom: 1px solid var(--line); font-size: 13px; text-align: left; }
 .spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
 .spec th { color: var(--muted); font-weight: 500; width: 46%; }
+.spec.calc th { width: auto; white-space: nowrap; padding-right: 12px; }
+.spec.calc td { white-space: nowrap; padding-left: 8px; }
+@media (max-width: 420px) { .spec.calc th, .spec.calc td { white-space: normal; } }
 .spec td { font-weight: 600; font-variant-numeric: tabular-nums; }
 .spec td small { color: var(--muted); font-weight: 400; margin-left: 4px; }
 
@@ -526,8 +529,8 @@ const sfText = (cond = S.cond) => `입력측 ${fmt(Number(cond.sfIn), 2)} × 부
 const manualEff = v => { let x = parseFloat(v); if (!(x > 0)) return null; if (x > 1 && x <= 100) x /= 100; return x > 0 && x <= 1 ? x : null; };
 const effOf = (g, cond = S.cond) => cond.effMode === 'manual' ? (manualEff(cond.effValue) ?? 1)
   : cond.effMode === 'none' ? 1 : (N(g.efficiency) || 1);
-const effText = (eff, cond = S.cond) => cond.effMode === 'manual' ? `직접 입력 η = ${fmt(eff, 3)}`
-  : cond.effMode === 'none' ? '반영 안 함 (η = 1)' : `감속기 효율 η = ${fmt(eff, 3)}`;
+const effText = (eff, cond = S.cond) => cond.effMode === 'manual' ? `직접 입력 = ${fmt(eff, 3)}`
+  : cond.effMode === 'none' ? '반영 안 함' : `감속기 효율 = ${fmt(eff, 3)}`;
 function loadUI(c) {
   const spec = ratioSpecified(c), lm = loadModeOf(c), tm = N(S.motor?.nominal_torque);
   const ratioTxt = c.ratioMode === 'spec' && c.spec.ratio ? `1/${c.spec.ratio}` : '선택한 감속비';
@@ -1291,10 +1294,11 @@ function view5() {
         ${row('정격토크', fmt(ev.rated), 'Nm')}${row('정격속도 / 최대속도', `${fmt(g.rated_speed)} / ${fmt(g.max_speed)}`, 'rpm')}
         ${row('무게', fmt(g.weight), 'kg')}${r.kind === 'planetary' ? row('백래시', `${S.cond.grade} · ${esc(backlashOf(g, S.cond.grade) ?? '값 없음')}`) : row('반복정밀도', esc(repOf(g) ?? '–')) + row('포지셔닝', esc(posOf(g) ?? '–'))}
       </table></div>
-      <div class="spec"><h3>계산 결과</h3><table>
-        ${row('출력 토크 (정격)', fmt(ev.t2), 'Nm')}${row('출력 토크 (최대)', fmt(ev.t2peak), 'Nm')}
-        ${row('필요 정격토크', fmt(ev.need), `Nm · 사용계수 ${esc(sfText())}`)}${row('여유율', ev.margin == null ? '–' : fmt(ev.margin * 100, 0), '%')}
-        ${row('출력 속도', fmt(ev.n2, 1), 'rpm')}${ev.loadT != null ? row('부하 토크', fmt(ev.loadT), ev.loadMode === 'rated' ? 'Nm · 정격 토크 이내 (모터 정격토크 × 감속비)' : 'Nm · 직접 입력') : ''}
+      <div class="spec calc"><h3>계산 결과</h3><table>
+        ${row('출력 토크 (정격/최대)', `${fmt(ev.t2)} / ${fmt(ev.t2peak)}`, 'Nm')}
+        ${row('감속기 필요토크 / 사용계수', `${fmt(ev.need)}<small>Nm</small> / ${fmt(sfTotal(), 2)}`)}
+        ${row('여유율', ev.margin == null ? '–' : fmt(ev.margin * 100, 0), '%')}
+        ${row('출력 속도', fmt(ev.n2, 1), 'rpm')}
         ${row('효율 반영', esc(effText(ev.eff)))}
       </table></div>
     </div>
