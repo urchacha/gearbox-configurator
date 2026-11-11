@@ -511,18 +511,51 @@ const S = {
   step: 1,
   f: { brand: '', type: '', model: '' },
   motor: null,
-  cond: { kind: 'planetary', ratioMode: 'spec', spec: { series: '', size: '', ratio: '', rep: '', pos: '' }, grade: 'P2', ratios: [], sf: 1.5, loadTorque: '', useEff: true },
+  cond: { kind: 'planetary', ratioMode: 'spec', spec: { series: '', size: '', ratio: '', rep: '', pos: '' }, grade: 'P2', ratios: [], sfIn: 1, sfLoad: 1.5, loadMode: 'none', loadTorque: '', effMode: 'gear', effValue: '' },
   onlyOk: true, onlyAdapter: false, sort: 'margin', pick: null,
 };
 const KIND = { planetary: '유성감속기', hollow: '할로우로터리', all: '전체' };
 
 /* ---------- 계산 ---------- */
+// 사용계수: 입력측(구동원 충격) × 부하측(부하 충격)
+const SF_LEVELS = [['uniform', '균일', 1], ['moderate', '적당', 1.25], ['medium', '중간', 1.5], ['heavy', '강한 충격', 1.75]];
+const sfTotal = (cond = S.cond) => (Number(cond.sfIn) || 1) * (Number(cond.sfLoad) || 1);
+const sfLabel = v => { const l = SF_LEVELS.find(x => x[2] === Number(v)); return l ? `${l[0]}(${l[1]}) ${fmt(l[2], 2)}` : fmt(v, 2); };
+const sfText = (cond = S.cond) => `입력측 ${fmt(Number(cond.sfIn), 2)} × 부하측 ${fmt(Number(cond.sfLoad), 2)} = ${fmt(sfTotal(cond), 2)}`;
+// 효율: 감속기 효율만 반영 / 직접 입력 / 반영 안 함
+const manualEff = v => { let x = parseFloat(v); if (!(x > 0)) return null; if (x > 1 && x <= 100) x /= 100; return x > 0 && x <= 1 ? x : null; };
+const effOf = (g, cond = S.cond) => cond.effMode === 'manual' ? (manualEff(cond.effValue) ?? 1)
+  : cond.effMode === 'none' ? 1 : (N(g.efficiency) || 1);
+const effText = (eff, cond = S.cond) => cond.effMode === 'manual' ? `직접 입력 η = ${fmt(eff, 3)}`
+  : cond.effMode === 'none' ? '반영 안 함 (η = 1)' : `감속기 효율 η = ${fmt(eff, 3)}`;
+function loadUI(c) {
+  const spec = ratioSpecified(c), lm = loadModeOf(c), tm = N(S.motor?.nominal_torque);
+  const ratioTxt = c.ratioMode === 'spec' && c.spec.ratio ? `1/${c.spec.ratio}` : '선택한 감속비';
+  const ratedTxt = tm != null && c.ratioMode === 'spec' && c.spec.ratio ? ` = ${fmt(tm, 3)} × ${c.spec.ratio} = ${fmt(tm * c.spec.ratio)} Nm` : '';
+  const hint = lm === 'none' ? (spec ? '입력하지 않아도 됩니다. 모터 출력 토크 기준으로 계산합니다.' : '디폴트는 입력하지 않아도 됩니다.')
+    : lm === 'rated' ? `부하 토크 = 모터 정격토크 ${tm != null ? fmt(tm, 3) + ' Nm ' : ''}× 감속비(${ratioTxt})${ratedTxt}`
+    : '감속기 출력축에 걸리는 부하 토크(Nm). 출력 토크가 이보다 작으면 부적합입니다.';
+  return `<span id="cLoadWrap" style="display:grid;gap:6px"><select id="cLoadMode">
+      <option value="none" ${lm === 'none' ? 'selected' : ''}>입력하지 않음</option>
+      <option value="rated" ${lm === 'rated' ? 'selected' : ''} ${spec ? '' : 'disabled'}>정격 토크 이내${spec ? '' : ' (감속비 지정 시)'}</option>
+      <option value="manual" ${lm === 'manual' ? 'selected' : ''}>직접 입력</option></select>
+    ${lm === 'manual' ? `<input type="number" id="cLoad" min="0" step="any" value="${esc(c.loadTorque)}" placeholder="부하 토크 (Nm)">` : ''}
+    <span class="hint">${esc(hint)}</span></span>`;
+}
+// 부하 토크: 입력 안 함 / 모터 정격 토크 이내(= 모터 정격토크 × 감속비, 감속비를 지정했을 때만) / 직접 입력
+const ratioSpecified = (cond = S.cond) => cond.ratioMode === 'spec' ? !!cond.spec.ratio : cond.ratioMode === 'pick' ? cond.ratios.length > 0 : false;
+const loadModeOf = (cond = S.cond) => cond.loadMode === 'rated' && !ratioSpecified(cond) ? 'none' : (cond.loadMode || 'none');
 function evaluate(c) {
   const m = S.motor, g = c.g, cond = S.cond;
-  const eff = cond.useEff && N(g.efficiency) ? N(g.efficiency) : 1;
+  const eff = effOf(g, cond);
   const t2 = N(m.nominal_torque) != null && c.ratio ? N(m.nominal_torque) * c.ratio * eff : null;           // 출력 토크
   const t2peak = N(m.peak_torque) != null && c.ratio ? N(m.peak_torque) * c.ratio * eff : null;
-  const need = t2 != null ? t2 * (Number(cond.sf) || 1) : null;                                               // 필요 정격토크
+  // 필요 정격토크 = 기준 토크 × 사용계수. 기준 토크: 부하 토크를 정했으면 그 값, 아니면 감속기 출력 토크
+  const lm = loadModeOf(cond);
+  const tm = N(m.nominal_torque);
+  const loadT = lm === 'rated' ? (tm != null && c.ratio ? tm * c.ratio : null) : lm === 'manual' ? N(cond.loadTorque) : null;
+  const base = loadT != null ? loadT : t2;
+  const need = base != null ? base * sfTotal(cond) : null;
   const rated = N(g.rated_torque);
   const margin = rated && need ? rated / need : null;                                                          // 여유율
   const n2 = N(m.nominal_speed) && c.ratio ? N(m.nominal_speed) / c.ratio : null;
@@ -534,9 +567,8 @@ function evaluate(c) {
   const cautions = [];
   if (N(g.rated_speed) && N(m.nominal_speed) > N(g.rated_speed)) cautions.push(`모터 정격속도 ${fmt(m.nominal_speed)} rpm > 감속기 정격입력속도 ${fmt(g.rated_speed)} rpm`);
   if (N(g.max_speed) && N(m.max_speed) > N(g.max_speed)) cautions.push(`모터 최대속도 ${fmt(m.max_speed)} rpm > 감속기 최대입력속도 ${fmt(g.max_speed)} rpm`);
-  const load = N(cond.loadTorque);
-  if (load && t2 != null && t2 < load) { level = 'bad'; issues.push('부하토크보다 출력 부족'); }
-  return { eff, t2, t2peak, need, rated, margin, n2, issues, cautions, level };
+  if (lm === 'manual' && loadT && t2 != null && t2 < loadT) { level = 'bad'; issues.push('부하토크보다 출력 부족'); }
+  return { eff, t2, t2peak, need, rated, margin, n2, issues, cautions, level, loadMode: lm, loadT };
 }
 // 정밀도 값 표기
 const withUnit = (v, u) => v == null || v === '' ? null : `${fmt(N(v))} ${u || ''}`.trim();
@@ -768,7 +800,7 @@ function view1() {
     <div class="panel"><div class="form-row">
       <label class="f"><span>브랜드</span><select id="fBrand"><option value="">브랜드 선택</option>${brands.map(b => `<option ${b === f.brand ? 'selected' : ''}>${esc(b)}</option>`).join('')}</select></label>
       <label class="f"><span>타입</span><select id="fType" ${f.brand ? '' : 'disabled'}><option value="">전체</option>${f.brand ? typeOpts : ''}</select></label>
-      <label class="f grow"><span>모델 선택(모델 변경시 선택해제를 클릭)</span><input type="text" id="fModel" list="dl-model" value="${esc(f.model)}" placeholder="${f.brand ? '모델 형번 입력 또는 선택' : '형번으로 바로 검색하거나 브랜드를 먼저 선택하세요'}" autocomplete="off"></label>
+      <label class="f grow"><span>모델 선택(다른 모델 선택시 선택해제 클릭)</span><input type="text" id="fModel" list="dl-model" value="${esc(f.model)}" placeholder="${f.brand ? '모델 형번 입력 또는 선택' : '형번으로 바로 검색하거나 브랜드를 먼저 선택하세요'}" autocomplete="off"></label>
       <div class="act"><button class="btn primary lg" id="btnPick">모터 선택</button></div>
     </div></div>
     ${m ? `<div class="picked">
@@ -1049,9 +1081,15 @@ function view3() {
     <div>
       <p class="section-title">사용 조건</p>
       <div class="cond-grid">
-        <label class="f"><span>사용계수 (안전율)</span><input type="number" id="cSf" min="0.5" step="0.1" value="${esc(c.sf)}"><span class="hint">필요 정격토크 = 모터 정격토크 × 감속비 × 효율 × 사용계수</span></label>
-        <label class="f"><span>부하 토크 (Nm, 선택)</span><input type="number" id="cLoad" min="0" step="any" value="${esc(c.loadTorque)}" placeholder="입력하지 않아도 됩니다"><span class="hint">입력하면 출력 토크가 이보다 작은 조합은 부적합으로 표시합니다.</span></label>
-        <label class="f"><span>효율 반영</span><select id="cEff"><option value="1" ${c.useEff ? 'selected' : ''}>감속기 효율(η) 반영</option><option value="0" ${!c.useEff ? 'selected' : ''}>반영 안 함 (η = 1)</option></select></label>
+        <label class="f"><span>사용계수 (입력측 충격 영향)</span><select id="cSfIn">${SF_LEVELS.map(([k, t, v]) => `<option value="${v}" ${Number(c.sfIn) === v ? 'selected' : ''}>${k}(${t})</option>`).join('')}</select><span class="hint">모터 등 구동원 쪽 충격. 서보·스테핑 모터는 보통 uniform</span></label>
+        <label class="f"><span>사용계수 (부하측 충격 영향)</span><select id="cSfLoad">${SF_LEVELS.map(([k, t, v]) => `<option value="${v}" ${Number(c.sfLoad) === v ? 'selected' : ''}>${k}(${t})</option>`).join('')}</select><span class="hint">부하(기계) 쪽 충격 정도를 고르세요. 입력측과 함께 필요 토크 계산에 반영됩니다.</span></label>
+        <label class="f"><span>부하 토크</span>${loadUI(c)}</label>
+        <label class="f"><span>효율 반영</span><select id="cEff">
+            <option value="gear" ${c.effMode === 'gear' ? 'selected' : ''}>감속기 효율만 반영</option>
+            <option value="manual" ${c.effMode === 'manual' ? 'selected' : ''}>효율 직접 입력</option>
+            <option value="none" ${c.effMode === 'none' ? 'selected' : ''}>반영 안 함 (η = 1)</option></select>
+          ${c.effMode === 'manual' ? `<input type="number" id="cEffVal" min="0.01" max="100" step="any" value="${esc(c.effValue)}" placeholder="예: 0.9 또는 90 (%)" style="margin-top:6px">` : ''}
+          <span class="hint">필요 정격토크 = 모터 정격토크 × 감속비 × 효율 × 사용계수</span></label>
       </div>
     </div>
   </section>${navHTML({ next: '감속기 찾기 →' })}`;
@@ -1072,6 +1110,9 @@ function bind3() {
   document.querySelectorAll('#ratioChips button').forEach(b => b.addEventListener('click', () => {
     const r = +b.dataset.r; c.ratios = c.ratios.includes(r) ? c.ratios.filter(x => x !== r) : [...c.ratios, r];
     b.setAttribute('aria-pressed', String(c.ratios.includes(r)));
+    $('#cLoadWrap').outerHTML = loadUI(c);   // 감속비 지정 여부에 따라 '정격 토크 이내' 선택지 갱신
+    $('#cLoadMode').addEventListener('change', e => { c.loadMode = e.target.value; render(); if (c.loadMode === 'manual') $('#cLoad')?.focus(); });
+    $('#cLoad')?.addEventListener('input', e => { c.loadTorque = e.target.value; });
   }));
   const sp = c.spec;
   $('#spSeries')?.addEventListener('change', e => { sp.series = e.target.value; sp.size = ''; sp.ratio = ''; sp.rep = ''; sp.pos = ''; render(); });
@@ -1080,11 +1121,15 @@ function bind3() {
   $('#spGrade')?.addEventListener('change', e => { c.grade = e.target.value; });
   $('#spRep')?.addEventListener('change', e => { sp.rep = e.target.value; sp.pos = ''; render(); });
   $('#spPos')?.addEventListener('change', e => { sp.pos = e.target.value; render(); });
-  $('#cSf').addEventListener('input', e => { c.sf = e.target.value; });
-  $('#cLoad').addEventListener('input', e => { c.loadTorque = e.target.value; });
-  $('#cEff').addEventListener('change', e => { c.useEff = e.target.value === '1'; });
+  $('#cSfIn').addEventListener('change', e => { c.sfIn = Number(e.target.value); });
+  $('#cSfLoad').addEventListener('change', e => { c.sfLoad = Number(e.target.value); });
+  $('#cLoadMode').addEventListener('change', e => { c.loadMode = e.target.value; render(); if (c.loadMode === 'manual') $('#cLoad')?.focus(); });
+  $('#cLoad')?.addEventListener('input', e => { c.loadTorque = e.target.value; });
+  $('#cEff').addEventListener('change', e => { c.effMode = e.target.value; render(); if (c.effMode === 'manual') $('#cEffVal')?.focus(); });
+  $('#cEffVal')?.addEventListener('input', e => { c.effValue = e.target.value; });
   bindNav(() => {
-    if (!(Number(c.sf) > 0)) { toast('사용계수를 0보다 큰 숫자로 입력하세요.', true); return; }
+    if (loadModeOf(c) === 'manual' && !(N(c.loadTorque) > 0)) { toast('부하 토크를 Nm 단위 숫자로 입력하세요.', true); $('#cLoad')?.focus(); return; }
+    if (c.effMode === 'manual' && manualEff(c.effValue) == null) { toast('효율을 0~1 사이 소수(예: 0.9)나 퍼센트(예: 90)로 입력하세요.', true); $('#cEffVal')?.focus(); return; }
     if (c.ratioMode === 'spec' && !c.spec.series) { toast('감속기 시리즈를 고르세요. 범위 없이 보려면 "전체 보기"를 누르세요.', true); return; }
     S.pick = null; go(4);
   });
@@ -1127,7 +1172,7 @@ function view4() {
       <label style="display:inline-flex;gap:6px;align-items:center;font-size:13px"><input type="checkbox" id="onlyOk" ${S.onlyOk ? 'checked' : ''}> 부적합 숨기기</label>
       <label style="display:inline-flex;gap:6px;align-items:center;font-size:13px"><input type="checkbox" id="onlyAdapter" ${S.onlyAdapter ? 'checked' : ''}> 어댑터 있는 것만</label>
       <div class="seg" id="sortSeg">
-        <button type="button" data-v="margin" aria-pressed="${S.sort === 'margin'}">여유율 순</button>
+        <button type="button" data-v="margin" aria-pressed="${S.sort === 'margin'}">여유율 낮은 순</button>
         <button type="button" data-v="size" aria-pressed="${S.sort === 'size'}">사이즈 순</button>
         <button type="button" data-v="ratio" aria-pressed="${S.sort === 'ratio'}">감속비 순</button>
       </div>
@@ -1141,12 +1186,12 @@ function view4() {
       return `<tr data-id="${id}" class="${sel === id ? 'sel' : ''}">
         <td>${statusPill(r.ev)}</td>${kindCol ? `<td>${KIND[r.kind]}</td>` : ''}<td>${esc(r.g.series_code)}</td><td>${esc(r.sizeLabel)}</td><td>1/${r.ratio}</td>
         <td>${fmt(r.ev.rated)}</td><td>${fmt(r.ev.need)}</td><td>${marginBar(r.ev)}</td>
-        <td>${fmt(r.ev.t2)}</td><td>${fmt(r.ev.n2, 1)}</td><td>${fmt(r.g.efficiency)}</td><td>${fmt(r.g.weight)}</td>${showBL ? `<td>${r.kind === 'planetary' ? esc(backlashOf(r.g, S.cond.grade) ?? '–') : ''}</td>` : ''}${showHP ? (r.kind === 'hollow' ? `<td>${esc(repOf(r.g) ?? '–')}</td><td>${esc(posOf(r.g) ?? '–')}</td>` : '<td></td><td></td>') : ''}
+        <td>${fmt(r.ev.t2)}</td><td>${fmt(r.ev.n2, 1)}</td><td title="${esc(effText(r.ev.eff))}">${fmt(r.ev.eff, 3)}</td><td>${fmt(r.g.weight)}</td>${showBL ? `<td>${r.kind === 'planetary' ? esc(backlashOf(r.g, S.cond.grade) ?? '–') : ''}</td>` : ''}${showHP ? (r.kind === 'hollow' ? `<td>${esc(repOf(r.g) ?? '–')}</td><td>${esc(posOf(r.g) ?? '–')}</td>` : '<td></td><td></td>') : ''}
         ${r.adapter ? `<td class="code">${r.adapter.type}${r.adapter.slot} · ${esc(r.adapter.iface.code)}</td>` : (r.unknown ? '<td><span class="pill warn" title="입력 홀·어댑터플랜지 정보가 아직 등록되지 않았습니다">어댑터 미등록</span></td>' : '<td><span class="pill bad">어댑터 없음</span></td>')}
         <td class="code">${(() => { const bu = comboBushing(r); return bu ? esc(bu.bushing_code) : (r.adapter || r.fit ? '–' : ''); })()}</td></tr>`;
     }).join('')}</tbody></table></div>`
     : `<div class="callout warn"><div>조건에 맞는 감속기가 없습니다. ${all.length ? '"부적합 숨기기"를 끄면 토크가 부족한 조합도 볼 수 있습니다. ' : ''}이전 단계에서 감속비나 사용계수를 바꿔 보세요.</div></div>`}
-    <p style="margin:0;font-size:12px;color:var(--muted)">필요토크 = 모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비 × 효율 × 사용계수 ${esc(S.cond.sf)}. 여유율 100% 이상이면 감속기 정격토크 안에서 사용합니다.<br>
+    <p style="margin:0;font-size:12px;color:var(--muted)">필요토크 = ${loadModeOf() === 'rated' ? `부하 토크(모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비)` : loadModeOf() === 'manual' ? `부하 토크 ${fmt(N(S.cond.loadTorque))} Nm` : `모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비 × 효율`} × 사용계수 ${fmt(sfTotal(), 2)} (${esc(sfText())}). 여유율 100% 이상이면 감속기 정격토크 안에서 사용합니다.<br>
       출력속도 = 모터 정격속도 ÷ 감속비. 속도는 판정에 넣지 않고, 모터 속도가 감속기 정격·최대 입력속도를 넘으면 "속도 주의"만 표시합니다 (마우스를 올리면 내용 표시).</p>
   </section>${navHTML({ next: '선택 완료 →', nextDisabled: !sel || !rows.some(r => r.kind + ':' + r.g.gearbox_id === sel) })}`;
 }
@@ -1203,7 +1248,8 @@ function summaryText(r) {
     `인터페이스: ${r.adapter.type}${r.adapter.slot} (${r.adapter.iface.code})`,
     ...(drawingKey(r) ? [`도면 키: ${drawingKey(r)}`] : []),
     bushingCode(r) ? `부싱: ${bushingCode(r)} (모터 축경 ${fmt(comboBushing(r).motor_shaft_dia)} → 감속기 입력경 ${fmt(comboBushing(r).gearbox_input_dia)} mm)` : '부싱: 없음 (직결)',
-    `출력: ${fmt(ev.t2)} Nm / ${fmt(ev.n2, 1)} rpm, 여유율 ${fmt(ev.margin * 100, 0)}% (사용계수 ${S.cond.sf})`,
+    `출력: ${fmt(ev.t2)} Nm / ${fmt(ev.n2, 1)} rpm, 여유율 ${fmt(ev.margin * 100, 0)}% (사용계수 ${sfText()}, 효율 ${effText(ev.eff)})`,
+    ...(ev.loadT != null ? [`부하 토크: ${fmt(ev.loadT)} Nm (${ev.loadMode === 'rated' ? '정격 토크 이내 = 모터 정격토크 × 감속비' : '직접 입력'}), 필요 정격토크 ${fmt(ev.need)} Nm`] : []),
     ev.issues.length ? `확인 사항: ${ev.issues.join(', ')}` : '판정: 적합',
     ...ev.cautions.map(c => `주의: ${c}`),
   ].join('\n');
@@ -1245,9 +1291,9 @@ function view5() {
       </table></div>
       <div class="spec"><h3>계산 결과</h3><table>
         ${row('출력 토크 (정격)', fmt(ev.t2), 'Nm')}${row('출력 토크 (최대)', fmt(ev.t2peak), 'Nm')}
-        ${row('필요 정격토크', fmt(ev.need), `Nm · 사용계수 ${esc(S.cond.sf)}`)}${row('여유율', ev.margin == null ? '–' : fmt(ev.margin * 100, 0), '%')}
-        ${row('출력 속도', fmt(ev.n2, 1), 'rpm')}${S.cond.loadTorque ? row('부하 토크', fmt(S.cond.loadTorque), 'Nm') : ''}
-        ${row('효율 반영', S.cond.useEff ? `η = ${fmt(ev.eff)}` : '반영 안 함')}
+        ${row('필요 정격토크', fmt(ev.need), `Nm · 사용계수 ${esc(sfText())}`)}${row('여유율', ev.margin == null ? '–' : fmt(ev.margin * 100, 0), '%')}
+        ${row('출력 속도', fmt(ev.n2, 1), 'rpm')}${ev.loadT != null ? row('부하 토크', fmt(ev.loadT), ev.loadMode === 'rated' ? 'Nm · 정격 토크 이내 (모터 정격토크 × 감속비)' : 'Nm · 직접 입력') : ''}
+        ${row('효율 반영', esc(effText(ev.eff)))}
       </table></div>
     </div>
   </section>${navHTML({ next: '처음부터 다시', extra: '' })}`;
@@ -1369,7 +1415,7 @@ function bind5() {
     findDrawings(key).then(files => {
       const box = $('#dFiles'); if (!box || $('#dKey')?.textContent !== key) return;
       if (files.error) { box.innerHTML = `<span style="color:var(--danger)">${esc(files.error)}</span>`; return; }
-      if (!files.length) { box.textContent = `${DRAWING.bucket} 스토리지에 ${key}.pdf / .step 파일이 없습니다.`; return; }
+      if (!files.length) { box.textContent = `${DRAWING.bucket} 스토리지와 하위 폴더에 ${key}.pdf / .step 파일이 없습니다.`; return; }
       // 보기·다운로드 주소를 미리 만들어 진짜 링크로 둠 (모바일 팝업 차단 방지). 유효 시간이 지나면 클릭할 때 새로 만듦
       const paths = files.map(f => f.path);
       const made = Date.now();
