@@ -206,10 +206,10 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
 .dfile a.btn { text-decoration: none; white-space: nowrap; }
 .dfile .ico3d { height: 30px; width: auto; display: block; }
 /* 도면 아이콘 버튼: 테두리·배경 없이 아이콘만, 마우스를 올리면 1.1배 확대 */
-.dfile a.ibtn { border: 0; background: transparent; box-shadow: none; padding: 4px 8px; min-width: 0; transition: transform .15s ease; }
-.dfile a.ibtn:hover, .dfile a.ibtn:focus-visible { transform: scale(1.1); background: transparent; }
-.dfile a.ibtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
-@media (prefers-reduced-motion: reduce) { .dfile a.ibtn { transition: none; } }
+.dfile .ibtn { border: 0; background: transparent; box-shadow: none; padding: 4px 8px; min-width: 0; transition: transform .15s ease; }
+.dfile .ibtn:hover, .dfile .ibtn:focus-visible { transform: scale(1.1); background: transparent; }
+.dfile .ibtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { .dfile .ibtn { transition: none; } }
 :root[data-theme="dark"] .dfile .ico3d { filter: invert(1); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .dfile .ico3d { filter: invert(1); } }
 @media (max-width: 600px) { .dfile .dname { flex: 1 1 0; } }
@@ -273,7 +273,7 @@ table.res td.code { font-family: var(--mono); font-size: 12px; }
   body { background: #fff; }
   .card { box-shadow: none; border: 0; padding: 0; }
   @page { size: A4; margin: 10mm; }
-  .dfile a.btn { display: none !important; }            /* 보기·다운로드 버튼은 종이에서 의미 없음 */
+  .dfile .btn { display: none !important; }            /* 보기·다운로드 버튼은 종이에서 의미 없음 */
   .dfile { padding: 4px 8px; }
   .card-head { margin-bottom: 8px; }
   .combo { padding: 10px 14px; }
@@ -1392,7 +1392,7 @@ async function printOrPdf() {
     head.style.cssText = 'display:flex;align-items:center;gap:12px;padding:0 0 16px;max-width:none;flex-wrap:nowrap;';
     const card = $('#finalCard').cloneNode(true);
     card.removeAttribute('id');
-    card.querySelectorAll('.no-print, .dfile a.btn, button').forEach(e => e.remove());
+    card.querySelectorAll('.no-print, .dfile .btn, button').forEach(e => e.remove());
     card.style.cssText = 'box-shadow:none;border:0;padding:0;margin:0;';
     box.append(head, card); document.body.appendChild(box);
     const canvas = await html2canvas(box, { scale: 2, backgroundColor: '#ffffff', useCORS: true, windowWidth: 900 });
@@ -1441,21 +1441,20 @@ function bind5() {
         if ($('#dFiles') !== box) return;
         box.innerHTML = files.map((f, i) => {
           const isPdf = f.ext === 'pdf';
-          const viewHref = isPdf ? view[i] : STEP_VIEWER(view[i]);
           return `<div class="dfile">
             <div class="dname"><b>${esc(DRAWING.exts[f.ext])}</b><small>${esc(f.name)}${f.size ? ' · ' + fmtSize(f.size) : ''}</small></div>
-            <a class="btn ibtn" data-i="${i}" data-act="view" href="${esc(viewHref)}" target="${VIEW_WIN}" rel="opener"${isPdf ? ' title="PDF 보기" aria-label="PDF 보기"' : ' title="3D 보기 (Online 3D Viewer)" aria-label="3D 보기"'}>${isPdf ? `<img class="ico3d" src="${ICON_PDF}" alt="PDF 보기">` : `<img class="ico3d" src="${ICON_3D}" alt="3D 보기">`}</a>
-            <a class="btn ibtn" data-i="${i}" data-act="dl" href="${esc(dl[i])}" download="${esc(f.name)}" rel="noopener" title="${isPdf ? 'PDF 다운로드' : 'STEP 3D 다운로드'}" aria-label="${isPdf ? 'PDF 다운로드' : 'STEP 3D 다운로드'}"><img class="ico3d" src="${isPdf ? ICON_DL_PDF : ICON_DL_STEP}" alt=""></a>
+            <button type="button" class="btn ibtn" data-i="${i}" data-act="view" title="${isPdf ? 'PDF 보기' : '3D 보기 (Online 3D Viewer)'}" aria-label="${isPdf ? 'PDF 보기' : '3D 보기'}">${isPdf ? `<img class="ico3d" src="${ICON_PDF}" alt="">` : `<img class="ico3d" src="${ICON_3D}" alt="">`}</button>
+            <button type="button" class="btn ibtn" data-i="${i}" data-act="dl" title="${isPdf ? 'PDF 다운로드' : 'STEP 3D 다운로드'}" aria-label="${isPdf ? 'PDF 다운로드' : 'STEP 3D 다운로드'}"><img class="ico3d" src="${isPdf ? ICON_DL_PDF : ICON_DL_STEP}" alt=""></button>
           </div>`;
         }).join('');
-        box.querySelectorAll('a[data-act]').forEach(a => a.addEventListener('click', async e => {
-          const f = files[+a.dataset.i], fresh = Date.now() - made < (LINK_TTL - 120) * 1000;
-          // 보기 → 별도 창(닫기 누르면 선정툴로 돌아옴). 팝업이 막히면 PDF 는 페이지 안 뷰어, STEP 은 새 탭
+        // 버튼(링크 아님)이라 마우스를 올려도 브라우저 아래쪽에 파일 주소가 표시되지 않음
+        box.querySelectorAll('button[data-act]').forEach(a => a.addEventListener('click', async () => {
+          const i = +a.dataset.i, f = files[i], fresh = Date.now() - made < (LINK_TTL - 120) * 1000;
+          // 보기 → 별도 창(닫기 누르면 선정툴로 돌아옴). 팝업이 막히면 PDF 는 페이지 안 뷰어
           if (a.dataset.act === 'view') {
-            e.preventDefault();
             const win = openViewerWindow();   // 클릭 순간에 창을 먼저 열어야 팝업 차단을 피함
             try {
-              const [u, d] = fresh ? [view[+a.dataset.i], dl[+a.dataset.i]]
+              const [u, d] = fresh ? [view[i], dl[i]]
                 : await Promise.all([storageUrls(DRAWING.bucket, [f.path], false), storageUrls(DRAWING.bucket, [f.path], true)]).then(x => [x[0][0], x[1][0]]);
               if (win) writeViewer(win, f.ext === 'pdf' ? 'pdf' : 'step', f.name, u, d);
               else if (f.ext === 'pdf') { toast('팝업이 차단되어 이 화면 안에서 엽니다.'); openPdfViewer(u, f.name, d); }
@@ -1463,17 +1462,13 @@ function bind5() {
             } catch (err) { win?.close(); toast(`도면을 열지 못했습니다. ${errText(err)}`, true); }
             return;
           }
-          if (fresh) {
-            if (a.dataset.act === 'dl') toast(`${f.name} 다운로드를 시작했습니다.`);
-            return;
-          }
-          e.preventDefault();   // 주소가 만료됨 → 새로 만들어 이동
-          const w = a.dataset.act === 'view' ? window.open('about:blank', '_blank') : null;
+          // 다운로드 → 첨부파일 주소로 이동 (화면은 그대로, PC·모바일 모두 저장)
           try {
-            const [u] = await storageUrls(DRAWING.bucket, [f.path], a.dataset.act === 'dl');
-            const href = a.dataset.act === 'view' ? (f.ext === 'pdf' ? u : STEP_VIEWER(u)) : u;
-            if (w) w.location.href = href; else location.href = href;
-          } catch (err) { w?.close(); toast(`도면을 열지 못했습니다. ${errText(err)}`, true); }
+            const u = fresh ? dl[i] : (await storageUrls(DRAWING.bucket, [f.path], true))[0];
+            const link = document.createElement('a'); link.href = u; link.rel = 'noopener';
+            document.body.appendChild(link); link.click(); setTimeout(() => link.remove(), 1000);
+            toast(`${f.name} 다운로드를 시작했습니다.`);
+          } catch (err) { toast(`도면을 받지 못했습니다. ${errText(err)}`, true); }
         }));
       }).catch(e => { box.innerHTML = `<span style="color:var(--danger)">도면 주소를 만들지 못했습니다: ${esc(errText(e))}</span>`; });
     });
