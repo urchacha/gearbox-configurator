@@ -1279,7 +1279,7 @@ function view5() {
     ${caution}
     <div class="spec drawing" id="drawingBox"><h3>도면 다운로드</h3>
       <div class="drawing-body">${drawingKey(r)
-        ? `<div class="dk"><span>도면 키</span><code id="dKey">${esc(drawingKey(r))}</code></div><div id="dFiles" class="dfiles">download 스토리지와 하위 폴더에서 도면을 찾는 중…</div>`
+        ? `<div class="dk"><span>도면 키</span><code id="dKey">${esc(drawingKey(r))}</code></div><div id="dFiles" class="dfiles">스토리지에서 도면을 찾는 중…</div>`
         : '<p class="muted">단수 정보가 없어 도면 키를 만들 수 없습니다.</p>'}</div>
     </div>
     <div class="final">
@@ -1287,7 +1287,7 @@ function view5() {
         ${row('브랜드 / 형번', `${esc(m.manufacturer)} ${esc(m.motor_code)}`)}${row('정격출력', fmt(m.nominal_power), 'W')}
         ${row('정격토크 / 최대토크', `${fmt(m.nominal_torque, 3)} / ${fmt(m.peak_torque, 3)}`, 'Nm')}
         ${row('정격속도 / 최대속도', `${fmt(m.nominal_speed)} / ${fmt(m.max_speed)}`, 'rpm')}
-        ${row('인터페이스', `${r.adapter.type}${r.adapter.slot}`)}${row('부싱', comboBushing(r) ? `${esc(comboBushing(r).bushing_code)} <small>축경 ${fmt(comboBushing(r).motor_shaft_dia)} → 입력경 ${fmt(comboBushing(r).gearbox_input_dia)} mm</small>` : '없음 (직결)')}
+        ${row('인터페이스', `${r.adapter.type}${r.adapter.slot}`)}${row('부싱', comboBushing(r) ? esc(comboBushing(r).bushing_code) : '없음 (직결)')}
       </table></div>
       <div class="spec"><h3>감속기</h3><table>
         ${row('종류', KIND[r.kind])}${row('감속기형번', esc(gearboxCode(r)))}
@@ -1421,7 +1421,7 @@ function bind5() {
     findDrawings(key).then(files => {
       const box = $('#dFiles'); if (!box || $('#dKey')?.textContent !== key) return;
       if (files.error) { box.innerHTML = `<span style="color:var(--danger)">${esc(files.error)}</span>`; return; }
-      if (!files.length) { box.textContent = `${DRAWING.bucket} 스토리지와 하위 폴더에 ${key}.pdf / .step 파일이 없습니다.`; return; }
+      if (!files.length) { box.textContent = `스토리지에 ${key}.pdf / .step 파일이 없습니다.`; return; }
       // 보기·다운로드 주소를 미리 만들어 진짜 링크로 둠 (모바일 팝업 차단 방지). 유효 시간이 지나면 클릭할 때 새로 만듦
       const paths = files.map(f => f.path);
       const made = Date.now();
