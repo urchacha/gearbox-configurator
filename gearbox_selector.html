@@ -800,7 +800,7 @@ function view1() {
     <div class="panel"><div class="form-row">
       <label class="f"><span>브랜드</span><select id="fBrand"><option value="">브랜드 선택</option>${brands.map(b => `<option ${b === f.brand ? 'selected' : ''}>${esc(b)}</option>`).join('')}</select></label>
       <label class="f"><span>타입</span><select id="fType" ${f.brand ? '' : 'disabled'}><option value="">전체</option>${f.brand ? typeOpts : ''}</select></label>
-      <label class="f grow"><span>모델 선택(다른 모델 선택시 선택해제 클릭)</span><input type="text" id="fModel" list="dl-model" value="${esc(f.model)}" placeholder="${f.brand ? '모델 형번 입력 또는 선택' : '형번으로 바로 검색하거나 브랜드를 먼저 선택하세요'}" autocomplete="off"></label>
+      <label class="f grow"><span>모델 선택</span><input type="text" id="fModel" list="dl-model" value="${esc(f.model)}" placeholder="${f.brand ? '모델 형번 입력 또는 선택' : '형번으로 바로 검색하거나 브랜드를 먼저 선택하세요'}" autocomplete="off"></label>
       <div class="act"><button class="btn primary lg" id="btnPick">모터 선택</button></div>
     </div></div>
     ${m ? `<div class="picked">
@@ -1191,8 +1191,10 @@ function view4() {
         <td class="code">${(() => { const bu = comboBushing(r); return bu ? esc(bu.bushing_code) : (r.adapter || r.fit ? '–' : ''); })()}</td></tr>`;
     }).join('')}</tbody></table></div>`
     : `<div class="callout warn"><div>조건에 맞는 감속기가 없습니다. ${all.length ? '"부적합 숨기기"를 끄면 토크가 부족한 조합도 볼 수 있습니다. ' : ''}이전 단계에서 감속비나 사용계수를 바꿔 보세요.</div></div>`}
-    <p style="margin:0;font-size:12px;color:var(--muted)">필요토크 = ${loadModeOf() === 'rated' ? `부하 토크(모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비)` : loadModeOf() === 'manual' ? `부하 토크 ${fmt(N(S.cond.loadTorque))} Nm` : `모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비 × 효율`} × 사용계수 ${fmt(sfTotal(), 2)} (${esc(sfText())}). 여유율 100% 이상이면 감속기 정격토크 안에서 사용합니다.<br>
-      출력속도 = 모터 정격속도 ÷ 감속비. 속도는 판정에 넣지 않고, 모터 속도가 감속기 정격·최대 입력속도를 넘으면 "속도 주의"만 표시합니다 (마우스를 올리면 내용 표시).</p>
+    <p style="margin:0;font-size:12px;color:var(--muted)">필요토크 = ${loadModeOf() === 'rated' ? `부하 토크(모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비)` : loadModeOf() === 'manual' ? `부하 토크 ${fmt(N(S.cond.loadTorque))} Nm` : `모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비 × 효율`} × 사용계수 ${fmt(sfTotal(), 2)} (${esc(sfText())}). 여유율 100% 이상이면 감속기 정격토크 안에서 사용합니다.
+<br>
+      출력토크 = 모터 정격토크 ${fmt(S.motor.nominal_torque, 3)} Nm × 감속비 × 효율.<br>
+      출력속도 = 모터 정격속도 ÷ 감속비. 속도는 판정에 넣지 않고, 모터 속도가 감속기 정격·최대 입력속도를 넘으면 "속도 주의"만 표시합니다.</p>
   </section>${navHTML({ next: '선택 완료 →', nextDisabled: !sel || !rows.some(r => r.kind + ':' + r.g.gearbox_id === sel) })}`;
 }
 function bind4() {
